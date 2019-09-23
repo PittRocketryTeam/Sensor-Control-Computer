@@ -1,3 +1,9 @@
+# vscode directories
+.vscode/
+
+# PlatformIO directories
+.pio/
+
 # Prerequisites
 *.d
 
