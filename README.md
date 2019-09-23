@@ -1,2 +1,4 @@
 # Sensor-Control-Computer
-Code to control the dedicated sensor and control computer
+Code and design files for the Sensor and Control Avionics (SCA).
+
+`/Hardware` contains Eagle schematics for SCA
