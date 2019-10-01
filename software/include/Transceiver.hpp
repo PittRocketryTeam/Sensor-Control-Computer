@@ -1,6 +1,6 @@
 #ifndef __TRANSCEIVER_HPP__
 #define __TRANSCEIVER_HPP__
-#endif
+
 
 #include <vector>
 #include <string>
@@ -53,4 +53,5 @@ class Transceiver
         transceiver_state state;
 };
 
+#endif
 // __TRANSCEIVER_HPP__

@@ -1,6 +1,5 @@
 #ifndef __LOGGER_HPP__
 #define __LOGGER_HPP__
-#endif
 
 #include "Sensor.hpp"
 
@@ -31,4 +30,5 @@ class Logger
         std::vector<Sensor> sensors;
 };
 
+#endif
 // __LOGGER_HPP__

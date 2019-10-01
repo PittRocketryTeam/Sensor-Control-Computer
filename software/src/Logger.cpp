@@ -5,6 +5,11 @@ Logger::Logger()
 
 }
 
+Logger::~Logger()
+{
+    
+}
+
 void Logger::addSensor(Sensor* sensor)
 {
 

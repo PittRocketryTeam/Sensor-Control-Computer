@@ -1,6 +1,5 @@
 #ifndef __SENSOR_HPP__
 #define __SENSOR_HPP__
-#endif
 
 #include <vector>
 
@@ -8,8 +7,8 @@ class Sensor
 {
     public:
 
-        Sensor();
-        ~Sensor();
+        Sensor() {}
+        ~Sensor() {}
 
         /* 
          * Initialize the sensor so it can be used. Return true if the 
@@ -48,5 +47,5 @@ class Sensor
         sensor_state state;
 };
 
-
+#endif
 // __SENSOR_HPP__

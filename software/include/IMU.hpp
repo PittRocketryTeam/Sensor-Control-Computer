@@ -1,6 +1,5 @@
 #ifndef __IMU_HPP__
 #define __IMU_HPP__
-#endif
 
 #include "Sensor.hpp"
 
@@ -20,5 +19,5 @@ class IMU : public Sensor
         void disable() override;
 };
 
-
+#endif
 // __IMU_HPP_

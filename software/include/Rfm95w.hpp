@@ -1,6 +1,5 @@
 #ifndef __RFM95W_HPP__
 #define __RFM95W_HPP__
-#endif
 
 #include "Transceiver.hpp"
 
@@ -18,4 +17,5 @@ class Rfm95w : Transceiver
         void disable();
 };
 
+#endif
 // __RFM95W_HPP__
