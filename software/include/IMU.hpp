@@ -13,11 +13,11 @@ class IMU : public Sensor
         IMU();
         ~IMU();
         
-        bool init();
-        std::vector<float> read();
-        std::vector<float> poll();
-        void enable();
-        void disable();
+        bool init() override;
+        std::vector<float> read() override;
+        std::vector<float> poll() override;
+        void enable() override;
+        void disable() override;
 };
 
 

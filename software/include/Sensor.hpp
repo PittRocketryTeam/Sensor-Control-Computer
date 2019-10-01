@@ -16,27 +16,27 @@ class Sensor
          * sensor is initialized and ready to be enabled, disabled, read, or 
          * polled, and false otherwise.
          */
-        virtual bool init() = 0;
+        virtual bool init();
 
         /*
          * Read current sensor data and return it as vector of floats. 
          */
-        virtual std::vector<float> read() = 0;
+        virtual std::vector<float> read();
 
         /*
          * TODO: Add description
          */
-        virtual std::vector<float> poll() = 0;
+        virtual std::vector<float> poll();
 
         /*
          * TODO: Add description
          */
-        virtual void enable() = 0;
+        virtual void enable();
 
         /*
          * TODO: Add description
          */
-        virtual void disable() = 0;
+        virtual void disable();
     
     protected:
 
