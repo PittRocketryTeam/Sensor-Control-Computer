@@ -5,7 +5,7 @@ Logger::Logger()
 
 }
 
-void Logger::addSensor(Sensor sensor)
+void Logger::addSensor(Sensor* sensor)
 {
 
 }

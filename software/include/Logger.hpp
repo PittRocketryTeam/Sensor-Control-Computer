@@ -14,14 +14,14 @@ class Logger
         /*
          * Add a sensor to the logger's list of sensors.
          */
-        virtual void addSensor(Sensor sensor) = 0;
+        virtual void addSensor(Sensor* sensor);
         
         /*
          * Reads from each sensor and writes the timestamped data to the disk. 
          * Returns true if data was successfully written, false if not (e.g. if 
          * the disk somehow ran out of space).
          */
-        virtual bool log() = 0;
+        virtual bool log();
 
     private:
 
