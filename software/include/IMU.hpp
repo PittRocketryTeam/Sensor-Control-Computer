@@ -20,4 +20,4 @@ class IMU : public Sensor
 };
 
 #endif
-// __IMU_HPP_
+// __IMU_HPP__
