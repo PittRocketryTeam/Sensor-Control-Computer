@@ -2,6 +2,7 @@
 #define __SENSOR_HPP__
 
 #include <vector>
+#include "Wire.h"
 
 class Sensor
 {

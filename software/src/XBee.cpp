@@ -5,23 +5,21 @@ XBee::XBee()
 
 }
 
-std::vector<float> XBee::read()
+bool XBee::init()
+{
+    return false;
+}
+
+std::vector<float> XBee::receive()
 {
     std::vector<float> ret(1, 0);
 
     return ret;
 }
 
-bool XBee::write(const std::string buf, int len)
+bool XBee::transmit(std::vector<float> data)
 {
     return false;
-}
-
-std::vector<float> XBee::poll()
-{
-    std::vector<float> ret(1, 0);
-
-    return ret;    
 }
 
 void XBee::enable()

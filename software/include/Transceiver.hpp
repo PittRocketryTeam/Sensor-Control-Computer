@@ -9,8 +9,8 @@ class Transceiver
 {
     public:
 
-        Transceiver();
-        ~Transceiver();
+        Transceiver() {}
+        ~Transceiver() {}
 
         /*
          * Initialize the trasceiver. After this function has been called,
@@ -21,17 +21,12 @@ class Transceiver
         /*
          * TODO: Add description
          */
-        virtual std::vector<float> read() = 0;
+        virtual std::vector<float> receive() = 0;
         
         /*
          * TODO: Add description
          */
-        virtual bool write(const std::string buf, int len) = 0;
-        
-        /*
-         * TODO: Add description
-         */
-        virtual std::vector<float> poll() = 0;
+        virtual bool transmit(std::vector<float> data) = 0;
 
         /*
          * TODO: Add description

@@ -10,9 +10,9 @@ class XBee : Transceiver
         XBee();
         ~XBee();
 
-        std::vector<float> read();
-        bool write(const std::string buf, int len);
-        std::vector<float> poll();
+        bool init();
+        std::vector<float> receive();
+        bool transmit(std::vector<float> data);
         void enable();
         void disable();
 };

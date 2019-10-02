@@ -5,23 +5,26 @@ Rfm95w::Rfm95w()
 
 }
 
-std::vector<float> Rfm95w::read()
+Rfm95w::~Rfm95w()
+{
+    
+}
+
+bool Rfm95w::init()
+{
+    return false;
+}
+
+std::vector<float> Rfm95w::receive()
 {
     std::vector<float> ret(1, 0);
 
     return ret;
 }
 
-bool Rfm95w::write(const std::string buf, int len)
+bool Rfm95w::transmit(std::vector<float> data)
 {
     return false;
-}
-
-std::vector<float> Rfm95w::poll()
-{
-    std::vector<float> ret(1, 0);
-
-    return ret;    
 }
 
 void Rfm95w::enable()

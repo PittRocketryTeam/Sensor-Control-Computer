@@ -1,17 +1,16 @@
-#ifndef __IMU_HPP__
-#define __IMU_HPP__
+#ifndef __GPS_HPP__
+#define __GPS_HPP__
 
 #include "Sensor.hpp"
 
-#define IMU_DIMENIONS 5
-#define I2C_ADDR 0x28
+#define GPS_DIMENSIONS 5
 
-class IMU : public Sensor
+class GPS : public Sensor
 {
     public:
 
-        IMU();
-        ~IMU();
+        GPS();
+        ~GPS();
         
         bool init() override;
         std::vector<float> read() override;
@@ -21,4 +20,4 @@ class IMU : public Sensor
 };
 
 #endif
-// __IMU_HPP__
+// __GPS_HPP__
