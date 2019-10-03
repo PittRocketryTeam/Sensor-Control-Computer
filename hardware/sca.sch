@@ -14736,8 +14736,8 @@ NASA Student Launch
 <attribute name="NAME" x="135.89" y="33.655" size="1.778" layer="95"/>
 <attribute name="VALUE" x="135.89" y="7.62" size="1.778" layer="96"/>
 </instance>
-<instance part="+3V3" gate="G$1" x="133.35" y="38.1" smashed="yes" grouprefs="BMP338">
-<attribute name="VALUE" x="135.89" y="40.64" size="1.778" layer="96" rot="R180"/>
+<instance part="+3V3" gate="G$1" x="130.81" y="38.1" smashed="yes" grouprefs="BMP338">
+<attribute name="VALUE" x="133.35" y="40.64" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="U$7" gate="G$1" x="40.64" y="22.86" smashed="yes" grouprefs="GPS">
 <attribute name="VALUE" x="39.116" y="20.32" size="1.27" layer="96"/>
@@ -15007,10 +15007,10 @@ NASA Student Launch
 <pinref part="+3V6" gate="G$1" pin="+3V3"/>
 </segment>
 <segment>
-<wire x1="139.7" y1="30.48" x2="133.35" y2="30.48" width="0.1524" layer="91" grouprefs="BMP338"/>
+<wire x1="139.7" y1="30.48" x2="130.81" y2="30.48" width="0.1524" layer="91" grouprefs="BMP338"/>
 <pinref part="JP2" gate="A" pin="1"/>
 <pinref part="+3V3" gate="G$1" pin="+3V3"/>
-<wire x1="133.35" y1="35.56" x2="133.35" y2="30.48" width="0.1524" layer="91" grouprefs="BMP338"/>
+<wire x1="130.81" y1="35.56" x2="130.81" y2="30.48" width="0.1524" layer="91" grouprefs="BMP338"/>
 </segment>
 </net>
 <net name="+5V" class="0">

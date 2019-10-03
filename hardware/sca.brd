@@ -163,10 +163,10 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="160" y2="0" width="0" layer="20"/>
-<wire x1="160" y1="0" x2="160" y2="100" width="0" layer="20"/>
-<wire x1="160" y1="100" x2="0" y2="100" width="0" layer="20"/>
-<wire x1="0" y1="100" x2="0" y2="0" width="0" layer="20"/>
+<wire x1="0" y1="0" x2="194.29" y2="0" width="0" layer="20"/>
+<wire x1="194.29" y1="0" x2="194.29" y2="92.38" width="0" layer="20"/>
+<wire x1="194.29" y1="92.38" x2="0" y2="92.38" width="0" layer="20"/>
+<wire x1="0" y1="92.38" x2="0" y2="0" width="0" layer="20"/>
 <text x="7.4" y="15.897" size="1.27" layer="21" ratio="12" rot="R90" align="center">BNO055</text>
 <text x="13.424" y="8.001" size="0.8128" layer="21" ratio="12" align="center">Vin</text>
 <text x="18.537" y="8.001" size="0.8128" layer="21" ratio="12" align="center">GND</text>
