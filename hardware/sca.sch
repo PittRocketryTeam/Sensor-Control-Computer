@@ -14504,6 +14504,50 @@ DIN A4, landscape with location and doc. field</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="XT60">
+<packages>
+<package name="XT60">
+<pad name="+" x="4.5" y="0" drill="5" shape="octagon"/>
+<pad name="-" x="11.5" y="0" drill="5" shape="octagon"/>
+<wire x1="0" y1="4" x2="12" y2="4" width="0.127" layer="21"/>
+<wire x1="15.5" y1="1.5" x2="15.5" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="12" y1="4" x2="15.5" y2="1.5" width="0.127" layer="21"/>
+<wire x1="15.5" y1="-1.5" x2="12" y2="-4" width="0.127" layer="21"/>
+<wire x1="12" y1="-4" x2="0" y2="-4" width="0.127" layer="21"/>
+<wire x1="0" y1="-4" x2="0" y2="4" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="XT60">
+<pin name="VCC" x="-5.08" y="-2.54" length="middle"/>
+<pin name="GND" x="-5.08" y="2.54" length="middle"/>
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="-5.08" width="0.254" layer="97"/>
+<wire x1="-2.54" y1="-5.08" x2="10.16" y2="-5.08" width="0.254" layer="97"/>
+<wire x1="10.16" y1="-5.08" x2="10.16" y2="5.08" width="0.254" layer="97"/>
+<wire x1="10.16" y1="5.08" x2="-2.54" y2="5.08" width="0.254" layer="97"/>
+<text x="-0.635" y="5.715" size="2.54" layer="97">XT60</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="XT60">
+<description>XT60</description>
+<gates>
+<gate name="G$1" symbol="XT60" x="2.54" y="5.08"/>
+</gates>
+<devices>
+<device name="" package="XT60">
+<connects>
+<connect gate="G$1" pin="GND" pad="-"/>
+<connect gate="G$1" pin="VCC" pad="+"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -14585,6 +14629,9 @@ DIN A4, landscape with location and doc. field</description>
 <part name="U$4" library="microbuilder" deviceset="GND" device=""/>
 <part name="SUPPLY1" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="V_BATT" device=""/>
 <part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A4L-LOC" device=""/>
+<part name="U$5" library="XT60" deviceset="XT60" device=""/>
+<part name="SUPPLY3" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="V_BATT" device=""/>
+<part name="U$8" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14795,6 +14842,13 @@ NASA Student Launch
 <attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94"/>
 <attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94"/>
 </instance>
+<instance part="U$5" gate="G$1" x="30.48" y="157.48" smashed="yes" rot="R180"/>
+<instance part="SUPPLY3" gate="G$1" x="36.83" y="165.1" smashed="yes">
+<attribute name="VALUE" x="41.91" y="171.704" size="1.778" layer="96" rot="R180" align="bottom-center"/>
+</instance>
+<instance part="U$8" gate="G$1" x="36.83" y="151.13" smashed="yes">
+<attribute name="VALUE" x="35.306" y="148.59" size="1.27" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -14893,6 +14947,12 @@ NASA Student Launch
 <pinref part="LED3" gate="G$1" pin="C"/>
 <pinref part="U$2" gate="G$1" pin="GND"/>
 <junction x="99.06" y="15.24"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="GND"/>
+<pinref part="U$8" gate="G$1" pin="GND"/>
+<wire x1="35.56" y1="154.94" x2="36.83" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="36.83" y1="154.94" x2="36.83" y2="153.67" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ENABLE" class="0">
@@ -15082,6 +15142,12 @@ NASA Student Launch
 <wire x1="57.15" y1="157.48" x2="52.07" y2="157.48" width="0.1524" layer="91" grouprefs="BATTERY_VOLTAGE1"/>
 <pinref part="SUPPLY1" gate="G$1" pin="V_BATT"/>
 <wire x1="52.07" y1="157.48" x2="52.07" y2="160.02" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="VCC"/>
+<pinref part="SUPPLY3" gate="G$1" pin="V_BATT"/>
+<wire x1="35.56" y1="160.02" x2="36.83" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="36.83" y1="160.02" x2="36.83" y2="165.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CS" class="0">
