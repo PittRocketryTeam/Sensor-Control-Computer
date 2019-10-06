@@ -1,6 +1,7 @@
 #include "Rfm95w.hpp"
 
-Rfm95w::Rfm95w()
+Rfm95w::Rfm95w() :
+    Transceiver()
 {
 
 }

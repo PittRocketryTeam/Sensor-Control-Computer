@@ -1,7 +1,8 @@
 #include "Altimeter.hpp"
 
 
-Altimeter::Altimeter()
+Altimeter::Altimeter() :
+    Sensor()
 {
 
 }
