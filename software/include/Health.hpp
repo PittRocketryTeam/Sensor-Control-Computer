@@ -24,3 +24,4 @@ class Health : public Sensor<HealthData>
 
 #endif
 // __HEALTH_HPP__
+

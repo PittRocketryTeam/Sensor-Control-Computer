@@ -1,7 +1,8 @@
 #include "Photocell.hpp"
 
 
-Photocell::Photocell()
+Photocell::Photocell() : 
+    Sensor()
 {
 
 }

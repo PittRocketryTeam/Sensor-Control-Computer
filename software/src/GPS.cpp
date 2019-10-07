@@ -1,7 +1,8 @@
 #include "GPS.hpp"
 
 
-GPS::GPS()
+GPS::GPS() : 
+    Sensor()
 {
 
 }

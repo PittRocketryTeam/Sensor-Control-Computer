@@ -1,6 +1,7 @@
 #include "XBee.hpp"
 
-XBee::XBee()
+XBee::XBee() : 
+    Transceiver()
 {
 
 }
