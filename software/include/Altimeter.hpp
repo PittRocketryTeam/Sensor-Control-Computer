@@ -3,8 +3,6 @@
 
 #include "Sensor.hpp"
 
-#define ALTIMETER_DIMENSIONS 5
-
 typedef struct AltimeterData
 {
     float temperature;

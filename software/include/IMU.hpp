@@ -3,7 +3,6 @@
 
 #include "Sensor.hpp"
 
-#define IMU_DIMENIONS 5
 #define I2C_ADDR 0x28
 
 typedef struct ImuData

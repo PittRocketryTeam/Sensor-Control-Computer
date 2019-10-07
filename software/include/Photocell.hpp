@@ -3,8 +3,6 @@
 
 #include "Sensor.hpp"
 
-#define PHOTOCELL_DIMENSIONS 5
-
 typedef struct PhotocellData
 {
     float brightness;

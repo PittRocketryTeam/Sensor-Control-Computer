@@ -3,8 +3,6 @@
 
 #include "Sensor.hpp"
 
-#define GPS_DIMENSIONS 5
-
 typedef struct GpsData
 {
     int time;
