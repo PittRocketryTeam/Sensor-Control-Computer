@@ -12,16 +12,16 @@ bool Photocell::init()
     return false;
 }
 
-PhotocellData Photocell::read()
+Data Photocell::read()
 {
-    PhotocellData data = { 0 };
+    Data data = { 0 };
 
     return data;
 }
 
-PhotocellData Photocell::poll()
+Data Photocell::poll()
 {
-    PhotocellData data = { 0 };
+    Data data = { 0 };
 
     return data;
 }

@@ -12,16 +12,16 @@ bool GPS::init()
     return false;
 }
 
-GpsData GPS::read()
+Data GPS::read()
 {
-    GpsData data;
+    Data data;
 
     return data;
 }
 
-GpsData GPS::poll()
+Data GPS::poll()
 {
-    GpsData data;
+    Data data;
 
     return data;
 }

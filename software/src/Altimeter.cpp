@@ -12,16 +12,16 @@ bool Altimeter::init()
     return false;
 }
 
-AltimeterData Altimeter::read()
+Data Altimeter::read()
 {
-    AltimeterData data = { 0 };
+    Data data = { 0 };
 
     return data;
 }
 
-AltimeterData Altimeter::poll()
+Data Altimeter::poll()
 {
-    AltimeterData data = { 0 };
+    Data data = { 0 };
 
     return data;
 }

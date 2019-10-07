@@ -12,16 +12,16 @@ bool IMU::init()
     return false;
 }
 
-ImuData IMU::read()
+Data IMU::read()
 {
-    ImuData data;
+    Data data;
 
     return data;
 }
 
-ImuData IMU::poll()
+Data IMU::poll()
 {
-    ImuData data;
+    Data data;
 
     return data;
 }

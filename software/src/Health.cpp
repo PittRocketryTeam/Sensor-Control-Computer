@@ -17,16 +17,16 @@ bool Health::init()
 }
 
 
-HealthData Health::read()
+Data Health::read()
 {
-    HealthData data;
+    Data data;
 
     return data;
 }
 
-HealthData Health::poll()
+Data Health::poll()
 {
-    HealthData data;
+    Data data;
 
     return data;
 }

@@ -3,12 +3,7 @@
 
 #include "Sensor.hpp"
 
-typedef struct PhotocellData
-{
-    float brightness;
-} PhotocellData;
-
-class Photocell : public Sensor<PhotocellData>
+class Photocell : public Sensor
 {
     public:
 
@@ -16,8 +11,8 @@ class Photocell : public Sensor<PhotocellData>
         ~Photocell();
         
         bool init() override;
-        PhotocellData read() override;
-        PhotocellData poll() override;
+        Data read() override;
+        Data poll() override;
         void enable() override;
         void disable() override;
 };

@@ -3,12 +3,7 @@
 
 #include "Sensor.hpp"
 
-typedef struct HealthData
-{
-    // tbd
-} HealthData;
-
-class Health : public Sensor<HealthData>
+class Health : public Sensor
 {
     public:
 
@@ -16,8 +11,8 @@ class Health : public Sensor<HealthData>
         ~Health();
             
         bool init() override;
-        HealthData read() override;
-        HealthData poll() override;
+        Data read() override;
+        Data poll() override;
         void enable() override;
         void disable() override;
 };

@@ -3,14 +3,7 @@
 
 #include "Sensor.hpp"
 
-typedef struct AltimeterData
-{
-    float temperature;
-    float pressure;
-    float altitude;
-} AltimeterData;
-
-class Altimeter : public Sensor<AltimeterData>
+class Altimeter : public Sensor
 {
     public:
 
@@ -18,8 +11,8 @@ class Altimeter : public Sensor<AltimeterData>
         ~Altimeter();
         
         bool init() override;
-        AltimeterData read() override;
-        AltimeterData poll() override;
+        Data read() override;
+        Data poll() override;
         void enable() override;
         void disable() override;
 };

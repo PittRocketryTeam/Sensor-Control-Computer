@@ -3,8 +3,8 @@
 
 #include <vector>
 #include "Wire.h"
+#include "Data.hpp"
 
-template<class Data>
 class Sensor
 {
     public:
