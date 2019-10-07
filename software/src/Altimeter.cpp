@@ -11,18 +11,18 @@ bool Altimeter::init()
     return false;
 }
 
-std::vector<float> Altimeter::read()
+AltimeterData Altimeter::read()
 {
-    std::vector<float> ret(ALTIMETER_DIMENSIONS, 0);
+    AltimeterData data = { 0 };
 
-    return ret;
+    return data;
 }
 
-std::vector<float> Altimeter::poll()
+AltimeterData Altimeter::poll()
 {
-    std::vector<float> ret(ALTIMETER_DIMENSIONS, 0);
+    AltimeterData data = { 0 };
 
-    return ret;
+    return data;
 }
 
 void Altimeter::enable()

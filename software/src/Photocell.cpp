@@ -11,18 +11,18 @@ bool Photocell::init()
     return false;
 }
 
-std::vector<float> Photocell::read()
+PhotocellData Photocell::read()
 {
-    std::vector<float> ret(PHOTOCELL_DIMENSIONS, 0);
+    PhotocellData data = { 0 };
 
-    return ret;
+    return data;
 }
 
-std::vector<float> Photocell::poll()
+PhotocellData Photocell::poll()
 {
-    std::vector<float> ret(PHOTOCELL_DIMENSIONS, 0);
+    PhotocellData data = { 0 };
 
-    return ret;
+    return data;
 }
 
 void Photocell::enable()

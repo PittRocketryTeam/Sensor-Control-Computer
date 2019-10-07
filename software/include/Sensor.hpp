@@ -4,6 +4,7 @@
 #include <vector>
 #include "Wire.h"
 
+template<class Data>
 class Sensor
 {
     public:
@@ -21,12 +22,12 @@ class Sensor
         /*
          * Read current sensor data and return it as vector of floats. 
          */
-        virtual std::vector<float> read() = 0;
+        virtual Data read() = 0;
 
         /*
          * TODO: Add description
          */
-        virtual std::vector<float> poll() = 0;
+        virtual Data poll() = 0;
 
         /*
          * TODO: Add description

@@ -11,18 +11,18 @@ bool IMU::init()
     return false;
 }
 
-std::vector<float> IMU::read()
+ImuData IMU::read()
 {
-    std::vector<float> ret(IMU_DIMENIONS, 0);
+    ImuData data;
 
-    return ret;
+    return data;
 }
 
-std::vector<float> IMU::poll()
+ImuData IMU::poll()
 {
-    std::vector<float> ret(IMU_DIMENIONS, 0);
+    ImuData data;
 
-    return ret;
+    return data;
 }
 
 void IMU::enable()

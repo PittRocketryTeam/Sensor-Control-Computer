@@ -11,18 +11,18 @@ bool GPS::init()
     return false;
 }
 
-std::vector<float> GPS::read()
+GpsData GPS::read()
 {
-    std::vector<float> ret(GPS_DIMENSIONS, 0);
+    GpsData data;
 
-    return ret;
+    return data;
 }
 
-std::vector<float> GPS::poll()
+GpsData GPS::poll()
 {
-    std::vector<float> ret(GPS_DIMENSIONS, 0);
+    GpsData data;
 
-    return ret;
+    return data;
 }
 
 void GPS::enable()

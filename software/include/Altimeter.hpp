@@ -5,7 +5,14 @@
 
 #define ALTIMETER_DIMENSIONS 5
 
-class Altimeter : public Sensor
+typedef struct AltimeterData
+{
+    float temperature;
+    float pressure;
+    float altitude;
+} AltimeterData;
+
+class Altimeter : public Sensor<AltimeterData>
 {
     public:
 
@@ -13,8 +20,8 @@ class Altimeter : public Sensor
         ~Altimeter();
         
         bool init() override;
-        std::vector<float> read() override;
-        std::vector<float> poll() override;
+        AltimeterData read() override;
+        AltimeterData poll() override;
         void enable() override;
         void disable() override;
 };

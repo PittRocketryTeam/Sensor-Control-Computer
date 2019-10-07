@@ -5,7 +5,12 @@
 
 #define PHOTOCELL_DIMENSIONS 5
 
-class Photocell : public Sensor
+typedef struct PhotocellData
+{
+    float brightness;
+} PhotocellData;
+
+class Photocell : public Sensor<PhotocellData>
 {
     public:
 
@@ -13,8 +18,8 @@ class Photocell : public Sensor
         ~Photocell();
         
         bool init() override;
-        std::vector<float> read() override;
-        std::vector<float> poll() override;
+        PhotocellData read() override;
+        PhotocellData poll() override;
         void enable() override;
         void disable() override;
 };
