@@ -12,16 +12,20 @@ bool Altimeter::init()
     return false;
 }
 
-Data Altimeter::read()
+Data Altimeter::read(Data data)
 {
-    Data data = { 0 };
+    // TODO: Set data.altimeterData.temperature
+    // TODO: Set data.altimeterData.pressure
+    // TODO: Set data.altimeterData.altitude
 
     return data;
 }
 
-Data Altimeter::poll()
+Data Altimeter::poll(Data data)
 {
-    Data data = { 0 };
+    // TODO: Set data.altimeterData.temperature
+    // TODO: Set data.altimeterData.pressure
+    // TODO: Set data.altimeterData.altitude
 
     return data;
 }

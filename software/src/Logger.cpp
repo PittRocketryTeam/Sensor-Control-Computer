@@ -23,28 +23,8 @@ void Logger::addSensors(std::vector<Sensor*> sens)
 
 bool Logger::log()
 {
-    // Read data from each sensor
-    Data data;
-    for (Sensor* s : sensors)
-        data = s->read();                               
-    
-    // Add timestamp
-    data.timestamp = now();                              
-
-    // Open micro SD card
-    File microSD = SD.open(log_filename, FILE_WRITE);   
-    if (!microSD) 
-        return false;
-    
-    // Perform write and close
-    size_t bytes_written = microSD.write((uint8_t *)&data, sizeof(data)/sizeof(uint8_t));
-    microSD.close();                                    
-
-    // Check write
-    if (bytes_written != sizeof(data))                 
-        return false;
-    
-    return true;
+    Data data = readDataFromSensors();  // Read data from sensors              
+    return writeToMemory(data);         // Write data to micro SD
 }
 
 char* Logger::generateFilename()
@@ -52,4 +32,30 @@ char* Logger::generateFilename()
     char* filename = NULL;
     sprintf(filename, "%d_%d-%d-%d_%d:%d:%d.log", weekday(), month(), day(), year(), hour(), minute(), second());
     return filename;
+}
+
+Data Logger::readDataFromSensors()
+{
+    Data data;
+    for (Sensor* s : sensors)
+        data = s->read(data);   // Read data from sensors
+
+    data.timestamp = now();     // Add timestamp
+
+    return data;                        
+}
+
+bool Logger::writeToMemory(Data data)
+{
+    File microSD = SD.open(log_filename, FILE_WRITE);  // Open micro SD card 
+
+    if (!microSD) 
+    {
+        return false;
+    }
+        
+    size_t bytes_written = microSD.write((uint8_t *)&data, sizeof(data));   // Write   
+    microSD.close();                                                        // Close 
+        
+    return (bytes_written == sizeof(data));           // Check write
 }

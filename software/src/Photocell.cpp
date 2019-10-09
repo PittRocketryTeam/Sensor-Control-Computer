@@ -12,16 +12,16 @@ bool Photocell::init()
     return false;
 }
 
-Data Photocell::read()
+Data Photocell::read(Data data)
 {
-    Data data = { 0 };
+    // TODO: Set data.photocellData.brightness
 
     return data;
 }
 
-Data Photocell::poll()
+Data Photocell::poll(Data data)
 {
-    Data data = { 0 };
+    // TODO: Set data.photocellData.brightness
 
     return data;
 }

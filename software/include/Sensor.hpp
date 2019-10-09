@@ -21,21 +21,22 @@ class Sensor
 
         /*
          * Read current sensor data and return it as vector of floats. 
+         * Accepts a data struct and populates the appropriate fields.
          */
-        virtual Data read() = 0;
+        virtual Data read(Data data) = 0;
 
         /*
-         * TODO: Add description
+         * Accepts a data struct and populates the appropriate fields.
          */
-        virtual Data poll() = 0;
+        virtual Data poll(Data data) = 0;
 
         /*
-         * TODO: Add description
+         * Enable the sensor to be read.
          */
         virtual void enable() = 0;
 
         /*
-         * TODO: Add description
+         * Disable the sensor from being read.
          */
         virtual void disable() = 0;
     

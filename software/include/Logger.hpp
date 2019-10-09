@@ -1,11 +1,13 @@
 #ifndef __LOGGER_HPP__
 #define __LOGGER_HPP__
 
+#include "assert.h"
 #include "Sensor.hpp"
-#include <SD.h>
 #include <SPI.h> 
 #include "Time.h"
 #include "SdFat.h"
+
+#define BUILTIN_SDCARD 254
 
 class Logger
 {
@@ -32,10 +34,13 @@ class Logger
 
         /**
          * Reads from each sensor and writes the timestamped data to the disk. 
-         * Returns true if data was successfully written, false if not (e.g. if 
-         * the disk somehow ran out of space).
+         * Returns true if data was successfully written, false if not (either because
+         * the number of bytes that should have been written to the disk was not written
+         * or because the micro SD couldn't be opened).
          */
         virtual bool log();
+
+        SdFat SD;
 
     private:
 
@@ -46,6 +51,10 @@ class Logger
          * Example log filename: Monday_10-07-2019_03:26:41.log
         */
         virtual char* generateFilename();
+
+        virtual Data readDataFromSensors();
+
+        virtual bool writeToMemory(Data data);
 
         /**
          * Sensors to log data from.

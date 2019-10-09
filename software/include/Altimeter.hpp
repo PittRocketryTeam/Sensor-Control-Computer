@@ -11,8 +11,8 @@ class Altimeter : public Sensor
         ~Altimeter();
         
         bool init() override;
-        Data read() override;
-        Data poll() override;
+        Data read(Data data) override;
+        Data poll(Data data) override;
         void enable() override;
         void disable() override;
 };
