@@ -1,7 +1,8 @@
 #include "Altimeter.hpp"
 
 
-Altimeter::Altimeter()
+Altimeter::Altimeter() :
+    Sensor()
 {
 
 }
@@ -11,18 +12,22 @@ bool Altimeter::init()
     return false;
 }
 
-std::vector<float> Altimeter::read()
+Data Altimeter::read(Data data)
 {
-    std::vector<float> ret(ALTIMETER_DIMENSIONS, 0);
+    // TODO: Set data.altimeterData.temperature
+    // TODO: Set data.altimeterData.pressure
+    // TODO: Set data.altimeterData.altitude
 
-    return ret;
+    return data;
 }
 
-std::vector<float> Altimeter::poll()
+Data Altimeter::poll(Data data)
 {
-    std::vector<float> ret(ALTIMETER_DIMENSIONS, 0);
+    // TODO: Set data.altimeterData.temperature
+    // TODO: Set data.altimeterData.pressure
+    // TODO: Set data.altimeterData.altitude
 
-    return ret;
+    return data;
 }
 
 void Altimeter::enable()

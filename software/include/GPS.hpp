@@ -3,8 +3,6 @@
 
 #include "Sensor.hpp"
 
-#define GPS_DIMENSIONS 5
-
 class GPS : public Sensor
 {
     public:
@@ -13,8 +11,8 @@ class GPS : public Sensor
         ~GPS();
         
         bool init() override;
-        std::vector<float> read() override;
-        std::vector<float> poll() override;
+        Data read(Data data) override;
+        Data poll(Data data) override;
         void enable() override;
         void disable() override;
 };

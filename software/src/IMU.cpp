@@ -1,7 +1,8 @@
 #include "IMU.hpp"
 
 
-IMU::IMU()
+IMU::IMU() : 
+    Sensor()
 {
 
 }
@@ -11,18 +12,60 @@ bool IMU::init()
     return false;
 }
 
-std::vector<float> IMU::read()
+Data IMU::read(Data data)
 {
-    std::vector<float> ret(IMU_DIMENIONS, 0);
+    // TODO: Set data.imuData.euler_abs_orientation_x
+    // TODO: Set data.imuData.euler_abs_orientation_y
+    // TODO: Set data.imuData.euler_abs_orientation_z
+    // TODO: Set data.imuData.quaternion_abs_orientation_x
+    // TODO: Set data.imuData.quaternion_abs_orientation_y
+    // TODO: Set data.imuData.quaternion_abs_orientation_z
+    // TODO: Set data.imuData.angular_velocity_x
+    // TODO: Set data.imuData.angular_velocity_y
+    // TODO: Set data.imuData.angular_velocity_z
+    // TODO: Set data.imuData.acceleration_x
+    // TODO: Set data.imuData.acceleration_y
+    // TODO: Set data.imuData.acceleration_z
+    // TODO: Set data.imuData.magnetic_field_strength_x
+    // TODO: Set data.imuData.magnetic_field_strength_y
+    // TODO: Set data.imuData.magnetic_field_strength_z
+    // TODO: Set data.imuData.linear_acceleration_x
+    // TODO: Set data.imuData.linear_acceleration_y
+    // TODO: Set data.imuData.linear_acceleration_z
+    // TODO: Set data.imuData.gravity_x
+    // TODO: Set data.imuData.gravity_y
+    // TODO: Set data.imuData.gravity_z
+    // TODO: Set data.imuData.temperature
 
-    return ret;
+    return data;
 }
 
-std::vector<float> IMU::poll()
+Data IMU::poll(Data data)
 {
-    std::vector<float> ret(IMU_DIMENIONS, 0);
+    // TODO: Set data.imuData.euler_abs_orientation_x
+    // TODO: Set data.imuData.euler_abs_orientation_y
+    // TODO: Set data.imuData.euler_abs_orientation_z
+    // TODO: Set data.imuData.quaternion_abs_orientation_x
+    // TODO: Set data.imuData.quaternion_abs_orientation_y
+    // TODO: Set data.imuData.quaternion_abs_orientation_z
+    // TODO: Set data.imuData.angular_velocity_x
+    // TODO: Set data.imuData.angular_velocity_y
+    // TODO: Set data.imuData.angular_velocity_z
+    // TODO: Set data.imuData.acceleration_x
+    // TODO: Set data.imuData.acceleration_y
+    // TODO: Set data.imuData.acceleration_z
+    // TODO: Set data.imuData.magnetic_field_strength_x
+    // TODO: Set data.imuData.magnetic_field_strength_y
+    // TODO: Set data.imuData.magnetic_field_strength_z
+    // TODO: Set data.imuData.linear_acceleration_x
+    // TODO: Set data.imuData.linear_acceleration_y
+    // TODO: Set data.imuData.linear_acceleration_z
+    // TODO: Set data.imuData.gravity_x
+    // TODO: Set data.imuData.gravity_y
+    // TODO: Set data.imuData.gravity_z
+    // TODO: Set data.imuData.temperature
 
-    return ret;
+    return data;
 }
 
 void IMU::enable()

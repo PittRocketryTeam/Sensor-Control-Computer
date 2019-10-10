@@ -1,7 +1,8 @@
 #include "Photocell.hpp"
 
 
-Photocell::Photocell()
+Photocell::Photocell() : 
+    Sensor()
 {
 
 }
@@ -11,18 +12,18 @@ bool Photocell::init()
     return false;
 }
 
-std::vector<float> Photocell::read()
+Data Photocell::read(Data data)
 {
-    std::vector<float> ret(PHOTOCELL_DIMENSIONS, 0);
+    // TODO: Set data.photocellData.brightness
 
-    return ret;
+    return data;
 }
 
-std::vector<float> Photocell::poll()
+Data Photocell::poll(Data data)
 {
-    std::vector<float> ret(PHOTOCELL_DIMENSIONS, 0);
+    // TODO: Set data.photocellData.brightness
 
-    return ret;
+    return data;
 }
 
 void Photocell::enable()

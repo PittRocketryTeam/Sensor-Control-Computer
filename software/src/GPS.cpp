@@ -1,7 +1,8 @@
 #include "GPS.hpp"
 
 
-GPS::GPS()
+GPS::GPS() : 
+    Sensor()
 {
 
 }
@@ -11,18 +12,36 @@ bool GPS::init()
     return false;
 }
 
-std::vector<float> GPS::read()
+Data GPS::read(Data data)
 {
-    std::vector<float> ret(GPS_DIMENSIONS, 0);
+    // TODO: Set data.gpsData.time
+    // TODO: Set data.gpsData.latitude
+    // TODO: Set data.gpsData.lat_direction
+    // TODO: Set data.gpsData.longitude
+    // TODO: Set data.gpsData.long_direction
+    // TODO: Set data.gpsData.fix_quality
+    // TODO: Set data.gpsData.number_of_satellites
+    // TODO: Set data.gpsData.hdop
+    // TODO: Set data.gpsData.altitude
+    // TODO: Set data.gpsData.rssi
 
-    return ret;
+    return data;
 }
 
-std::vector<float> GPS::poll()
+Data GPS::poll(Data data)
 {
-    std::vector<float> ret(GPS_DIMENSIONS, 0);
+    // TODO: Set data.gpsData.time
+    // TODO: Set data.gpsData.latitude
+    // TODO: Set data.gpsData.lat_direction
+    // TODO: Set data.gpsData.longitude
+    // TODO: Set data.gpsData.long_direction
+    // TODO: Set data.gpsData.fix_quality
+    // TODO: Set data.gpsData.number_of_satellites
+    // TODO: Set data.gpsData.hdop
+    // TODO: Set data.gpsData.altitude
+    // TODO: Set data.gpsData.rssi
 
-    return ret;
+    return data;
 }
 
 void GPS::enable()

@@ -3,7 +3,6 @@
 
 #include "Sensor.hpp"
 
-#define IMU_DIMENIONS 5
 #define I2C_ADDR 0x28
 
 class IMU : public Sensor
@@ -14,8 +13,8 @@ class IMU : public Sensor
         ~IMU();
         
         bool init() override;
-        std::vector<float> read() override;
-        std::vector<float> poll() override;
+        Data read(Data data) override;
+        Data poll(Data data) override;
         void enable() override;
         void disable() override;
 };
