@@ -14586,19 +14586,15 @@ DIN A4, landscape with location and doc. field</description>
 <part name="P+3" library="supply1" deviceset="+5V" device=""/>
 <part name="U$28" library="microbuilder" deviceset="GND" device=""/>
 <part name="PH1" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_09"/>
-<part name="P+4" library="supply1" deviceset="+5V" device=""/>
 <part name="R12" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0204/2V" package3d_urn="urn:adsk.eagle:package:6240630/1" value="10k"/>
 <part name="U$30" library="microbuilder" deviceset="GND" device=""/>
 <part name="PH2" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_09"/>
-<part name="P+5" library="supply1" deviceset="+5V" device=""/>
 <part name="R13" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0204/2V" package3d_urn="urn:adsk.eagle:package:6240630/1" value="10k"/>
 <part name="U$31" library="microbuilder" deviceset="GND" device=""/>
 <part name="PH3" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_09"/>
-<part name="P+6" library="supply1" deviceset="+5V" device=""/>
 <part name="R14" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0204/2V" package3d_urn="urn:adsk.eagle:package:6240630/1" value="10k"/>
 <part name="U$32" library="microbuilder" deviceset="GND" device=""/>
 <part name="PH4" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_09"/>
-<part name="P+7" library="supply1" deviceset="+5V" device=""/>
 <part name="R15" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0204/2V" package3d_urn="urn:adsk.eagle:package:6240630/1" value="10k"/>
 <part name="U$33" library="microbuilder" deviceset="GND" device=""/>
 <part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
@@ -14632,6 +14628,11 @@ DIN A4, landscape with location and doc. field</description>
 <part name="U$5" library="XT60" deviceset="XT60" device=""/>
 <part name="SUPPLY3" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="V_BATT" device=""/>
 <part name="U$8" library="microbuilder" deviceset="GND" device=""/>
+<part name="+3V5" library="supply1" deviceset="+3V3" device=""/>
+<part name="+3V7" library="supply1" deviceset="+3V3" device=""/>
+<part name="+3V8" library="supply1" deviceset="+3V3" device=""/>
+<part name="+3V9" library="supply1" deviceset="+3V3" device=""/>
+<part name="+3V10" library="supply1" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14690,9 +14691,6 @@ NASA Student Launch
 <attribute name="NAME" x="182.88" y="63.5" size="1.778" layer="95"/>
 <attribute name="VALUE" x="182.88" y="60.96" size="1.778" layer="96"/>
 </instance>
-<instance part="P+4" gate="1" x="180.34" y="72.39" smashed="yes" grouprefs="PHOTORESISTORS">
-<attribute name="VALUE" x="177.8" y="67.31" size="1.778" layer="96" rot="R90"/>
-</instance>
 <instance part="R12" gate="G$1" x="180.34" y="53.34" smashed="yes" rot="R90" grouprefs="PHOTORESISTORS">
 <attribute name="NAME" x="178.8414" y="49.53" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="183.642" y="49.53" size="1.778" layer="96" rot="R90"/>
@@ -14703,9 +14701,6 @@ NASA Student Launch
 <instance part="PH2" gate="G$1" x="198.12" y="63.5" smashed="yes" grouprefs="PHOTORESISTORS">
 <attribute name="NAME" x="200.66" y="63.5" size="1.778" layer="95"/>
 <attribute name="VALUE" x="200.66" y="60.96" size="1.778" layer="96"/>
-</instance>
-<instance part="P+5" gate="1" x="198.12" y="72.39" smashed="yes" grouprefs="PHOTORESISTORS">
-<attribute name="VALUE" x="195.58" y="67.31" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R13" gate="G$1" x="198.12" y="53.34" smashed="yes" rot="R90" grouprefs="PHOTORESISTORS">
 <attribute name="NAME" x="196.6214" y="49.53" size="1.778" layer="95" rot="R90"/>
@@ -14718,9 +14713,6 @@ NASA Student Launch
 <attribute name="NAME" x="220.98" y="63.5" size="1.778" layer="95"/>
 <attribute name="VALUE" x="220.98" y="60.96" size="1.778" layer="96"/>
 </instance>
-<instance part="P+6" gate="1" x="218.44" y="72.39" smashed="yes" grouprefs="PHOTORESISTORS">
-<attribute name="VALUE" x="215.9" y="67.31" size="1.778" layer="96" rot="R90"/>
-</instance>
 <instance part="R14" gate="G$1" x="218.44" y="53.34" smashed="yes" rot="R90" grouprefs="PHOTORESISTORS">
 <attribute name="NAME" x="216.9414" y="49.53" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="221.742" y="49.53" size="1.778" layer="96" rot="R90"/>
@@ -14731,9 +14723,6 @@ NASA Student Launch
 <instance part="PH4" gate="G$1" x="236.22" y="63.5" smashed="yes" grouprefs="PHOTORESISTORS">
 <attribute name="NAME" x="238.76" y="63.5" size="1.778" layer="95"/>
 <attribute name="VALUE" x="238.76" y="60.96" size="1.778" layer="96"/>
-</instance>
-<instance part="P+7" gate="1" x="236.22" y="72.39" smashed="yes" grouprefs="PHOTORESISTORS">
-<attribute name="VALUE" x="233.68" y="67.31" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R15" gate="G$1" x="236.22" y="53.34" smashed="yes" rot="R90" grouprefs="PHOTORESISTORS">
 <attribute name="NAME" x="234.7214" y="49.53" size="1.778" layer="95" rot="R90"/>
@@ -14848,6 +14837,21 @@ NASA Student Launch
 </instance>
 <instance part="U$8" gate="G$1" x="36.83" y="151.13" smashed="yes">
 <attribute name="VALUE" x="35.306" y="148.59" size="1.27" layer="96"/>
+</instance>
+<instance part="+3V5" gate="G$1" x="181.61" y="73.66" smashed="yes">
+<attribute name="VALUE" x="184.15" y="76.2" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="+3V7" gate="G$1" x="196.85" y="73.66" smashed="yes">
+<attribute name="VALUE" x="199.39" y="76.2" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="+3V8" gate="G$1" x="219.71" y="73.66" smashed="yes">
+<attribute name="VALUE" x="222.25" y="76.2" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="+3V9" gate="G$1" x="237.49" y="73.66" smashed="yes">
+<attribute name="VALUE" x="240.03" y="76.2" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="+3V10" gate="G$1" x="125.73" y="165.1" smashed="yes">
+<attribute name="VALUE" x="128.27" y="167.64" size="1.778" layer="96" rot="R180"/>
 </instance>
 </instances>
 <busses>
@@ -15072,6 +15076,36 @@ NASA Student Launch
 <pinref part="+3V3" gate="G$1" pin="+3V3"/>
 <wire x1="130.81" y1="35.56" x2="130.81" y2="30.48" width="0.1524" layer="91" grouprefs="BMP338"/>
 </segment>
+<segment>
+<pinref part="PH1" gate="G$1" pin="1"/>
+<pinref part="+3V5" gate="G$1" pin="+3V3"/>
+<wire x1="180.34" y1="68.58" x2="180.34" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="71.12" x2="181.61" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="PH2" gate="G$1" pin="1"/>
+<pinref part="+3V7" gate="G$1" pin="+3V3"/>
+<wire x1="198.12" y1="68.58" x2="198.12" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="71.12" x2="196.85" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="+3V8" gate="G$1" pin="+3V3"/>
+<wire x1="218.44" y1="71.12" x2="219.71" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="PH3" gate="G$1" pin="1"/>
+<wire x1="218.44" y1="68.58" x2="218.44" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="PH4" gate="G$1" pin="1"/>
+<pinref part="+3V9" gate="G$1" pin="+3V3"/>
+<wire x1="236.22" y1="68.58" x2="236.22" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="236.22" y1="71.12" x2="237.49" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R20" gate="G$1" pin="1"/>
+<wire x1="121.92" y1="160.02" x2="125.73" y2="160.02" width="0.1524" layer="91"/>
+<pinref part="+3V10" gate="G$1" pin="+3V3"/>
+<wire x1="125.73" y1="160.02" x2="125.73" y2="162.56" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="+5V" class="0">
 <segment>
@@ -15091,26 +15125,6 @@ NASA Student Launch
 <pinref part="P+3" gate="1" pin="+5V"/>
 <wire x1="203.2" y1="151.13" x2="203.2" y2="146.05" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
 <junction x="203.2" y="146.05" grouprefs="3V3_REGULATOR"/>
-</segment>
-<segment>
-<pinref part="PH1" gate="G$1" pin="1"/>
-<pinref part="P+4" gate="1" pin="+5V"/>
-<wire x1="180.34" y1="68.58" x2="180.34" y2="69.85" width="0.1524" layer="91" grouprefs="PHOTORESISTORS"/>
-</segment>
-<segment>
-<pinref part="PH2" gate="G$1" pin="1"/>
-<pinref part="P+5" gate="1" pin="+5V"/>
-<wire x1="198.12" y1="68.58" x2="198.12" y2="69.85" width="0.1524" layer="91" grouprefs="PHOTORESISTORS"/>
-</segment>
-<segment>
-<pinref part="PH3" gate="G$1" pin="1"/>
-<pinref part="P+6" gate="1" pin="+5V"/>
-<wire x1="218.44" y1="68.58" x2="218.44" y2="69.85" width="0.1524" layer="91" grouprefs="PHOTORESISTORS"/>
-</segment>
-<segment>
-<pinref part="PH4" gate="G$1" pin="1"/>
-<pinref part="P+7" gate="1" pin="+5V"/>
-<wire x1="236.22" y1="68.58" x2="236.22" y2="69.85" width="0.1524" layer="91" grouprefs="PHOTORESISTORS"/>
 </segment>
 <segment>
 <pinref part="JP7" gate="A" pin="1"/>
@@ -15133,9 +15147,6 @@ NASA Student Launch
 <pinref part="SUPPLY2" gate="G$1" pin="V_BATT"/>
 <wire x1="144.78" y1="160.02" x2="144.78" y2="148.59" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
 <junction x="144.78" y="148.59" grouprefs="5V_REGULATOR"/>
-<wire x1="144.78" y1="160.02" x2="121.92" y2="160.02" width="0.1524" layer="91"/>
-<junction x="144.78" y="160.02"/>
-<pinref part="R20" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
