@@ -81,7 +81,12 @@ typedef struct AltimeterData
 */
 typedef struct HealthData
 {
-    // tbd
+    float main_battery_temperature;
+    float main_battery_voltage;
+    float reg_5V_battery_temperature;
+    float reg_5V_battery_voltage;
+    float reg_3V3_battery_temperature;
+    float reg_3V3_battery_voltage;
 } HealthData;
 
 /**
