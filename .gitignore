@@ -46,3 +46,4 @@
 
 # Eagle autorouter files
 *.job
+*.pro
