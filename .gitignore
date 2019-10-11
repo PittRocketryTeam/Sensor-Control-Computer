@@ -39,3 +39,10 @@
 
 # Misc.
 .DS_Store
+
+# Eagle autosave files
+*.s\#*
+*.b\#*
+
+# Eagle autorouter files
+*.job
