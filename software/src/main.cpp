@@ -30,7 +30,7 @@ void loop()
     digitalWrite(13, HIGH);
     delay(250);
 
-    vector<float> ret = bno->read();
+    vector<float> ret = bno->read_raw(Adafruit_BNO055::VECTOR_GYROSCOPE);
 
     Serial.print("X: ");
     Serial.print(ret[0], 4);

@@ -36,14 +36,6 @@ bool IMU::init()
 
 std::vector<float> IMU::read()
 {
-    if (verbose) {
-        imu::Vector<3> v = sensor.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
-
-        Serial.println(v[0]);
-        Serial.println(v[1]);
-        Serial.println(v[2]);
-    }
-
     std::vector<float> ret(IMU_DIMENIONS, 0);
 
     sensors_event_t event;
@@ -56,9 +48,24 @@ std::vector<float> IMU::read()
     return ret;
 }
 
+std::vector<float> IMU::read_raw(Adafruit_BNO055::adafruit_vector_type_t t)
+{
+    std::vector<float> ret(IMU_DIMENIONS, 0);
+
+    imu::Vector<3> v = sensor.getVector(t);
+
+    ret[0] = v[0];
+    ret[1] = v[1];
+    ret[2] = v[2];
+
+    return ret;
+}
+
 std::vector<float> IMU::poll()
 {
     std::vector<float> ret(IMU_DIMENIONS, 0);
+
+    
 
     return ret;
 }
