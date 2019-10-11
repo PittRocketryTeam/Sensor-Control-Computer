@@ -11541,7 +11541,6 @@ DIN A4, landscape with location and doc. field</description>
 <part name="U$32" library="microbuilder" deviceset="GND" device=""/>
 <part name="PH4" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_09"/>
 <part name="U$33" library="microbuilder" deviceset="GND" device=""/>
-<part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V4" library="supply1" deviceset="+3V3" device=""/>
 <part name="R20" library="varistor" library_urn="urn:adsk.eagle:library:410" deviceset="THERMISTOR" device="-2,5" package3d_urn="urn:adsk.eagle:package:30592/1"/>
 <part name="U$59" library="microbuilder" deviceset="GND" device=""/>
@@ -11664,9 +11663,6 @@ NASA Student Launch
 </instance>
 <instance part="U$33" gate="G$1" x="236.22" y="45.72" smashed="yes" grouprefs="PHOTORESISTORS">
 <attribute name="VALUE" x="234.696" y="43.18" size="1.27" layer="96"/>
-</instance>
-<instance part="+3V1" gate="G$1" x="135.89" y="127" smashed="yes">
-<attribute name="VALUE" x="133.35" y="121.92" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="+3V4" gate="G$1" x="52.07" y="78.74" smashed="yes" grouprefs="XBEE">
 <attribute name="VALUE" x="54.61" y="81.28" size="1.778" layer="96" rot="R180"/>
@@ -11947,7 +11943,7 @@ NASA Student Launch
 <pinref part="JP4" gate="A" pin="1"/>
 </segment>
 </net>
-<net name="MCU_TX" class="0">
+<net name="XBEE_RX" class="0">
 <segment>
 <pinref part="XB1" gate="G$1" pin="DIN/!CONFIG"/>
 <wire x1="43.18" y1="91.44" x2="60.96" y2="91.44" width="0.1524" layer="91"/>
@@ -11999,11 +11995,6 @@ NASA Student Launch
 <pinref part="+3V2" gate="G$1" pin="+3V3"/>
 <wire x1="232.41" y1="146.05" x2="232.41" y2="149.86" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
 <junction x="232.41" y="146.05" grouprefs="3V3_REGULATOR"/>
-</segment>
-<segment>
-<wire x1="121.92" y1="119.38" x2="135.89" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="+3V1" gate="G$1" pin="+3V3"/>
-<wire x1="135.89" y1="119.38" x2="135.89" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="XB1" gate="G$1" pin="VCC"/>
@@ -12213,7 +12204,7 @@ NASA Student Launch
 <junction x="68.58" y="157.48"/>
 </segment>
 </net>
-<net name="MCU_RX" class="0">
+<net name="XBEE_TX" class="0">
 <segment>
 <pinref part="XB1" gate="G$1" pin="DOUT"/>
 <wire x1="43.18" y1="93.98" x2="55.88" y2="93.98" width="0.1524" layer="91"/>
@@ -12301,20 +12292,6 @@ NASA Student Launch
 <label x="40.64" y="22.86" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="MCU_RX" class="0">
-<segment>
-<pinref part="U$9" gate="G$1" pin="0/RX1/MOSI1/T"/>
-<wire x1="55.88" y1="119.38" x2="43.18" y2="119.38" width="0.1524" layer="91"/>
-<label x="30.48" y="119.38" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="MCU_TX" class="0">
-<segment>
-<pinref part="U$9" gate="G$1" pin="1/TX1/MISO1/T"/>
-<wire x1="55.88" y1="116.84" x2="43.18" y2="116.84" width="0.1524" layer="91"/>
-<label x="30.48" y="116.84" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="MCU_2" class="0">
 <segment>
 <pinref part="U$9" gate="G$1" pin="2/PWM"/>
@@ -12366,9 +12343,9 @@ NASA Student Launch
 </net>
 <net name="PR_2" class="0">
 <segment>
-<pinref part="U$9" gate="G$1" pin="15/A1/T"/>
-<wire x1="55.88" y1="81.28" x2="45.72" y2="81.28" width="0.1524" layer="91"/>
-<label x="38.1" y="81.28" size="1.778" layer="95"/>
+<pinref part="U$9" gate="G$1" pin="4/CAN0-RX/SDA2/PWM"/>
+<wire x1="55.88" y1="109.22" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
+<label x="30.48" y="109.22" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PR_3" class="0">
@@ -12406,6 +12383,20 @@ NASA Student Launch
 <pinref part="U$9" gate="G$1" pin="3/CAN0-TX/SCL2/PWM"/>
 <wire x1="55.88" y1="111.76" x2="43.18" y2="111.76" width="0.1524" layer="91"/>
 <label x="30.48" y="111.76" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="XBEE_TX" class="0">
+<segment>
+<pinref part="U$9" gate="G$1" pin="31/A12/RX4"/>
+<wire x1="55.88" y1="40.64" x2="45.72" y2="40.64" width="0.1524" layer="91"/>
+<label x="33.02" y="40.64" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="XBEE_RX" class="0">
+<segment>
+<pinref part="U$9" gate="G$1" pin="32/A13/TX4"/>
+<wire x1="55.88" y1="38.1" x2="45.72" y2="38.1" width="0.1524" layer="91"/>
+<label x="33.02" y="38.1" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
