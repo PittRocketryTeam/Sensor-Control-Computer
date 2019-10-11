@@ -20,7 +20,7 @@ bool Altimeter::init()
         while(1);
         return false;
     } else
-        return true;
+return true;
 }
 
 Data Altimeter::read(Data data)
@@ -42,6 +42,9 @@ Data Altimeter::read(Data data)
 
 Data Altimeter::poll(Data data)
 {
+    if (!bmp.performReading()) {
+        Serial.println("Failed to perform reading :(");
+    }
     // TODO: Set data.altimeterData.temperature
     //data.altimeterData.temperature = bmp.readTemperature();
     // TODO: Set data.altimeterData.pressure
