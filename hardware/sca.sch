@@ -11541,7 +11541,6 @@ DIN A4, landscape with location and doc. field</description>
 <part name="U$32" library="microbuilder" deviceset="GND" device=""/>
 <part name="PH4" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_09"/>
 <part name="U$33" library="microbuilder" deviceset="GND" device=""/>
-<part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V4" library="supply1" deviceset="+3V3" device=""/>
 <part name="R20" library="varistor" library_urn="urn:adsk.eagle:library:410" deviceset="THERMISTOR" device="-2,5" package3d_urn="urn:adsk.eagle:package:30592/1"/>
 <part name="U$59" library="microbuilder" deviceset="GND" device=""/>
@@ -11584,6 +11583,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="U$9" library="Teensy_3_and_LC_Series_Boards_v1.4" deviceset="TEENSY_3.6_DIL" device=""/>
 <part name="+3V11" library="supply1" deviceset="+3V3" device=""/>
 <part name="U$11" library="microbuilder" deviceset="GND" device=""/>
+<part name="U$1" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11664,9 +11664,6 @@ NASA Student Launch
 </instance>
 <instance part="U$33" gate="G$1" x="236.22" y="45.72" smashed="yes" grouprefs="PHOTORESISTORS">
 <attribute name="VALUE" x="234.696" y="43.18" size="1.27" layer="96"/>
-</instance>
-<instance part="+3V1" gate="G$1" x="135.89" y="127" smashed="yes">
-<attribute name="VALUE" x="133.35" y="121.92" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="+3V4" gate="G$1" x="52.07" y="78.74" smashed="yes" grouprefs="XBEE">
 <attribute name="VALUE" x="54.61" y="81.28" size="1.778" layer="96" rot="R180"/>
@@ -12001,11 +11998,6 @@ NASA Student Launch
 <junction x="232.41" y="146.05" grouprefs="3V3_REGULATOR"/>
 </segment>
 <segment>
-<wire x1="121.92" y1="119.38" x2="135.89" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="+3V1" gate="G$1" pin="+3V3"/>
-<wire x1="135.89" y1="119.38" x2="135.89" y2="124.46" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="XB1" gate="G$1" pin="VCC"/>
 <wire x1="43.18" y1="76.2" x2="52.07" y2="76.2" width="0.1524" layer="91" grouprefs="XBEE"/>
 <pinref part="+3V4" gate="G$1" pin="+3V3"/>
@@ -12128,27 +12120,16 @@ NASA Student Launch
 </net>
 <net name="SDA" class="0">
 <segment>
-<label x="127" y="17.78" size="1.778" layer="95" grouprefs="BMP338"/>
-<pinref part="JP2" gate="A" pin="6"/>
-<wire x1="121.92" y1="99.06" x2="127" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="127" y1="99.06" x2="177.8" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="127" y1="17.78" x2="127" y2="99.06" width="0.1524" layer="91"/>
-<junction x="127" y="99.06"/>
-<wire x1="139.7" y1="17.78" x2="127" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="99.06" x2="177.8" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="JP7" gate="A" pin="4"/>
 </segment>
 </net>
 <net name="SCL" class="0">
 <segment>
-<pinref part="JP2" gate="A" pin="4"/>
-<wire x1="121.92" y1="101.6" x2="129.54" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="22.86" x2="129.54" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="22.86" x2="129.54" y2="22.86" width="0.1524" layer="91"/>
 <pinref part="JP7" gate="A" pin="5"/>
 <wire x1="177.8" y1="96.52" x2="165.1" y2="96.52" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-<wire x1="129.54" y1="101.6" x2="165.1" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="101.6" x2="165.1" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="101.6" x2="165.1" y2="96.52" width="0.1524" layer="91"/>
-<junction x="129.54" y="101.6"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -12267,6 +12248,20 @@ NASA Student Launch
 <junction x="236.22" y="58.42"/>
 </segment>
 </net>
+<net name="ALT_SDA" class="0">
+<segment>
+<pinref part="JP2" gate="A" pin="6"/>
+<wire x1="139.7" y1="17.78" x2="127" y2="17.78" width="0.1524" layer="91"/>
+<label x="127" y="17.78" size="1.778" layer="95" grouprefs="BMP338"/>
+</segment>
+</net>
+<net name="ALT_SCL" class="0">
+<segment>
+<pinref part="JP2" gate="A" pin="4"/>
+<wire x1="139.7" y1="22.86" x2="129.54" y2="22.86" width="0.1524" layer="91"/>
+<label x="127" y="22.86" size="1.778" layer="95"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -12282,6 +12277,9 @@ NASA Student Launch
 </instance>
 <instance part="U$11" gate="G$1" x="113.03" y="107.95" smashed="yes">
 <attribute name="VALUE" x="111.506" y="105.41" size="1.27" layer="96"/>
+</instance>
+<instance part="U$1" gate="G$1" x="113.03" y="72.39" smashed="yes">
+<attribute name="VALUE" x="111.506" y="69.85" size="1.27" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -12324,30 +12322,23 @@ NASA Student Launch
 </net>
 <net name="LED_1" class="0">
 <segment>
-<pinref part="U$9" gate="G$1" pin="28"/>
-<wire x1="55.88" y1="48.26" x2="45.72" y2="48.26" width="0.1524" layer="91"/>
-<label x="35.56" y="48.26" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="LED_2" class="0">
-<segment>
-<pinref part="U$9" gate="G$1" pin="29/T/PWM"/>
-<wire x1="55.88" y1="45.72" x2="45.72" y2="45.72" width="0.1524" layer="91"/>
-<label x="35.56" y="45.72" size="1.778" layer="95"/>
+<pinref part="U$9" gate="G$1" pin="15/A1/T"/>
+<wire x1="55.88" y1="81.28" x2="45.72" y2="81.28" width="0.1524" layer="91"/>
+<label x="38.1" y="81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED_3" class="0">
 <segment>
-<pinref part="U$9" gate="G$1" pin="30/T/PWM"/>
-<wire x1="55.88" y1="43.18" x2="45.72" y2="43.18" width="0.1524" layer="91"/>
-<label x="35.56" y="43.18" size="1.778" layer="95"/>
+<pinref part="U$9" gate="G$1" pin="14/A0/PWM"/>
+<wire x1="55.88" y1="83.82" x2="45.72" y2="83.82" width="0.1524" layer="91"/>
+<label x="38.1" y="83.82" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PR_1" class="0">
 <segment>
-<pinref part="U$9" gate="G$1" pin="14/A0/PWM"/>
-<wire x1="55.88" y1="83.82" x2="45.72" y2="83.82" width="0.1524" layer="91"/>
-<label x="38.1" y="83.82" size="1.778" layer="95"/>
+<pinref part="U$9" gate="G$1" pin="1/TX1/MISO1/T"/>
+<wire x1="55.88" y1="116.84" x2="43.18" y2="116.84" width="0.1524" layer="91"/>
+<label x="30.48" y="116.84" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PR_2" class="0">
@@ -12386,6 +12377,12 @@ NASA Student Launch
 <wire x1="109.22" y1="111.76" x2="113.03" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="113.03" y1="111.76" x2="113.03" y2="110.49" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="GND"/>
+<pinref part="U$9" gate="G$1" pin="AGND"/>
+<wire x1="113.03" y1="74.93" x2="113.03" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="113.03" y1="76.2" x2="109.22" y2="76.2" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="BATT_T" class="0">
 <segment>
@@ -12406,6 +12403,27 @@ NASA Student Launch
 <pinref part="U$9" gate="G$1" pin="32/A13/TX4"/>
 <wire x1="55.88" y1="38.1" x2="45.72" y2="38.1" width="0.1524" layer="91"/>
 <label x="33.02" y="38.1" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="ALT_SDA" class="0">
+<segment>
+<pinref part="U$9" gate="G$1" pin="18/A4/T/SDA0"/>
+<wire x1="55.88" y1="73.66" x2="45.72" y2="73.66" width="0.1524" layer="91"/>
+<label x="33.02" y="73.66" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="ALT_SCL" class="0">
+<segment>
+<pinref part="U$9" gate="G$1" pin="19/A5/T/SCL0"/>
+<wire x1="55.88" y1="71.12" x2="45.72" y2="71.12" width="0.1524" layer="91"/>
+<label x="33.02" y="71.12" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="LED_2" class="0">
+<segment>
+<pinref part="U$9" gate="G$1" pin="13/SCK0/LED"/>
+<wire x1="55.88" y1="86.36" x2="45.72" y2="86.36" width="0.1524" layer="91"/>
+<label x="38.1" y="86.36" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
