@@ -5,6 +5,7 @@ GPS::GPS() :
     Sensor(), 
     time(0), 
     latitude(0), 
+    lat_direction(0),
     longitude(0), 
     long_direction(0), 
     fix_quality(0), 
@@ -18,7 +19,8 @@ GPS::GPS() :
 
 bool GPS::init()
 {
-    pinMode(VBAT, INPUT); 
+    // pinMode(VBAT, INPUT); 
+    pinMode(VIN_PIN, OUTPUT);
     return true;
 }
 
@@ -29,7 +31,7 @@ Data GPS::read(Data data)
     data.gpsData.lat_direction = lat_direction;
     data.gpsData.longitude = longitude;
     data.gpsData.long_direction = long_direction;
-    data.gpsData.fix.quality = fix_quality;
+    data.gpsData.fix_quality = fix_quality;
     data.gpsData.number_of_satellites = number_of_satellites;
     data.gpsData.hdop = hdop;
     data.gpsData.altitude = altitude;
@@ -66,8 +68,7 @@ Data GPS::poll(Data data)
 
 void GPS::enable()
 {
-    pinMode(powerpin, OUTPUT)
-    digitalWrite(HIGH)
+    digitalWrite(VIN_PIN, HIGH);
 }
 
 void GPS::disable()
@@ -75,7 +76,6 @@ void GPS::disable()
     // pin is pulled to ground, it will turn off the GPS module
     // if you disable it, you will lose your fix and it will 
     // take a long time to get fix back if you dont have backup battery
-    pinMode(powerpin, OUTPUT)
-    digitalWrite(LOW)   
+    digitalWrite(VIN_PIN, LOW);   
 }
 
