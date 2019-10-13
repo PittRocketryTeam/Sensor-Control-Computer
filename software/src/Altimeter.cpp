@@ -25,8 +25,8 @@ bool Altimeter::init()
 
 Data Altimeter::read(Data data)
 {
-    data.altimeterData.temperature = bmp.temperature();
-    data.altimeterData.pressure = bmp.pressure();
+    data.altimeterData.temperature = bmp.temperature;
+    data.altimeterData.pressure = bmp.pressure;
     if(initAlt == -1)//case where initAlt isn't set -- haven't hit button on ground control yet to indicate we're ready to launch
         Serial.println("Cannot poll altitude --- ground pressure not yet set!");
     else
@@ -39,28 +39,28 @@ Data Altimeter::poll(Data data)
 {
     if(!bmp.performReading())//assigns values to pressure and temperature
         Serial.println("Failed to perform reading :(");
-        
-    //data.altimeterData.temperature = bmp.readTemperature();
-    //data.altimeterData.pressure = bmp.readPressure();
-    //if(initAlt == -1)//case where initAlt isn't set -- haven't hit button on ground control yet to indicate we're ready to launch
-    //    Serial.println("Cannot poll altitude --- ground pressure not yet set!");
-    //else
-    //    data.altimeterData.altitude = bmp.readAltitude(initAlt);
+    
+    data.altimeterData.temperature = bmp.readTemperature();
+    data.altimeterData.pressure = bmp.readPressure();
+    if(initAlt == -1)//case where initAlt isn't set -- haven't hit button on ground control yet to indicate we're ready to launch
+        Serial.println("Cannot poll altitude --- ground pressure not yet set!");
+    else
+        data.altimeterData.altitude = bmp.readAltitude(initAlt);
 
     return data;
 }
 
 void Altimeter::enable()
 {
-    bmp_dev->settings.op_mode = BMP3_NORMAL_MODE;
-    if(bmp.bmp3_set_op_mode(bmp_dev) != 0)
+    bmp_dev.settings.op_mode = BMP3_NORMAL_MODE;
+    if(bmp_dev.bmp3_set_op_mode(bmp_dev) != 0)
         Serial.println("Altimeter failed to enable");
 }
 
 void Altimeter::disable()
 {
-    bmp_dev->settings.op_mode = BMP3_SLEEP_MODE;
-    if(bmp.bmp3_set_op_mode(bmp_dev) != 0)
+    bmp_dev.settings.op_mode = BMP3_SLEEP_MODE;
+    if(bmp_dev.bmp3_set_op_mode(bmp_dev) != 0)
         Serial.println("Altimeter failed to disable");
 }
 
