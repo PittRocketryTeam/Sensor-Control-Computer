@@ -3,7 +3,7 @@
 #include "bmp3.h"
 
 Adafruit_BMP3XX bmp;//inits for i2c - defaults to 0x77 address and "Wire"
-struct bmp3_dev bmp_dev;
+struct bmp3_dev* bmp_dev;
 float initAlt;
 
 Altimeter::Altimeter() :
@@ -52,15 +52,15 @@ Data Altimeter::poll(Data data)
 
 void Altimeter::enable()
 {
-    bmp_dev.settings.op_mode = BMP3_NORMAL_MODE;
-    if(bmp_dev.bmp3_set_op_mode(bmp_dev) != 0)
+    bmp_dev->settings.op_mode = BMP3_NORMAL_MODE;
+    if(bmp3_set_op_mode(bmp_dev) != 0)
         Serial.println("Altimeter failed to enable");
 }
 
 void Altimeter::disable()
 {
-    bmp_dev.settings.op_mode = BMP3_SLEEP_MODE;
-    if(bmp_dev.bmp3_set_op_mode(bmp_dev) != 0)
+    bmp_dev->settings.op_mode = BMP3_SLEEP_MODE;
+    if(bmp3_set_op_mode(bmp_dev) != 0)
         Serial.println("Altimeter failed to disable");
 }
 
