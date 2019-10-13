@@ -11625,7 +11625,7 @@ NASA Student Launch
 <attribute name="VALUE" x="172.466" y="123.19" size="1.27" layer="96"/>
 </instance>
 <instance part="U$1" gate="G$1" x="173.99" y="90.17" smashed="yes" grouprefs="MCU">
-<attribute name="VALUE" x="172.466" y="87.63" size="1.27" layer="96"/>
+<attribute name="VALUE" x="175.006" y="92.71" size="1.27" layer="96"/>
 </instance>
 <instance part="FRAME2" gate="G$1" x="0" y="0" smashed="yes">
 <attribute name="DRAWING_NAME" x="217.17" y="15.24" size="2.54" layer="94"/>
@@ -11650,13 +11650,6 @@ NASA Student Launch
 <label x="99.06" y="40.64" size="1.778" layer="95" grouprefs="MCU"/>
 </segment>
 </net>
-<net name="BATT_V" class="0">
-<segment>
-<pinref part="TEENSY3.6" gate="G$1" pin="2/PWM"/>
-<wire x1="116.84" y1="132.08" x2="104.14" y2="132.08" width="0.1524" layer="91" grouprefs="MCU"/>
-<label x="93.98" y="132.08" size="1.778" layer="95" grouprefs="MCU"/>
-</segment>
-</net>
 <net name="GPS_TX" class="0">
 <segment>
 <pinref part="TEENSY3.6" gate="G$1" pin="9/RX2/PWM"/>
@@ -11673,30 +11666,23 @@ NASA Student Launch
 </net>
 <net name="LED_1" class="0">
 <segment>
-<pinref part="TEENSY3.6" gate="G$1" pin="15/A1/T"/>
-<wire x1="116.84" y1="99.06" x2="106.68" y2="99.06" width="0.1524" layer="91" grouprefs="MCU"/>
-<label x="99.06" y="99.06" size="1.778" layer="95" grouprefs="MCU"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="A22/DAC1"/>
+<wire x1="170.18" y1="88.9" x2="177.8" y2="88.9" width="0.1524" layer="91"/>
+<label x="180.34" y="88.9" size="1.778" layer="95" grouprefs="MCU"/>
 </segment>
 </net>
 <net name="LED_3" class="0">
 <segment>
-<pinref part="TEENSY3.6" gate="G$1" pin="14/A0/PWM"/>
-<wire x1="116.84" y1="101.6" x2="106.68" y2="101.6" width="0.1524" layer="91" grouprefs="MCU"/>
-<label x="99.06" y="101.6" size="1.778" layer="95" grouprefs="MCU"/>
-</segment>
-</net>
-<net name="PR_1" class="0">
-<segment>
-<pinref part="TEENSY3.6" gate="G$1" pin="1/TX1/MISO1/T"/>
-<wire x1="116.84" y1="134.62" x2="104.14" y2="134.62" width="0.1524" layer="91" grouprefs="MCU"/>
-<label x="93.98" y="134.62" size="1.778" layer="95" grouprefs="MCU"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="39/A20"/>
+<wire x1="116.84" y1="38.1" x2="106.68" y2="38.1" width="0.1524" layer="91"/>
+<label x="99.06" y="38.1" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PR_2" class="0">
 <segment>
-<pinref part="TEENSY3.6" gate="G$1" pin="4/CAN0-RX/SDA2/PWM"/>
-<wire x1="116.84" y1="127" x2="104.14" y2="127" width="0.1524" layer="91" grouprefs="MCU"/>
-<label x="93.98" y="127" size="1.778" layer="95" grouprefs="MCU"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="14/A0/PWM"/>
+<wire x1="116.84" y1="101.6" x2="106.68" y2="101.6" width="0.1524" layer="91"/>
+<label x="99.06" y="101.6" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PR_3" class="0">
@@ -11704,13 +11690,6 @@ NASA Student Launch
 <pinref part="TEENSY3.6" gate="G$1" pin="23/A9/T/PWM"/>
 <wire x1="116.84" y1="78.74" x2="106.68" y2="78.74" width="0.1524" layer="91"/>
 <label x="99.06" y="78.74" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PR_4" class="0">
-<segment>
-<pinref part="TEENSY3.6" gate="G$1" pin="0/RX1/MOSI1/T"/>
-<wire x1="116.84" y1="137.16" x2="104.14" y2="137.16" width="0.1524" layer="91" grouprefs="MCU"/>
-<label x="93.98" y="137.16" size="1.778" layer="95" grouprefs="MCU"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -11733,13 +11712,6 @@ NASA Student Launch
 <pinref part="TEENSY3.6" gate="G$1" pin="AGND"/>
 <wire x1="173.99" y1="92.71" x2="173.99" y2="93.98" width="0.1524" layer="91" grouprefs="MCU"/>
 <wire x1="173.99" y1="93.98" x2="170.18" y2="93.98" width="0.1524" layer="91" grouprefs="MCU"/>
-</segment>
-</net>
-<net name="BATT_T" class="0">
-<segment>
-<pinref part="TEENSY3.6" gate="G$1" pin="3/CAN0-TX/SCL2/PWM"/>
-<wire x1="116.84" y1="129.54" x2="104.14" y2="129.54" width="0.1524" layer="91" grouprefs="MCU"/>
-<label x="93.98" y="129.54" size="1.778" layer="95" grouprefs="MCU"/>
 </segment>
 </net>
 <net name="XBEE_TX" class="0">
@@ -11803,6 +11775,34 @@ NASA Student Launch
 <pinref part="TEENSY3.6" gate="G$1" pin="21/A7/PWM"/>
 <wire x1="116.84" y1="83.82" x2="106.68" y2="83.82" width="0.1524" layer="91"/>
 <label x="99.06" y="83.82" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PR_4" class="0">
+<segment>
+<pinref part="TEENSY3.6" gate="G$1" pin="20/A6/PWM"/>
+<wire x1="116.84" y1="86.36" x2="106.68" y2="86.36" width="0.1524" layer="91"/>
+<label x="99.06" y="86.36" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="BATT_V" class="0">
+<segment>
+<pinref part="TEENSY3.6" gate="G$1" pin="15/A1/T"/>
+<wire x1="116.84" y1="99.06" x2="106.68" y2="99.06" width="0.1524" layer="91"/>
+<label x="96.52" y="99.06" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PR_1" class="0">
+<segment>
+<pinref part="TEENSY3.6" gate="G$1" pin="16/A2/T/PWM"/>
+<wire x1="116.84" y1="96.52" x2="106.68" y2="96.52" width="0.1524" layer="91"/>
+<label x="99.06" y="96.52" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="BATT_T" class="0">
+<segment>
+<pinref part="TEENSY3.6" gate="G$1" pin="17/A3/T/PWM"/>
+<wire x1="116.84" y1="93.98" x2="106.68" y2="93.98" width="0.1524" layer="91"/>
+<label x="93.98" y="93.98" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

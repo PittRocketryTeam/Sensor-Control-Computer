@@ -82,6 +82,6 @@ float Health::calculate_voltage(int raw, int r1, int r2)
 
 float Health::calculate_temperature(int raw, float beta)
 {
-    float k = 1.0 / ((1.0 / T0) + (1.0 / beta) * (log((float)ANALOG_MAX / (float)raw - 1.0)));
+    float k = 1.0 / ((1.0 / T0) + (1.0 / beta) * (log((float)ANALOG_MAX / (float)raw) - 1.0));
     return k - 273.15;
 }
