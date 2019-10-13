@@ -23,27 +23,31 @@
  Contributions by Paul Bouchier and Benjamin.soelberg
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef Metro_h
-#define Metro_h
+#ifndef METRO_H
+#define METRO_H
 
 #include <inttypes.h>
 
+typedef enum _res_enum {MILLIS, MICROS} res_t;
 
 class Metro
 {
 
 public:
-  Metro();
-  Metro(unsigned long interval_millis);
-  void interval(unsigned long interval_millis);
-  uint8_t check();
-  void reset();
+    Metro();
+    Metro(unsigned long);
+    void setInterval(unsigned long);
+    void setResolution(res_t);
+    uint8_t check();
+    uint8_t check(unsigned long);
+    unsigned long getTicks();
+    void reset();
 	
 private:
-  unsigned long  previous_millis, interval_millis;
-
+    unsigned long previous_millis;
+    unsigned long interval;
+    res_t resolution;
 };
 
-#endif
-
+#endif /* METRO_H */
 

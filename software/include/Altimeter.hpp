@@ -15,6 +15,7 @@ class Altimeter : public Sensor
         Data poll(Data data) override;
         void enable() override;
         void disable() override;
+        void setBaselinePressure();
 };
 
 #endif

@@ -1,61 +1,86 @@
-
-
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #else
 #include "WProgram.h"
 #endif
+
 #include "Metro.h"
 
-Metro::Metro()
-{
-	
-	this->interval_millis = 1000;
-	
+Metro::Metro() : 
+    interval(1000),
+    resolution(MILLIS)
+{	
 }
 
-
-Metro::Metro(unsigned long interval_millis)
+Metro::Metro(unsigned long d) : 
+    interval(d),
+    resolution(MILLIS)
 {
-	
-	this->interval_millis = interval_millis;
-	
 }
 
-
-void Metro::interval(unsigned long interval_millis)
+unsigned long Metro::getTicks()
 {
-  this->interval_millis = interval_millis;
+    if (resolution == MILLIS)
+    {
+        return millis();
+    }
+    else if (resolution == MICROS)
+    {
+        return micros();
+    }
+
+    return 0;
 }
+
+void Metro::setInterval(unsigned long d)
+{
+    interval = d;
+}
+
+void Metro::setResolution(res_t r)
+{
+    resolution = r;
 
 uint8_t Metro::check()
 {
+    return check(interval);
+}
 
-  unsigned long now = millis();
-  
-  if ( interval_millis == 0 ){
-    previous_millis = now;
-	return 1;
-  }
- 
-  if ( (now - previous_millis) >= interval_millis) {
-	#ifdef NOCATCH_UP
-  previous_millis = now ; 
-	#else
-	previous_millis += interval_millis ; 
-	 #endif
-    return 1;
-  }
-  
-  return 0;
+uint8_t Metro::check(unsigned long d)
+{
+    unsigned long now = millis();
+    if (d == 0)
+    {
+        previous = now;
+        return 1;
+    }
 
+    if (now < previous)
+    {
+        // overflow detected
+        // reset the timer and leave
+        
+        reset();
+        return 0;
+    }
+    
+    unsigned long delta = (now - previous) - d;
+
+    if (delta >= 0)
+    {
+#ifdef NO_CATCHUP
+        previous = now;
+#else
+        previous += d;
+#endif /* NO_CATCHUP */
+        return 1;
+    }
+
+    return 0;
 }
 
 void Metro::reset() 
 {
- 
-  this->previous_millis = millis();
-
+    previous = millis();
 }
-
 
