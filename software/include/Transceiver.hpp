@@ -4,6 +4,8 @@
 
 #include <vector>
 #include <string>
+#include "Data.hpp"
+
 
 class Transceiver
 {
@@ -26,7 +28,7 @@ class Transceiver
         /*
          * TODO: Add description
          */
-        virtual bool transmit(std::vector<float> data) = 0;
+        virtual bool transmit(Data data) = 0;
 
         /*
          * TODO: Add description

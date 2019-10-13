@@ -23,7 +23,7 @@ std::vector<float> Rfm95w::receive()
     return ret;
 }
 
-bool Rfm95w::transmit(std::vector<float> data)
+bool Rfm95w::transmit(Data data)
 {
     return false;
 }

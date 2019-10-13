@@ -12,7 +12,7 @@ class XBee : Transceiver
 
         bool init();
         std::vector<float> receive();
-        bool transmit(std::vector<float> data);
+        bool transmit(Data data);
         void enable();
         void disable();
 };

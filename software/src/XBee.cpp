@@ -18,7 +18,7 @@ std::vector<float> XBee::receive()
     return ret;
 }
 
-bool XBee::transmit(std::vector<float> data)
+bool XBee::transmit(Data data)
 {
     return false;
 }

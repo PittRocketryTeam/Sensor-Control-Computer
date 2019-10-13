@@ -30,7 +30,7 @@ bool Photocell::init()
     
 }
 
-std::vector<float> Photocell::read()
+Data Photocell::read(Data data)
 {
     std::vector<float> ret(PHOTOCELL_DIMENSIONS, 0);
     {
@@ -46,9 +46,12 @@ std::vector<float> Photocell::read()
         }
     }
     return ret;
+    // TODO: Set data.photocellData.brightness
+
+    return data;
 }
 
-std::vector<float> Photocell::poll()
+Data Photocell::poll(Data data)
 {
     std::vector<float> ret(PHOTOCELL_DIMENSIONS, 0);
     {
@@ -67,8 +70,9 @@ std::vector<float> Photocell::poll()
     }
     delay(500)
 
+    // TODO: Set data.photocellData.brightness
 
-    return ret;
+    return data;
 }
 
 void Photocell::enable()
