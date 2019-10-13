@@ -40,6 +40,7 @@ void Metro::setInterval(unsigned long d)
 void Metro::setResolution(res_t r)
 {
     resolution = r;
+}
 
 uint8_t Metro::check()
 {
