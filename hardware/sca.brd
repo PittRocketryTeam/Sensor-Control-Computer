@@ -2408,11 +2408,11 @@ design rules under a new name.</description>
 <contactref element="C1" pad="2"/>
 <contactref element="C2" pad="2"/>
 <contactref element="C3" pad="2"/>
-<wire x1="78.74" y1="8.89" x2="71.12" y2="8.89" width="0.8128" layer="1"/>
-<wire x1="71.12" y1="8.89" x2="68.12" y2="5.89" width="0.8128" layer="1"/>
+<wire x1="78.74" y1="8.89" x2="71.12" y2="8.89" width="1.27" layer="1"/>
+<wire x1="71.12" y1="8.89" x2="68.12" y2="5.89" width="1.27" layer="1"/>
 <wire x1="68.12" y1="5.89" x2="68.12" y2="5.51" width="0.8128" layer="1"/>
-<wire x1="78.74" y1="8.89" x2="78.74" y2="15.24" width="0.8128" layer="1"/>
-<wire x1="78.74" y1="21.59" x2="78.74" y2="15.24" width="0.8128" layer="1"/>
+<wire x1="78.74" y1="8.89" x2="78.74" y2="15.24" width="1.27" layer="1"/>
+<wire x1="78.74" y1="21.59" x2="78.74" y2="15.24" width="1.27" layer="1"/>
 </signal>
 <signal name="GPS_EN">
 <contactref element="JP4" pad="8"/>
@@ -2497,10 +2497,10 @@ design rules under a new name.</description>
 <contactref element="C1" pad="1"/>
 <contactref element="C2" pad="1"/>
 <contactref element="C3" pad="1"/>
-<wire x1="81.28" y1="8.89" x2="81.28" y2="15.24" width="0.8128" layer="1"/>
-<wire x1="81.28" y1="21.59" x2="81.28" y2="15.24" width="0.8128" layer="1"/>
-<wire x1="81.28" y1="21.59" x2="80.12" y2="22.75" width="0.8128" layer="1"/>
-<wire x1="80.12" y1="22.75" x2="80.12" y2="27.51" width="0.8128" layer="1"/>
+<wire x1="81.28" y1="8.89" x2="81.28" y2="15.24" width="1.27" layer="1"/>
+<wire x1="81.28" y1="21.59" x2="81.28" y2="15.24" width="1.27" layer="1"/>
+<wire x1="81.28" y1="21.59" x2="80.12" y2="22.75" width="1.27" layer="1"/>
+<wire x1="80.12" y1="22.75" x2="80.12" y2="27.51" width="1.27" layer="1"/>
 </signal>
 <signal name="+5V">
 <contactref element="C11" pad="1"/>
@@ -2709,6 +2709,12 @@ design rules under a new name.</description>
 <contactref element="U$9" pad="28"/>
 <wire x1="73.66" y1="31.75" x2="74.12" y2="31.29" width="0.8128" layer="16"/>
 <wire x1="74.12" y1="31.29" x2="74.12" y2="27.51" width="0.8128" layer="16"/>
+</signal>
+<signal name="XBEE_RST">
+<contactref element="XB1" pad="5"/>
+<contactref element="U$9" pad="27"/>
+<wire x1="72.12" y1="27.51" x2="72.12" y2="30.75" width="0.8128" layer="16"/>
+<wire x1="72.12" y1="30.75" x2="71.12" y2="31.75" width="0.8128" layer="16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
