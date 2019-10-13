@@ -22,7 +22,14 @@ Health* health;
 std::vector<Sensor*> sensors;
 
 void setup()
-{
+{    
+    Serial.begin(9600);
+
+    while (!Serial)
+    {
+        ; // wait for serial port to connect. Needed for native USB.
+    }
+    
     sensors.push_back(gps);
     sensors.push_back(imu);
     sensors.push_back(altimeter);
@@ -40,4 +47,6 @@ void setup()
 void loop()
 {
     logger.log();
+
+    delay(1000);
 }
