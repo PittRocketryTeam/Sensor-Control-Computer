@@ -1,5 +1,6 @@
 #include "Photocell.hpp"
 
+#define PHOTOCELL_DIMENSIONS 3
 
 Photocell::Photocell() : 
     Sensor()
@@ -13,6 +14,7 @@ Photocell::Photocell() :
 
 bool Photocell::init()
 {
+    /*
     //All the pins the photocells are connected to
     int photocellPin1 = 0; 
     int photocellPin2 = 1;
@@ -27,15 +29,18 @@ bool Photocell::init()
         Serial.begin(9600);
         pinMode(0, INPUT);
     }
-    
+    */
+    return true;
 }
 
 Data Photocell::read(Data data)
 {
+    
     std::vector<float> ret(PHOTOCELL_DIMENSIONS, 0);
     {
+        /*
         void loop(void) {
-        int raw = ((analogRead(0)+analogRead(1)+analogRead(4)+analogRead(23))/4) //Average of all Photocell readings
+        //int raw = ((analogRead(0)+analogRead(1)+analogRead(4)+analogRead(23))/4) //Average of all Photocell readings
 
         if (digitalRead(4) == LOW)
         {
@@ -44,8 +49,9 @@ Data Photocell::read(Data data)
         }
         
         }
+        */
+        //return ret;
     }
-    return ret;
     // TODO: Set data.photocellData.brightness
 
     return data;
@@ -53,6 +59,7 @@ Data Photocell::read(Data data)
 
 Data Photocell::poll(Data data)
 {
+    /*
     std::vector<float> ret(PHOTOCELL_DIMENSIONS, 0);
     {
         if (mode === 0) //prelaunch
@@ -71,7 +78,7 @@ Data Photocell::poll(Data data)
     delay(500)
 
     // TODO: Set data.photocellData.brightness
-
+    */
     return data;
 }
 
@@ -84,4 +91,3 @@ void Photocell::disable()
 {
 
 }
-
