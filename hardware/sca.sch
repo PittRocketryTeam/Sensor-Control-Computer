@@ -11611,6 +11611,7 @@ NASA Student Launch
 </text>
 <text x="10.16" y="43.18" size="3.81" layer="97">NOTES:</text>
 <text x="99.06" y="162.56" size="6.35" layer="97">Main Control Unit</text>
+<text x="91.44" y="154.94" size="2.54" layer="97">MCU</text>
 </plain>
 <instances>
 <instance part="TEENSY3.6" gate="G$1" x="144.78" y="86.36" smashed="yes" grouprefs="MCU">
@@ -11618,7 +11619,7 @@ NASA Student Launch
 <attribute name="VALUE" x="139.446" y="30.48" size="1.27" layer="96" font="vector" ratio="15"/>
 </instance>
 <instance part="+3V11" gate="G$1" x="173.99" y="147.32" smashed="yes" grouprefs="MCU">
-<attribute name="VALUE" x="171.45" y="142.24" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="171.45" y="147.32" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="U$11" gate="G$1" x="173.99" y="125.73" smashed="yes" grouprefs="MCU">
 <attribute name="VALUE" x="172.466" y="123.19" size="1.27" layer="96"/>
@@ -11815,6 +11816,9 @@ NASA Student Launch
 Avionics Team 2019 - 2020
 NASA Student Launch
 </text>
+<text x="45.72" y="121.92" size="2.54" layer="97">Lipo Connector</text>
+<text x="109.22" y="129.54" size="2.54" layer="97">5V Reg</text>
+<text x="180.34" y="124.46" size="2.54" layer="97">3V3 Reg</text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0" smashed="yes">
@@ -11835,16 +11839,16 @@ NASA Student Launch
 <attribute name="VALUE" x="215.646" y="99.949" size="1.778" layer="96"/>
 </instance>
 <instance part="+3V2" gate="G$1" x="214.63" y="114.3" smashed="yes" grouprefs="3V3_REGULATOR">
-<attribute name="VALUE" x="212.09" y="109.22" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="219.71" y="116.84" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="P+3" gate="1" x="185.42" y="115.57" smashed="yes" grouprefs="3V3_REGULATOR">
-<attribute name="VALUE" x="182.88" y="110.49" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="190.5" y="118.11" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="5V_REG" gate="A1" x="128.27" y="105.41" smashed="yes" grouprefs="5V_REGULATOR">
 <attribute name="VALUE" x="120.65" y="108.585" size="1.778" layer="96"/>
 </instance>
 <instance part="SUPPLY2" gate="G$1" x="114.3" y="116.84" smashed="yes" grouprefs="5V_REGULATOR">
-<attribute name="VALUE" x="114.3" y="119.634" size="1.778" layer="96" align="bottom-center"/>
+<attribute name="VALUE" x="119.38" y="119.634" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="U$3" gate="G$1" x="128.27" y="90.17" smashed="yes" grouprefs="5V_REGULATOR"/>
 <instance part="C10" gate="G$1" x="114.3" y="99.06" smashed="yes" grouprefs="5V_REGULATOR">
@@ -11856,7 +11860,7 @@ NASA Student Launch
 <attribute name="VALUE" x="144.526" y="94.869" size="1.778" layer="96"/>
 </instance>
 <instance part="P+2" gate="1" x="143.51" y="111.76" smashed="yes" grouprefs="5V_REGULATOR">
-<attribute name="VALUE" x="138.43" y="109.22" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="146.05" y="111.76" size="1.778" layer="96"/>
 </instance>
 <instance part="U$5" gate="G$1" x="58.42" y="101.6" smashed="yes" rot="R180" grouprefs="BATT_CONNECTOR"/>
 <instance part="SUPPLY3" gate="G$1" x="64.77" y="109.22" smashed="yes" grouprefs="BATT_CONNECTOR">
@@ -11959,6 +11963,10 @@ NASA Student Launch
 Avionics Team 2019 - 2020
 NASA Student Launch
 </text>
+<text x="30.48" y="154.94" size="2.54" layer="97">Xbee</text>
+<text x="142.24" y="152.4" size="2.54" layer="97">IMU</text>
+<text x="127" y="109.22" size="2.54" layer="97">GPS</text>
+<text x="198.12" y="109.22" size="2.54" layer="97">Altimeter</text>
 </plain>
 <instances>
 <instance part="FRAME4" gate="G$1" x="0" y="0" smashed="yes">
@@ -11978,7 +11986,7 @@ NASA Student Launch
 <attribute name="VALUE" x="189.23" y="127" size="1.778" layer="96"/>
 </instance>
 <instance part="P+9" gate="1" x="176.53" y="142.24" smashed="yes" grouprefs="BNO055_IMU">
-<attribute name="VALUE" x="176.53" y="144.78" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="181.61" y="144.78" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="U$6" gate="G$1" x="231.14" y="83.82" smashed="yes" grouprefs="BMP338">
 <attribute name="VALUE" x="229.616" y="81.28" size="1.27" layer="96"/>
@@ -12008,7 +12016,7 @@ NASA Student Launch
 <attribute name="VALUE" x="69.596" y="134.62" size="1.27" layer="96"/>
 </instance>
 <instance part="+3V4" gate="G$1" x="92.71" y="91.44" smashed="yes" grouprefs="XBEE">
-<attribute name="VALUE" x="95.25" y="93.98" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="97.79" y="93.98" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="C1" gate="G$1" x="68.58" y="85.09" smashed="yes" grouprefs="XBEE">
 <attribute name="NAME" x="69.596" y="85.725" size="1.778" layer="95"/>
@@ -12274,6 +12282,10 @@ NASA Student Launch
 Avionics Team 2019 - 2020
 NASA Student Launch
 </text>
+<text x="25.4" y="152.4" size="2.54" layer="97">Photoresistors</text>
+<text x="50.8" y="104.14" size="2.54" layer="97">Thermistor</text>
+<text x="134.62" y="104.14" size="2.54" layer="97">Voltage</text>
+<text x="152.4" y="147.32" size="2.54" layer="97">Indicator LEDs</text>
 </plain>
 <instances>
 <instance part="FRAME5" gate="G$1" x="0" y="0" smashed="yes">
@@ -12396,7 +12408,7 @@ NASA Student Launch
 <attribute name="VALUE" x="157.48" y="62.738" size="1.778" layer="96"/>
 </instance>
 <instance part="U$13" gate="G$1" x="171.45" y="63.5" smashed="yes" grouprefs="VOLTAGE">
-<attribute name="VALUE" x="177.546" y="64.77" size="1.27" layer="96" rot="R180"/>
+<attribute name="VALUE" x="169.926" y="64.77" size="1.27" layer="96" rot="R180"/>
 </instance>
 <instance part="+3V1" gate="G$1" x="139.7" y="71.12" smashed="yes" rot="MR0" grouprefs="VOLTAGE">
 <attribute name="VALUE" x="137.16" y="73.66" size="1.778" layer="96" rot="MR180"/>
@@ -12410,7 +12422,7 @@ NASA Student Launch
 <attribute name="VALUE" x="198.12" y="72.898" size="1.778" layer="96"/>
 </instance>
 <instance part="U$14" gate="G$1" x="212.09" y="73.66" smashed="yes" grouprefs="VOLTAGE">
-<attribute name="VALUE" x="218.186" y="74.93" size="1.27" layer="96" rot="R180"/>
+<attribute name="VALUE" x="210.566" y="74.93" size="1.27" layer="96" rot="R180"/>
 </instance>
 <instance part="+5V" gate="1" x="181.61" y="81.28" smashed="yes" grouprefs="VOLTAGE">
 <attribute name="VALUE" x="181.61" y="83.82" size="1.778" layer="96" rot="R180"/>
