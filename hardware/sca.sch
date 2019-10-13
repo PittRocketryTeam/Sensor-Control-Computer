@@ -11518,6 +11518,7 @@ DIN A4, landscape with location and doc. field</description>
 <schematic_group name="LED_BANK1"/>
 <schematic_group name="BATTERY_VOLTAGE1"/>
 <schematic_group name="MCU"/>
+<schematic_group name="BATT_CONNECTOR"/>
 </groups>
 <parts>
 <part name="XB1" library="maxstream" library_urn="urn:adsk.eagle:library:270" deviceset="XBEE" device="-PRO" package3d_urn="urn:adsk.eagle:package:18008/1"/>
@@ -11546,12 +11547,11 @@ DIN A4, landscape with location and doc. field</description>
 <part name="R20" library="varistor" library_urn="urn:adsk.eagle:library:410" deviceset="THERMISTOR" device="-2,5" package3d_urn="urn:adsk.eagle:package:30592/1"/>
 <part name="U$59" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$66" library="microbuilder" deviceset="GND" device=""/>
-<part name="JP7" library="microbuilder" deviceset="HEADER-1X6" device="76MIL"/>
-<part name="JP8" library="microbuilder" deviceset="HEADER-1X4" device="76MIL"/>
+<part name="BNO055_H1" library="microbuilder" deviceset="HEADER-1X6" device="76MIL"/>
+<part name="BNO055_H2" library="microbuilder" deviceset="HEADER-1X4" device="76MIL"/>
 <part name="P+9" library="supply1" deviceset="+5V" device=""/>
-<part name="+3V6" library="supply1" deviceset="+3V3" device=""/>
 <part name="U$6" library="microbuilder" deviceset="GND" device=""/>
-<part name="JP2" library="microbuilder" deviceset="HEADER-1X8" device="70MIL"/>
+<part name="BMP338_H" library="microbuilder" deviceset="HEADER-1X8" device="70MIL"/>
 <part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
 <part name="U$7" library="microbuilder" deviceset="GND" device=""/>
 <part name="JP4" library="microbuilder" deviceset="HEADER-1X9" device="70MIL"/>
@@ -11587,6 +11587,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="U$1" library="microbuilder" deviceset="GND" device=""/>
 <part name="FRAME2" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A4L-LOC" device=""/>
 <part name="FRAME3" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A4L-LOC" device=""/>
+<part name="FRAME4" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A4L-LOC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11642,69 +11643,32 @@ NASA Student Launch
 <instance part="U$59" gate="G$1" x="92.71" y="146.05" smashed="yes">
 <attribute name="VALUE" x="91.186" y="143.51" size="1.27" layer="96"/>
 </instance>
-<instance part="U$66" gate="G$1" x="193.04" y="99.06" smashed="yes" grouprefs="BNO055_IMU">
-<attribute name="VALUE" x="191.516" y="96.52" size="1.27" layer="96"/>
+<instance part="R3" gate="G$1" x="77.47" y="15.24" smashed="yes" grouprefs="LED_BANK1">
+<attribute name="NAME" x="73.66" y="16.7386" size="1.778" layer="95"/>
+<attribute name="VALUE" x="73.66" y="11.938" size="1.778" layer="96"/>
 </instance>
-<instance part="JP7" gate="A" x="180.34" y="99.06" smashed="yes" grouprefs="BNO055_IMU">
-<attribute name="NAME" x="173.99" y="109.855" size="1.778" layer="95"/>
-<attribute name="VALUE" x="173.99" y="88.9" size="1.778" layer="96"/>
+<instance part="R4" gate="G$1" x="77.47" y="22.86" smashed="yes" grouprefs="LED_BANK1">
+<attribute name="NAME" x="73.66" y="24.3586" size="1.778" layer="95"/>
+<attribute name="VALUE" x="73.66" y="19.558" size="1.778" layer="96"/>
 </instance>
-<instance part="JP8" gate="A" x="210.82" y="101.6" smashed="yes" grouprefs="BNO055_IMU">
-<attribute name="NAME" x="204.47" y="109.855" size="1.778" layer="95"/>
-<attribute name="VALUE" x="204.47" y="93.98" size="1.778" layer="96"/>
+<instance part="LED1" gate="G$1" x="87.63" y="15.24" smashed="yes" rot="R90" grouprefs="LED_BANK1">
+<attribute name="NAME" x="92.202" y="18.796" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="92.202" y="20.955" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="P+9" gate="1" x="191.77" y="109.22" smashed="yes" grouprefs="BNO055_IMU">
-<attribute name="VALUE" x="191.77" y="111.76" size="1.778" layer="96" rot="R180"/>
+<instance part="LED2" gate="G$1" x="87.63" y="22.86" smashed="yes" rot="R90" grouprefs="LED_BANK1">
+<attribute name="NAME" x="92.202" y="26.416" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="92.202" y="28.575" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="+3V6" gate="G$1" x="196.85" y="106.68" smashed="yes" grouprefs="BNO055_IMU">
-<attribute name="VALUE" x="199.39" y="109.22" size="1.778" layer="96" rot="R180"/>
+<instance part="LED3" gate="G$1" x="87.63" y="30.48" smashed="yes" rot="R90" grouprefs="LED_BANK1">
+<attribute name="NAME" x="92.202" y="34.036" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="92.202" y="36.195" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="U$6" gate="G$1" x="147.32" y="22.86" smashed="yes" grouprefs="BMP338">
-<attribute name="VALUE" x="145.796" y="20.32" size="1.27" layer="96"/>
+<instance part="R5" gate="G$1" x="77.47" y="30.48" smashed="yes" grouprefs="LED_BANK1">
+<attribute name="NAME" x="73.66" y="31.9786" size="1.778" layer="95"/>
+<attribute name="VALUE" x="73.66" y="27.178" size="1.778" layer="96"/>
 </instance>
-<instance part="JP2" gate="A" x="142.24" y="20.32" smashed="yes" grouprefs="BMP338">
-<attribute name="NAME" x="135.89" y="33.655" size="1.778" layer="95"/>
-<attribute name="VALUE" x="135.89" y="7.62" size="1.778" layer="96"/>
-</instance>
-<instance part="+3V3" gate="G$1" x="130.81" y="38.1" smashed="yes" grouprefs="BMP338">
-<attribute name="VALUE" x="133.35" y="40.64" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="U$7" gate="G$1" x="40.64" y="22.86" smashed="yes" grouprefs="GPS">
-<attribute name="VALUE" x="39.116" y="20.32" size="1.27" layer="96"/>
-</instance>
-<instance part="JP4" gate="A" x="15.24" y="38.1" smashed="yes" rot="R180" grouprefs="GPS">
-<attribute name="NAME" x="21.59" y="24.765" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="21.59" y="53.34" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="P+8" gate="1" x="45.72" y="54.61" smashed="yes" grouprefs="GPS">
-<attribute name="VALUE" x="43.18" y="49.53" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="R3" gate="G$1" x="80.01" y="15.24" smashed="yes" grouprefs="LED_BANK1">
-<attribute name="NAME" x="76.2" y="16.7386" size="1.778" layer="95"/>
-<attribute name="VALUE" x="76.2" y="11.938" size="1.778" layer="96"/>
-</instance>
-<instance part="R4" gate="G$1" x="80.01" y="22.86" smashed="yes" grouprefs="LED_BANK1">
-<attribute name="NAME" x="76.2" y="24.3586" size="1.778" layer="95"/>
-<attribute name="VALUE" x="76.2" y="19.558" size="1.778" layer="96"/>
-</instance>
-<instance part="LED1" gate="G$1" x="90.17" y="15.24" smashed="yes" rot="R90" grouprefs="LED_BANK1">
-<attribute name="NAME" x="94.742" y="18.796" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="94.742" y="20.955" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="LED2" gate="G$1" x="90.17" y="22.86" smashed="yes" rot="R90" grouprefs="LED_BANK1">
-<attribute name="NAME" x="94.742" y="26.416" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="94.742" y="28.575" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="LED3" gate="G$1" x="90.17" y="30.48" smashed="yes" rot="R90" grouprefs="LED_BANK1">
-<attribute name="NAME" x="94.742" y="34.036" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="94.742" y="36.195" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="R5" gate="G$1" x="80.01" y="30.48" smashed="yes" grouprefs="LED_BANK1">
-<attribute name="NAME" x="76.2" y="31.9786" size="1.778" layer="95"/>
-<attribute name="VALUE" x="76.2" y="27.178" size="1.778" layer="96"/>
-</instance>
-<instance part="U$2" gate="G$1" x="99.06" y="12.7" smashed="yes" grouprefs="LED_BANK1">
-<attribute name="VALUE" x="97.536" y="10.16" size="1.27" layer="96"/>
+<instance part="U$2" gate="G$1" x="96.52" y="12.7" smashed="yes" grouprefs="LED_BANK1">
+<attribute name="VALUE" x="94.996" y="10.16" size="1.27" layer="96"/>
 </instance>
 <instance part="R1" gate="G$1" x="62.23" y="157.48" smashed="yes" rot="R180" grouprefs="BATTERY_VOLTAGE1">
 <attribute name="NAME" x="66.04" y="155.9814" size="1.778" layer="95" rot="R180"/>
@@ -11764,13 +11728,6 @@ NASA Student Launch
 <busses>
 </busses>
 <nets>
-<net name="FIX" class="0">
-<segment>
-<wire x1="17.78" y1="40.64" x2="33.02" y2="40.64" width="0.1524" layer="91" grouprefs="GPS"/>
-<label x="22.86" y="40.64" size="1.778" layer="95" grouprefs="GPS"/>
-<pinref part="JP4" gate="A" pin="6"/>
-</segment>
-</net>
 <net name="GND" class="0">
 <segment>
 <pinref part="XB1" gate="G$1" pin="GND"/>
@@ -11779,43 +11736,27 @@ NASA Student Launch
 <wire x1="52.07" y1="129.54" x2="52.07" y2="125.73" width="0.1524" layer="91" grouprefs="XBEE"/>
 </segment>
 <segment>
-<pinref part="U$66" gate="G$1" pin="GND"/>
-<wire x1="177.8" y1="101.6" x2="193.04" y2="101.6" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-<pinref part="JP7" gate="A" pin="3"/>
-</segment>
-<segment>
-<pinref part="U$6" gate="G$1" pin="GND"/>
-<wire x1="139.7" y1="25.4" x2="147.32" y2="25.4" width="0.1524" layer="91" grouprefs="BMP338"/>
-<pinref part="JP2" gate="A" pin="3"/>
-</segment>
-<segment>
 <pinref part="U$59" gate="G$1" pin="GND"/>
 <pinref part="R10" gate="G$1" pin="1"/>
 <wire x1="95.25" y1="160.02" x2="92.71" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="92.71" y1="160.02" x2="92.71" y2="148.59" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="40.64" y1="33.02" x2="40.64" y2="25.4" width="0.1524" layer="91" grouprefs="GPS"/>
-<wire x1="17.78" y1="33.02" x2="40.64" y2="33.02" width="0.1524" layer="91" grouprefs="GPS"/>
-<pinref part="U$7" gate="G$1" pin="GND"/>
-<pinref part="JP4" gate="A" pin="3"/>
-</segment>
-<segment>
 <pinref part="U$4" gate="G$1" pin="GND"/>
 <pinref part="R2" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<wire x1="95.25" y1="30.48" x2="99.06" y2="30.48" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
-<wire x1="99.06" y1="30.48" x2="99.06" y2="22.86" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
-<wire x1="99.06" y1="22.86" x2="99.06" y2="15.24" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
-<wire x1="95.25" y1="22.86" x2="99.06" y2="22.86" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
-<junction x="99.06" y="22.86" grouprefs="LED_BANK1"/>
-<wire x1="95.25" y1="15.24" x2="99.06" y2="15.24" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
+<wire x1="92.71" y1="30.48" x2="96.52" y2="30.48" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
+<wire x1="96.52" y1="30.48" x2="96.52" y2="22.86" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
+<wire x1="96.52" y1="22.86" x2="96.52" y2="15.24" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
+<wire x1="92.71" y1="22.86" x2="96.52" y2="22.86" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
+<junction x="96.52" y="22.86" grouprefs="LED_BANK1"/>
+<wire x1="92.71" y1="15.24" x2="96.52" y2="15.24" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <pinref part="LED1" gate="G$1" pin="C"/>
 <pinref part="LED2" gate="G$1" pin="C"/>
 <pinref part="LED3" gate="G$1" pin="C"/>
 <pinref part="U$2" gate="G$1" pin="GND"/>
-<junction x="99.06" y="15.24"/>
+<junction x="96.52" y="15.24"/>
 </segment>
 <segment>
 <pinref part="U$30" gate="G$1" pin="GND"/>
@@ -11834,45 +11775,6 @@ NASA Student Launch
 <pinref part="R9" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="ENABLE" class="0">
-<segment>
-<wire x1="17.78" y1="45.72" x2="33.02" y2="45.72" width="0.1524" layer="91" grouprefs="GPS"/>
-<label x="22.86" y="45.72" size="1.778" layer="95" grouprefs="GPS"/>
-<pinref part="JP4" gate="A" pin="8"/>
-</segment>
-</net>
-<net name="VBACKUP" class="0">
-<segment>
-<wire x1="17.78" y1="43.18" x2="33.02" y2="43.18" width="0.1524" layer="91" grouprefs="GPS"/>
-<label x="22.86" y="43.18" size="1.778" layer="95" grouprefs="GPS"/>
-<pinref part="JP4" gate="A" pin="7"/>
-</segment>
-</net>
-<net name="GPS_TX" class="0">
-<segment>
-<wire x1="63.5" y1="38.1" x2="63.5" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="93.98" x2="81.28" y2="93.98" width="0.1524" layer="91"/>
-<label x="22.86" y="38.1" size="1.778" layer="95" grouprefs="GPS"/>
-<pinref part="JP4" gate="A" pin="5"/>
-<wire x1="63.5" y1="38.1" x2="17.78" y2="38.1" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="GPS_RX" class="0">
-<segment>
-<wire x1="66.04" y1="35.56" x2="66.04" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="91.44" x2="81.28" y2="91.44" width="0.1524" layer="91"/>
-<label x="22.86" y="35.56" size="1.778" layer="95" grouprefs="GPS"/>
-<pinref part="JP4" gate="A" pin="4"/>
-<wire x1="66.04" y1="35.56" x2="17.78" y2="35.56" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="1PPS" class="0">
-<segment>
-<wire x1="17.78" y1="27.94" x2="33.02" y2="27.94" width="0.1524" layer="91" grouprefs="GPS"/>
-<label x="22.86" y="27.94" size="1.778" layer="95" grouprefs="GPS"/>
-<pinref part="JP4" gate="A" pin="1"/>
-</segment>
-</net>
 <net name="XBEE_RX" class="0">
 <segment>
 <pinref part="XB1" gate="G$1" pin="DIN/!CONFIG"/>
@@ -11881,57 +11783,11 @@ NASA Student Launch
 <wire x1="60.96" y1="114.3" x2="81.28" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="PS1_3V" class="0">
-<segment>
-<wire x1="220.98" y1="104.14" x2="208.28" y2="104.14" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-<label x="220.98" y="104.14" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
-<pinref part="JP8" gate="A" pin="2"/>
-</segment>
-</net>
-<net name="PS0_3V" class="0">
-<segment>
-<wire x1="220.98" y1="106.68" x2="208.28" y2="106.68" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-<label x="220.98" y="106.68" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
-<pinref part="JP8" gate="A" pin="1"/>
-</segment>
-</net>
-<net name="INT_3V" class="0">
-<segment>
-<wire x1="220.98" y1="101.6" x2="208.28" y2="101.6" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-<label x="220.98" y="101.6" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
-<pinref part="JP8" gate="A" pin="3"/>
-</segment>
-</net>
-<net name="I2CADDR_3V" class="0">
-<segment>
-<wire x1="220.98" y1="99.06" x2="208.28" y2="99.06" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-<label x="220.98" y="99.06" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
-<pinref part="JP8" gate="A" pin="4"/>
-</segment>
-</net>
-<net name="RST_5V" class="0">
-<segment>
-<wire x1="195.58" y1="93.98" x2="177.8" y2="93.98" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-<label x="195.58" y="93.98" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
-<pinref part="JP7" gate="A" pin="6"/>
-</segment>
-</net>
 <net name="+3V3" class="0">
 <segment>
 <pinref part="XB1" gate="G$1" pin="VCC"/>
 <wire x1="43.18" y1="76.2" x2="52.07" y2="76.2" width="0.1524" layer="91" grouprefs="XBEE"/>
 <pinref part="+3V4" gate="G$1" pin="+3V3"/>
-</segment>
-<segment>
-<wire x1="177.8" y1="104.14" x2="196.85" y2="104.14" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-<pinref part="JP7" gate="A" pin="2"/>
-<pinref part="+3V6" gate="G$1" pin="+3V3"/>
-</segment>
-<segment>
-<wire x1="139.7" y1="30.48" x2="130.81" y2="30.48" width="0.1524" layer="91" grouprefs="BMP338"/>
-<pinref part="JP2" gate="A" pin="1"/>
-<pinref part="+3V3" gate="G$1" pin="+3V3"/>
-<wire x1="130.81" y1="35.56" x2="130.81" y2="30.48" width="0.1524" layer="91" grouprefs="BMP338"/>
 </segment>
 <segment>
 <pinref part="PH1" gate="G$1" pin="1"/>
@@ -11960,39 +11816,12 @@ NASA Student Launch
 <wire x1="125.73" y1="160.02" x2="125.73" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="+5V" class="0">
-<segment>
-<pinref part="JP7" gate="A" pin="1"/>
-<pinref part="P+9" gate="1" pin="+5V"/>
-<wire x1="177.8" y1="106.68" x2="191.77" y2="106.68" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-</segment>
-<segment>
-<wire x1="17.78" y1="30.48" x2="45.72" y2="30.48" width="0.1524" layer="91" grouprefs="GPS"/>
-<wire x1="45.72" y1="30.48" x2="45.72" y2="52.07" width="0.1524" layer="91" grouprefs="GPS"/>
-<pinref part="JP4" gate="A" pin="2"/>
-<pinref part="P+8" gate="1" pin="+5V"/>
-</segment>
-</net>
 <net name="V_BATT" class="0">
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="57.15" y1="157.48" x2="52.07" y2="157.48" width="0.1524" layer="91" grouprefs="BATTERY_VOLTAGE1"/>
 <pinref part="SUPPLY1" gate="G$1" pin="V_BATT"/>
 <wire x1="52.07" y1="157.48" x2="52.07" y2="160.02" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="CS" class="0">
-<segment>
-<wire x1="139.7" y1="15.24" x2="127" y2="15.24" width="0.1524" layer="91" grouprefs="BMP338"/>
-<label x="127" y="15.24" size="1.778" layer="95" grouprefs="BMP338"/>
-<pinref part="JP2" gate="A" pin="7"/>
-</segment>
-</net>
-<net name="INT" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="8"/>
-<wire x1="139.7" y1="12.7" x2="127" y2="12.7" width="0.1524" layer="91" grouprefs="BMP338"/>
-<label x="127" y="12.7" size="1.778" layer="95" grouprefs="BMP338"/>
 </segment>
 </net>
 <net name="BATT_T" class="0">
@@ -12006,43 +11835,23 @@ NASA Student Launch
 <label x="111.76" y="149.86" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="SDA" class="0">
-<segment>
-<wire x1="121.92" y1="99.06" x2="177.8" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="JP7" gate="A" pin="4"/>
-</segment>
-</net>
-<net name="SCL" class="0">
-<segment>
-<pinref part="JP7" gate="A" pin="5"/>
-<wire x1="177.8" y1="96.52" x2="165.1" y2="96.52" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
-<wire x1="121.92" y1="101.6" x2="165.1" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="101.6" x2="165.1" y2="96.52" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$3" class="0">
-<segment>
-<wire x1="17.78" y1="48.26" x2="38.1" y2="48.26" width="0.1524" layer="91" grouprefs="GPS"/>
-<pinref part="JP4" gate="A" pin="9"/>
-</segment>
-</net>
 <net name="N$7" class="0">
 <segment>
-<wire x1="85.09" y1="15.24" x2="87.63" y2="15.24" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
+<wire x1="82.55" y1="15.24" x2="85.09" y2="15.24" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="LED1" gate="G$1" pin="A"/>
 </segment>
 </net>
 <net name="N$8" class="0">
 <segment>
-<wire x1="85.09" y1="22.86" x2="87.63" y2="22.86" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
+<wire x1="82.55" y1="22.86" x2="85.09" y2="22.86" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <pinref part="R4" gate="G$1" pin="2"/>
 <pinref part="LED2" gate="G$1" pin="A"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
-<wire x1="85.09" y1="30.48" x2="87.63" y2="30.48" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
+<wire x1="82.55" y1="30.48" x2="85.09" y2="30.48" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <pinref part="LED3" gate="G$1" pin="A"/>
 <pinref part="R5" gate="G$1" pin="2"/>
 </segment>
@@ -12050,7 +11859,7 @@ NASA Student Launch
 <net name="LED_3" class="0">
 <segment>
 <pinref part="R5" gate="G$1" pin="1"/>
-<wire x1="74.93" y1="30.48" x2="73.66" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="72.39" y1="30.48" x2="73.66" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="30.48" x2="73.66" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="66.04" x2="73.66" y2="66.04" width="0.1524" layer="91"/>
 </segment>
@@ -12060,13 +11869,13 @@ NASA Student Launch
 <wire x1="81.28" y1="68.58" x2="71.12" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="68.58" x2="71.12" y2="22.86" width="0.1524" layer="91"/>
 <pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="71.12" y1="22.86" x2="74.93" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="22.86" x2="72.39" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LED_1" class="0">
 <segment>
 <pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="74.93" y1="15.24" x2="68.58" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="72.39" y1="15.24" x2="68.58" y2="15.24" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="15.24" x2="68.58" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="71.12" x2="81.28" y2="71.12" width="0.1524" layer="91"/>
 </segment>
@@ -12134,20 +11943,6 @@ NASA Student Launch
 <wire x1="144.78" y1="83.82" x2="144.78" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="R9" gate="G$1" pin="1"/>
 <junction x="236.22" y="58.42"/>
-</segment>
-</net>
-<net name="ALT_SDA" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="6"/>
-<wire x1="139.7" y1="17.78" x2="127" y2="17.78" width="0.1524" layer="91"/>
-<label x="127" y="17.78" size="1.778" layer="95" grouprefs="BMP338"/>
-</segment>
-</net>
-<net name="ALT_SCL" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="4"/>
-<wire x1="139.7" y1="22.86" x2="129.54" y2="22.86" width="0.1524" layer="91"/>
-<label x="127" y="22.86" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -12331,48 +12126,48 @@ NASA Student Launch
 <attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94"/>
 <attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94"/>
 </instance>
-<instance part="3V3_REG" gate="A1" x="196.85" y="123.19" smashed="yes" grouprefs="3V3_REGULATOR">
-<attribute name="VALUE" x="189.23" y="126.365" size="1.778" layer="96"/>
+<instance part="3V3_REG" gate="A1" x="186.69" y="107.95" smashed="yes" grouprefs="3V3_REGULATOR">
+<attribute name="VALUE" x="179.07" y="111.125" size="1.778" layer="96"/>
 </instance>
-<instance part="U$10" gate="G$1" x="196.85" y="110.49" smashed="yes" grouprefs="3V3_REGULATOR"/>
-<instance part="C12" gate="G$1" x="182.88" y="118.11" smashed="yes" grouprefs="3V3_REGULATOR">
-<attribute name="NAME" x="183.896" y="118.745" size="1.778" layer="95"/>
-<attribute name="VALUE" x="183.896" y="113.919" size="1.778" layer="96"/>
+<instance part="U$10" gate="G$1" x="186.69" y="95.25" smashed="yes" grouprefs="3V3_REGULATOR"/>
+<instance part="C12" gate="G$1" x="172.72" y="102.87" smashed="yes" grouprefs="3V3_REGULATOR">
+<attribute name="NAME" x="173.736" y="103.505" size="1.778" layer="95"/>
+<attribute name="VALUE" x="173.736" y="98.679" size="1.778" layer="96"/>
 </instance>
-<instance part="C13" gate="G$1" x="212.09" y="119.38" smashed="yes" grouprefs="3V3_REGULATOR">
-<attribute name="NAME" x="213.106" y="120.015" size="1.778" layer="95"/>
-<attribute name="VALUE" x="213.106" y="115.189" size="1.778" layer="96"/>
+<instance part="C13" gate="G$1" x="201.93" y="104.14" smashed="yes" grouprefs="3V3_REGULATOR">
+<attribute name="NAME" x="202.946" y="104.775" size="1.778" layer="95"/>
+<attribute name="VALUE" x="202.946" y="99.949" size="1.778" layer="96"/>
 </instance>
-<instance part="+3V2" gate="G$1" x="212.09" y="129.54" smashed="yes" grouprefs="3V3_REGULATOR">
-<attribute name="VALUE" x="209.55" y="124.46" size="1.778" layer="96" rot="R90"/>
+<instance part="+3V2" gate="G$1" x="201.93" y="114.3" smashed="yes" grouprefs="3V3_REGULATOR">
+<attribute name="VALUE" x="199.39" y="109.22" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="P+3" gate="1" x="182.88" y="130.81" smashed="yes" grouprefs="3V3_REGULATOR">
-<attribute name="VALUE" x="180.34" y="125.73" size="1.778" layer="96" rot="R90"/>
+<instance part="P+3" gate="1" x="172.72" y="115.57" smashed="yes" grouprefs="3V3_REGULATOR">
+<attribute name="VALUE" x="170.18" y="110.49" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="5V_REG" gate="A1" x="138.43" y="125.73" smashed="yes" grouprefs="5V_REGULATOR">
-<attribute name="VALUE" x="130.81" y="128.905" size="1.778" layer="96"/>
+<instance part="5V_REG" gate="A1" x="113.03" y="105.41" smashed="yes" grouprefs="5V_REGULATOR">
+<attribute name="VALUE" x="105.41" y="108.585" size="1.778" layer="96"/>
 </instance>
-<instance part="SUPPLY2" gate="G$1" x="124.46" y="137.16" smashed="yes" grouprefs="5V_REGULATOR">
-<attribute name="VALUE" x="124.46" y="139.954" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY2" gate="G$1" x="99.06" y="116.84" smashed="yes" grouprefs="5V_REGULATOR">
+<attribute name="VALUE" x="99.06" y="119.634" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="U$3" gate="G$1" x="138.43" y="110.49" smashed="yes" grouprefs="5V_REGULATOR"/>
-<instance part="C10" gate="G$1" x="124.46" y="119.38" smashed="yes" grouprefs="5V_REGULATOR">
-<attribute name="NAME" x="125.476" y="120.015" size="1.778" layer="95"/>
-<attribute name="VALUE" x="125.476" y="115.189" size="1.778" layer="96"/>
+<instance part="U$3" gate="G$1" x="113.03" y="90.17" smashed="yes" grouprefs="5V_REGULATOR"/>
+<instance part="C10" gate="G$1" x="99.06" y="99.06" smashed="yes" grouprefs="5V_REGULATOR">
+<attribute name="NAME" x="100.076" y="99.695" size="1.778" layer="95"/>
+<attribute name="VALUE" x="100.076" y="94.869" size="1.778" layer="96"/>
 </instance>
-<instance part="C11" gate="G$1" x="153.67" y="119.38" smashed="yes" grouprefs="5V_REGULATOR">
-<attribute name="NAME" x="154.686" y="120.015" size="1.778" layer="95"/>
-<attribute name="VALUE" x="154.686" y="115.189" size="1.778" layer="96"/>
+<instance part="C11" gate="G$1" x="128.27" y="99.06" smashed="yes" grouprefs="5V_REGULATOR">
+<attribute name="NAME" x="129.286" y="99.695" size="1.778" layer="95"/>
+<attribute name="VALUE" x="129.286" y="94.869" size="1.778" layer="96"/>
 </instance>
-<instance part="P+2" gate="1" x="153.67" y="132.08" smashed="yes" grouprefs="5V_REGULATOR">
-<attribute name="VALUE" x="148.59" y="129.54" size="1.778" layer="96" rot="R90"/>
+<instance part="P+2" gate="1" x="128.27" y="111.76" smashed="yes" grouprefs="5V_REGULATOR">
+<attribute name="VALUE" x="123.19" y="109.22" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="U$5" gate="G$1" x="76.2" y="127" smashed="yes" rot="R180"/>
-<instance part="SUPPLY3" gate="G$1" x="82.55" y="134.62" smashed="yes">
-<attribute name="VALUE" x="87.63" y="141.224" size="1.778" layer="96" rot="R180" align="bottom-center"/>
+<instance part="U$5" gate="G$1" x="48.26" y="104.14" smashed="yes" rot="R180" grouprefs="BATT_CONNECTOR"/>
+<instance part="SUPPLY3" gate="G$1" x="54.61" y="111.76" smashed="yes" grouprefs="BATT_CONNECTOR">
+<attribute name="VALUE" x="59.69" y="118.364" size="1.778" layer="96" rot="R180" align="bottom-center"/>
 </instance>
-<instance part="U$8" gate="G$1" x="82.55" y="120.65" smashed="yes">
-<attribute name="VALUE" x="81.026" y="118.11" size="1.27" layer="96"/>
+<instance part="U$8" gate="G$1" x="54.61" y="97.79" smashed="yes" grouprefs="BATT_CONNECTOR">
+<attribute name="VALUE" x="53.086" y="95.25" size="1.27" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -12382,78 +12177,299 @@ NASA Student Launch
 <segment>
 <pinref part="U$10" gate="G$1" pin="GND"/>
 <pinref part="3V3_REG" gate="A1" pin="GND"/>
-<wire x1="196.85" y1="113.03" x2="196.85" y2="115.57" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<wire x1="186.69" y1="97.79" x2="186.69" y2="100.33" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
 <pinref part="C12" gate="G$1" pin="2"/>
-<wire x1="182.88" y1="113.03" x2="196.85" y2="113.03" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
-<junction x="196.85" y="113.03" grouprefs="3V3_REGULATOR"/>
+<wire x1="172.72" y1="97.79" x2="186.69" y2="97.79" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<junction x="186.69" y="97.79" grouprefs="3V3_REGULATOR"/>
 <pinref part="C13" gate="G$1" pin="2"/>
-<wire x1="212.09" y1="114.3" x2="212.09" y2="113.03" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
-<wire x1="212.09" y1="113.03" x2="196.85" y2="113.03" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<wire x1="201.93" y1="99.06" x2="201.93" y2="97.79" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<wire x1="201.93" y1="97.79" x2="186.69" y2="97.79" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
 </segment>
 <segment>
 <pinref part="U$3" gate="G$1" pin="GND"/>
 <pinref part="5V_REG" gate="A1" pin="GND"/>
-<wire x1="138.43" y1="113.03" x2="138.43" y2="114.3" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<wire x1="113.03" y1="92.71" x2="113.03" y2="93.98" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
 <pinref part="C10" gate="G$1" pin="2"/>
-<wire x1="138.43" y1="114.3" x2="138.43" y2="118.11" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
-<wire x1="124.46" y1="114.3" x2="138.43" y2="114.3" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
-<junction x="138.43" y="114.3" grouprefs="5V_REGULATOR"/>
+<wire x1="113.03" y1="93.98" x2="113.03" y2="97.79" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<wire x1="99.06" y1="93.98" x2="113.03" y2="93.98" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<junction x="113.03" y="93.98" grouprefs="5V_REGULATOR"/>
 <pinref part="C11" gate="G$1" pin="2"/>
-<wire x1="153.67" y1="114.3" x2="138.43" y2="114.3" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<wire x1="128.27" y1="93.98" x2="113.03" y2="93.98" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
 </segment>
 <segment>
 <pinref part="U$5" gate="G$1" pin="GND"/>
 <pinref part="U$8" gate="G$1" pin="GND"/>
-<wire x1="81.28" y1="124.46" x2="82.55" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="82.55" y1="124.46" x2="82.55" y2="123.19" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="101.6" x2="54.61" y2="101.6" width="0.1524" layer="91" grouprefs="BATT_CONNECTOR"/>
+<wire x1="54.61" y1="101.6" x2="54.61" y2="100.33" width="0.1524" layer="91" grouprefs="BATT_CONNECTOR"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
 <segment>
 <pinref part="3V3_REG" gate="A1" pin="VO"/>
 <pinref part="C13" gate="G$1" pin="1"/>
-<wire x1="207.01" y1="123.19" x2="212.09" y2="123.19" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
-<wire x1="212.09" y1="123.19" x2="212.09" y2="121.92" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<wire x1="196.85" y1="107.95" x2="201.93" y2="107.95" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<wire x1="201.93" y1="107.95" x2="201.93" y2="106.68" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
 <pinref part="+3V2" gate="G$1" pin="+3V3"/>
-<wire x1="212.09" y1="123.19" x2="212.09" y2="127" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
-<junction x="212.09" y="123.19" grouprefs="3V3_REGULATOR"/>
+<wire x1="201.93" y1="107.95" x2="201.93" y2="111.76" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<junction x="201.93" y="107.95" grouprefs="3V3_REGULATOR"/>
 </segment>
 </net>
 <net name="+5V" class="0">
 <segment>
 <pinref part="C12" gate="G$1" pin="1"/>
 <pinref part="3V3_REG" gate="A1" pin="VI"/>
-<wire x1="182.88" y1="120.65" x2="182.88" y2="123.19" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
-<wire x1="182.88" y1="123.19" x2="186.69" y2="123.19" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<wire x1="172.72" y1="105.41" x2="172.72" y2="107.95" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<wire x1="172.72" y1="107.95" x2="176.53" y2="107.95" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
 <pinref part="P+3" gate="1" pin="+5V"/>
-<wire x1="182.88" y1="128.27" x2="182.88" y2="123.19" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
-<junction x="182.88" y="123.19" grouprefs="3V3_REGULATOR"/>
+<wire x1="172.72" y1="113.03" x2="172.72" y2="107.95" width="0.1524" layer="91" grouprefs="3V3_REGULATOR"/>
+<junction x="172.72" y="107.95" grouprefs="3V3_REGULATOR"/>
 </segment>
 <segment>
 <pinref part="C11" gate="G$1" pin="1"/>
 <pinref part="P+2" gate="1" pin="+5V"/>
-<wire x1="153.67" y1="121.92" x2="153.67" y2="125.73" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<wire x1="128.27" y1="101.6" x2="128.27" y2="105.41" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
 <pinref part="5V_REG" gate="A1" pin="VO"/>
-<wire x1="148.59" y1="125.73" x2="153.67" y2="125.73" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
-<junction x="153.67" y="125.73" grouprefs="5V_REGULATOR"/>
-<wire x1="153.67" y1="125.73" x2="153.67" y2="129.54" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<wire x1="123.19" y1="105.41" x2="128.27" y2="105.41" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<junction x="128.27" y="105.41" grouprefs="5V_REGULATOR"/>
+<wire x1="128.27" y1="105.41" x2="128.27" y2="109.22" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
 </segment>
 </net>
 <net name="V_BATT" class="0">
 <segment>
 <pinref part="5V_REG" gate="A1" pin="VI"/>
 <pinref part="C10" gate="G$1" pin="1"/>
-<wire x1="124.46" y1="121.92" x2="124.46" y2="125.73" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
-<wire x1="124.46" y1="125.73" x2="128.27" y2="125.73" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<wire x1="99.06" y1="101.6" x2="99.06" y2="105.41" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<wire x1="99.06" y1="105.41" x2="102.87" y2="105.41" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
 <pinref part="SUPPLY2" gate="G$1" pin="V_BATT"/>
-<wire x1="124.46" y1="137.16" x2="124.46" y2="125.73" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
-<junction x="124.46" y="125.73" grouprefs="5V_REGULATOR"/>
+<wire x1="99.06" y1="116.84" x2="99.06" y2="105.41" width="0.1524" layer="91" grouprefs="5V_REGULATOR"/>
+<junction x="99.06" y="105.41" grouprefs="5V_REGULATOR"/>
 </segment>
 <segment>
 <pinref part="U$5" gate="G$1" pin="VCC"/>
 <pinref part="SUPPLY3" gate="G$1" pin="V_BATT"/>
-<wire x1="81.28" y1="129.54" x2="82.55" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="82.55" y1="129.54" x2="82.55" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="106.68" x2="54.61" y2="106.68" width="0.1524" layer="91" grouprefs="BATT_CONNECTOR"/>
+<wire x1="54.61" y1="106.68" x2="54.61" y2="111.76" width="0.1524" layer="91" grouprefs="BATT_CONNECTOR"/>
+</segment>
+</net>
+</nets>
+</sheet>
+<sheet>
+<plain>
+<text x="96.52" y="162.56" size="6.35" layer="97" distance="53">DIGITAL SENSORS</text>
+</plain>
+<instances>
+<instance part="FRAME4" gate="G$1" x="0" y="0" smashed="yes">
+<attribute name="DRAWING_NAME" x="217.17" y="15.24" size="2.54" layer="94"/>
+<attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94"/>
+<attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94"/>
+</instance>
+<instance part="U$66" gate="G$1" x="193.04" y="132.08" smashed="yes" grouprefs="BNO055_IMU">
+<attribute name="VALUE" x="196.596" y="132.08" size="1.27" layer="96"/>
+</instance>
+<instance part="BNO055_H1" gate="A" x="180.34" y="132.08" smashed="yes" grouprefs="BNO055_IMU">
+<attribute name="NAME" x="168.91" y="142.875" size="1.778" layer="95"/>
+<attribute name="VALUE" x="173.99" y="121.92" size="1.778" layer="96"/>
+</instance>
+<instance part="BNO055_H2" gate="A" x="210.82" y="134.62" smashed="yes" grouprefs="BNO055_IMU">
+<attribute name="NAME" x="204.47" y="142.875" size="1.778" layer="95"/>
+<attribute name="VALUE" x="204.47" y="127" size="1.778" layer="96"/>
+</instance>
+<instance part="P+9" gate="1" x="191.77" y="142.24" smashed="yes" grouprefs="BNO055_IMU">
+<attribute name="VALUE" x="191.77" y="144.78" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="U$6" gate="G$1" x="231.14" y="83.82" smashed="yes" grouprefs="BMP338">
+<attribute name="VALUE" x="229.616" y="81.28" size="1.27" layer="96"/>
+</instance>
+<instance part="BMP338_H" gate="A" x="226.06" y="81.28" smashed="yes" grouprefs="BMP338">
+<attribute name="NAME" x="219.71" y="94.615" size="1.778" layer="95"/>
+<attribute name="VALUE" x="219.71" y="68.58" size="1.778" layer="96"/>
+</instance>
+<instance part="+3V3" gate="G$1" x="214.63" y="99.06" smashed="yes" grouprefs="BMP338">
+<attribute name="VALUE" x="217.17" y="101.6" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="U$7" gate="G$1" x="132.08" y="73.66" smashed="yes" grouprefs="GPS">
+<attribute name="VALUE" x="130.556" y="71.12" size="1.27" layer="96"/>
+</instance>
+<instance part="JP4" gate="A" x="139.7" y="88.9" smashed="yes" rot="R180" grouprefs="GPS">
+<attribute name="NAME" x="146.05" y="75.565" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="146.05" y="104.14" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="P+8" gate="1" x="134.62" y="92.71" smashed="yes" grouprefs="GPS">
+<attribute name="VALUE" x="134.62" y="95.25" size="1.778" layer="96" rot="R180"/>
+</instance>
+</instances>
+<busses>
+</busses>
+<nets>
+<net name="GND" class="0">
+<segment>
+<pinref part="U$66" gate="G$1" pin="GND"/>
+<wire x1="177.8" y1="134.62" x2="193.04" y2="134.62" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+<pinref part="BNO055_H1" gate="A" pin="3"/>
+</segment>
+<segment>
+<pinref part="U$6" gate="G$1" pin="GND"/>
+<wire x1="223.52" y1="86.36" x2="231.14" y2="86.36" width="0.1524" layer="91" grouprefs="BMP338"/>
+<pinref part="BMP338_H" gate="A" pin="3"/>
+</segment>
+<segment>
+<wire x1="132.08" y1="83.82" x2="132.08" y2="76.2" width="0.1524" layer="91" grouprefs="GPS"/>
+<wire x1="142.24" y1="83.82" x2="132.08" y2="83.82" width="0.1524" layer="91" grouprefs="GPS"/>
+<pinref part="U$7" gate="G$1" pin="GND"/>
+<pinref part="JP4" gate="A" pin="3"/>
+</segment>
+</net>
+<net name="PS1_3V" class="0">
+<segment>
+<wire x1="220.98" y1="137.16" x2="208.28" y2="137.16" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+<label x="220.98" y="137.16" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
+<pinref part="BNO055_H2" gate="A" pin="2"/>
+</segment>
+</net>
+<net name="PS0_3V" class="0">
+<segment>
+<wire x1="220.98" y1="139.7" x2="208.28" y2="139.7" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+<label x="220.98" y="139.7" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
+<pinref part="BNO055_H2" gate="A" pin="1"/>
+</segment>
+</net>
+<net name="INT_3V" class="0">
+<segment>
+<wire x1="220.98" y1="134.62" x2="208.28" y2="134.62" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+<label x="220.98" y="134.62" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
+<pinref part="BNO055_H2" gate="A" pin="3"/>
+</segment>
+</net>
+<net name="I2CADDR_3V" class="0">
+<segment>
+<wire x1="220.98" y1="132.08" x2="208.28" y2="132.08" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+<label x="220.98" y="132.08" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
+<pinref part="BNO055_H2" gate="A" pin="4"/>
+</segment>
+</net>
+<net name="RST_5V" class="0">
+<segment>
+<wire x1="195.58" y1="127" x2="177.8" y2="127" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+<label x="185.42" y="127" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
+<pinref part="BNO055_H1" gate="A" pin="6"/>
+</segment>
+</net>
+<net name="+3V3" class="0">
+<segment>
+<wire x1="223.52" y1="91.44" x2="214.63" y2="91.44" width="0.1524" layer="91" grouprefs="BMP338"/>
+<pinref part="BMP338_H" gate="A" pin="1"/>
+<pinref part="+3V3" gate="G$1" pin="+3V3"/>
+<wire x1="214.63" y1="96.52" x2="214.63" y2="91.44" width="0.1524" layer="91" grouprefs="BMP338"/>
+</segment>
+</net>
+<net name="+5V" class="0">
+<segment>
+<pinref part="BNO055_H1" gate="A" pin="1"/>
+<pinref part="P+9" gate="1" pin="+5V"/>
+<wire x1="177.8" y1="139.7" x2="191.77" y2="139.7" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+</segment>
+<segment>
+<wire x1="142.24" y1="81.28" x2="134.62" y2="81.28" width="0.1524" layer="91" grouprefs="GPS"/>
+<wire x1="134.62" y1="81.28" x2="134.62" y2="90.17" width="0.1524" layer="91" grouprefs="GPS"/>
+<pinref part="JP4" gate="A" pin="2"/>
+<pinref part="P+8" gate="1" pin="+5V"/>
+</segment>
+</net>
+<net name="SDA" class="0">
+<segment>
+<wire x1="167.64" y1="132.08" x2="177.8" y2="132.08" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+<pinref part="BNO055_H1" gate="A" pin="4"/>
+<label x="160.02" y="132.08" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
+</segment>
+</net>
+<net name="SCL" class="0">
+<segment>
+<pinref part="BNO055_H1" gate="A" pin="5"/>
+<wire x1="177.8" y1="129.54" x2="167.64" y2="129.54" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+<label x="160.02" y="129.54" size="1.778" layer="95" grouprefs="BNO055_IMU"/>
+</segment>
+</net>
+<net name="CS" class="0">
+<segment>
+<wire x1="223.52" y1="76.2" x2="210.82" y2="76.2" width="0.1524" layer="91" grouprefs="BMP338"/>
+<label x="200.66" y="76.2" size="1.778" layer="95" grouprefs="BMP338"/>
+<pinref part="BMP338_H" gate="A" pin="7"/>
+</segment>
+</net>
+<net name="INT" class="0">
+<segment>
+<pinref part="BMP338_H" gate="A" pin="8"/>
+<wire x1="223.52" y1="73.66" x2="210.82" y2="73.66" width="0.1524" layer="91" grouprefs="BMP338"/>
+<label x="200.66" y="73.66" size="1.778" layer="95" grouprefs="BMP338"/>
+</segment>
+</net>
+<net name="ALT_SDA" class="0">
+<segment>
+<pinref part="BMP338_H" gate="A" pin="6"/>
+<wire x1="223.52" y1="78.74" x2="213.36" y2="78.74" width="0.1524" layer="91" grouprefs="BMP338"/>
+<label x="200.66" y="78.74" size="1.778" layer="95" grouprefs="BMP338"/>
+</segment>
+</net>
+<net name="ALT_SCL" class="0">
+<segment>
+<pinref part="BMP338_H" gate="A" pin="4"/>
+<wire x1="223.52" y1="83.82" x2="213.36" y2="83.82" width="0.1524" layer="91" grouprefs="BMP338"/>
+<label x="200.66" y="83.82" size="1.778" layer="95" grouprefs="BMP338"/>
+</segment>
+</net>
+<net name="FIX" class="0">
+<segment>
+<wire x1="142.24" y1="91.44" x2="157.48" y2="91.44" width="0.1524" layer="91" grouprefs="GPS"/>
+<label x="157.48" y="91.44" size="1.778" layer="95" grouprefs="GPS"/>
+<pinref part="JP4" gate="A" pin="6"/>
+</segment>
+</net>
+<net name="GPS_EN" class="0">
+<segment>
+<wire x1="142.24" y1="96.52" x2="157.48" y2="96.52" width="0.1524" layer="91" grouprefs="GPS"/>
+<label x="157.48" y="96.52" size="1.778" layer="95" grouprefs="GPS"/>
+<pinref part="JP4" gate="A" pin="8"/>
+</segment>
+</net>
+<net name="VBACKUP" class="0">
+<segment>
+<wire x1="142.24" y1="93.98" x2="157.48" y2="93.98" width="0.1524" layer="91" grouprefs="GPS"/>
+<label x="157.48" y="93.98" size="1.778" layer="95" grouprefs="GPS"/>
+<pinref part="JP4" gate="A" pin="7"/>
+</segment>
+</net>
+<net name="GPS_TX" class="0">
+<segment>
+<label x="157.48" y="88.9" size="1.778" layer="95" grouprefs="GPS"/>
+<pinref part="JP4" gate="A" pin="5"/>
+<wire x1="152.4" y1="88.9" x2="142.24" y2="88.9" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="GPS_RX" class="0">
+<segment>
+<label x="157.48" y="86.36" size="1.778" layer="95" grouprefs="GPS"/>
+<pinref part="JP4" gate="A" pin="4"/>
+<wire x1="152.4" y1="86.36" x2="142.24" y2="86.36" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="1PPS" class="0">
+<segment>
+<wire x1="142.24" y1="78.74" x2="157.48" y2="78.74" width="0.1524" layer="91" grouprefs="GPS"/>
+<label x="157.48" y="78.74" size="1.778" layer="95" grouprefs="GPS"/>
+<pinref part="JP4" gate="A" pin="1"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
+<wire x1="142.24" y1="99.06" x2="157.48" y2="99.06" width="0.1524" layer="91" grouprefs="GPS"/>
+<pinref part="JP4" gate="A" pin="9"/>
+</segment>
+</net>
+<net name="3VOUT" class="0">
+<segment>
+<wire x1="177.8" y1="137.16" x2="191.77" y2="137.16" width="0.1524" layer="91" grouprefs="BNO055_IMU"/>
+<pinref part="BNO055_H1" gate="A" pin="2"/>
+<label x="193.04" y="137.16" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
