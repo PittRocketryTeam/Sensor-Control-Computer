@@ -29,7 +29,7 @@ Rfm95w::~Rfm95w()
 
 bool Rfm95w::init()
 {
-	pinMode(LED, OUTPUT);
+	pinMode(TLED, OUTPUT);
 	pinMode(RFM95_RST, OUTPUT);
 	digitalWrite(RFM95_RST, HIGH);
 
@@ -79,7 +79,7 @@ std::vector<float> Rfm95w::receive()
 
 		if (rf95.recv(buf, &len))
 		{
-			digitalWrite(LED, HIGH);
+			digitalWrite(TLED, HIGH);
 			RH_RF95::printBuffer("Received: ", buf, len);
 			Serial.print("Got: ");
 			Serial.println((char*)buf);
@@ -91,7 +91,7 @@ std::vector<float> Rfm95w::receive()
 			rf95.send(data, sizeof(data));
 			rf95.waitPacketSent();
 			Serial.println("Sent a reply");
-			digitalWrite(LED, LOW);
+			digitalWrite(TLED, LOW);
 		}
 		else
 		{
@@ -107,7 +107,7 @@ bool Rfm95w::transmit(Data data)
 	// Send a message to rf95_server
 
 	packetnum++; 
-	rf95.send((uint8_t*)data, 20); //got to fix this laters
+	//rf95.send((uint8_t*)data, 20); //got to fix this laters
 
 	Serial.println("Waiting for packet to complete..."); delay(10);
 	rf95.waitPacketSent();
@@ -152,12 +152,10 @@ bool Rfm95w::transmit(Data data)
 
 void Rfm95w::enable()
 {
-	pinMode(powerpin, OUTPUT);
-	digitalWrite(HIGH); 
+	digitalWrite(TLED, HIGH); 
 }
 
 void Rfm95w::disable()
 {
-	pinMode(powerpin, OUTPUT);
-	digitalWrite(LOW); 
+	digitalWrite(TLED, LOW); 
 }
