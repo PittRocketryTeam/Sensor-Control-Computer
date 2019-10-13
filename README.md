@@ -10,3 +10,4 @@ Current sensors:
 - Altimeter: [Adafruit BMP388](https://www.adafruit.com/product/3966) <br>
 - IMU: [Adafruit 9-DOF Absolute Orientation IMU Fusion Breakout - BNO055](https://www.adafruit.com/product/2472) <br>
 - Photocell: [CdS Photoresistor](https://www.adafruit.com/product/161) <br>
+- Transceiver: [Adafruit RFM95W LoRa Radio](https://www.adafruit.com/product/3072) <br>
