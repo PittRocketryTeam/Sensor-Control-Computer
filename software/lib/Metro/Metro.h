@@ -44,7 +44,7 @@ public:
     void reset();
 	
 private:
-    unsigned long previous_millis;
+    unsigned long previous;
     unsigned long interval;
     res_t resolution;
 };
