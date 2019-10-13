@@ -152,7 +152,7 @@ bool Rfm95w::transmit(Data data)
 
 void Rfm95w::enable()
 {
-	pinMode(LED, OUTPUT);
+	pinMode(powerpin, OUTPUT);
 	digitalWrite(HIGH); 
 }
 
