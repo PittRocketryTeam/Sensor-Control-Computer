@@ -3,7 +3,7 @@
 <eagle version="9.5.1">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -162,7 +162,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.YnVzaW5lc3M6cGl0dDIxMA" projecturn="a.YnVzaW5lc3M6cGl0dDIxMCNEMjAxOTEwMTIyMjYwMjg0NTY" f3durn="urn:adsk.wipprod:dm.lineage:0fGlfKSVT8SH4LnvjsbdpQ" pcbguid="726667e8-dd8c-481c-944e-8e115b9bc285" lastpulledtime="" lastsyncedchangeguid="9d0e714c-d6f2-9322-4c5c-de335c59dd69"/>
+<fusionsync huburn="a.YnVzaW5lc3M6cGl0dDIxMA" projecturn="a.YnVzaW5lc3M6cGl0dDIxMCNEMjAxOTEwMTIyMjYwMjg0NTY" f3durn="urn:adsk.wipprod:dm.lineage:0fGlfKSVT8SH4LnvjsbdpQ" pcbguid="726667e8-dd8c-481c-944e-8e115b9bc285" lastpulledtime="" lastsyncedchangeguid="c9b7f4ff-d5ec-61ff-36d8-418587e66183"/>
 <plain>
 <wire x1="0" y1="0" x2="87.61" y2="0" width="0" layer="20"/>
 <wire x1="87.61" y1="0" x2="87.61" y2="73.33" width="0" layer="20"/>
@@ -2257,11 +2257,11 @@ design rules under a new name.</description>
 <attribute name="NAME" x="64.6938" y="68.6308" size="0.8128" layer="25" ratio="15"/>
 <attribute name="VALUE" x="53.34" y="63.627" size="0.8128" layer="27"/>
 </element>
-<element name="R3" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="560" x="60.96" y="55.88" smashed="yes">
+<element name="R3" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k" x="60.96" y="55.88" smashed="yes">
 <attribute name="NAME" x="56.769" y="57.785" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="57.785" y="55.1942" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="560" x="69.85" y="52.07" smashed="yes">
+<element name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k" x="69.85" y="52.07" smashed="yes">
 <attribute name="NAME" x="65.659" y="53.975" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="66.675" y="51.3842" size="1.27" layer="27" ratio="10"/>
 </element>
@@ -2277,7 +2277,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="75.565" y="60.071" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="84.455" y="58.039" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="R5" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="560" x="69.85" y="59.69" smashed="yes">
+<element name="R5" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k" x="69.85" y="59.69" smashed="yes">
 <attribute name="NAME" x="65.659" y="61.595" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="66.675" y="59.0042" size="1.27" layer="27" ratio="10"/>
 </element>
@@ -2288,19 +2288,19 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="40.005" y="12.0142" size="1.27" layer="27" ratio="10"/>
 </element>
 <element name="U$5" library="XT60" package="XT60" value="XT60" x="3.81" y="6.35" smashed="yes"/>
-<element name="R6" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M" x="29.21" y="20.32" smashed="yes" rot="R180">
+<element name="R6" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k" x="29.21" y="20.32" smashed="yes" rot="R180">
 <attribute name="VALUE" x="32.385" y="21.0058" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="R7" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M" x="29.21" y="26.67" smashed="yes">
+<element name="R7" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k" x="29.21" y="26.67" smashed="yes">
 <attribute name="VALUE" x="26.035" y="25.9842" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M" x="20.32" y="29.21" smashed="yes" rot="R270">
+<element name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k" x="20.32" y="29.21" smashed="yes" rot="R270">
 <attribute name="VALUE" x="19.6342" y="32.385" size="1.27" layer="27" ratio="10" rot="R270"/>
 </element>
-<element name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M" x="31.75" y="36.83" smashed="yes">
+<element name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k" x="31.75" y="36.83" smashed="yes">
 <attribute name="VALUE" x="28.575" y="36.1442" size="1.27" layer="28" ratio="10"/>
 </element>
-<element name="R10" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M" x="21.59" y="11.43" smashed="yes" rot="R90">
+<element name="R10" library="resistor" library_urn="urn:adsk.eagle:library:348" package="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k" x="21.59" y="11.43" smashed="yes" rot="R90">
 <attribute name="VALUE" x="22.2758" y="8.255" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
 <element name="TEENSY3.6" library="Teensy_3_and_LC_Series_Boards_v1.4" package="TEENSY_3.6_DIL" value="TEENSY_3.6_DIL" x="53.34" y="39.37" smashed="yes" rot="R90">

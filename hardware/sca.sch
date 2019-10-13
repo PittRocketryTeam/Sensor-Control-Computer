@@ -11557,12 +11557,12 @@ DIN A4, landscape with location and doc. field</description>
 <part name="U$7" library="microbuilder" deviceset="GND" device=""/>
 <part name="GPS_H" library="microbuilder" deviceset="HEADER-1X9" device="70MIL"/>
 <part name="P+8" library="supply1" deviceset="+5V" device=""/>
-<part name="R3" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="560"/>
-<part name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="560"/>
+<part name="R3" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k"/>
+<part name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k"/>
 <part name="LED1" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
 <part name="LED2" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
 <part name="LED3" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
-<part name="R5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="560"/>
+<part name="R5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k"/>
 <part name="U$2" library="microbuilder" deviceset="GND" device=""/>
 <part name="R1" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M"/>
 <part name="R2" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M"/>
@@ -11576,11 +11576,11 @@ DIN A4, landscape with location and doc. field</description>
 <part name="+3V8" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V9" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V10" library="supply1" deviceset="+3V3" device=""/>
-<part name="R6" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M"/>
-<part name="R7" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M"/>
-<part name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M"/>
-<part name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M"/>
-<part name="R10" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M"/>
+<part name="R6" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k"/>
+<part name="R7" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k"/>
+<part name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k"/>
+<part name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k"/>
+<part name="R10" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="10k"/>
 <part name="TEENSY3.6" library="Teensy_3_and_LC_Series_Boards_v1.4" deviceset="TEENSY_3.6_DIL" device=""/>
 <part name="+3V11" library="supply1" deviceset="+3V3" device=""/>
 <part name="U$11" library="microbuilder" deviceset="GND" device=""/>
