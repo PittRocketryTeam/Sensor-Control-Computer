@@ -3,8 +3,8 @@
 
 #include "Sensor.hpp"
 
-#define TB_PIN 0
-#define VB_PIN 1
+#define THERMISTOR_PIN 0
+#define VBAT_PIN 1
 #define V5_PIN 2
 #define V3_PIN 3
 
@@ -15,7 +15,9 @@
 #define V3R1 1e6
 #define V3R2 1e6
 
-#define T0 298.15
+#define THERMISTOR_T0 298.15
+#define THERMISTOR_BETA 3380.0
+
 #define ANALOG_MAX 1023
 
 
