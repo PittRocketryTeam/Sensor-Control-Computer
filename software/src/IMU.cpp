@@ -6,12 +6,14 @@ IMU::IMU()
 {
     sensor = Adafruit_BNO055(55, I2C_ADDR);
     verbose = false;
+    poll_vector_ptr = new std::vector<float>;
 }
 
-IMU::IMU(bool v)
+IMU::IMU(bool v = false)
 {
     sensor = Adafruit_BNO055(55, I2C_ADDR);
     verbose = v;
+    poll_vector_ptr = new std::vector<float>;
 }
 
 bool IMU::init()
@@ -19,7 +21,8 @@ bool IMU::init()
 
     while(!sensor.begin())
     {
-        if (verbose) {
+        if (verbose)
+        {
             Serial.println("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
         }
         delay(100);
@@ -27,7 +30,8 @@ bool IMU::init()
 
     sensor.setExtCrystalUse(true);
 
-    if (verbose) {
+    if (verbose)
+    {
         Serial.println("BNO055 Initialized successfully!");
     }
 
@@ -44,6 +48,8 @@ std::vector<float> IMU::read()
     ret[0] = event.orientation.x;
     ret[1] = event.orientation.y;
     ret[2] = event.orientation.z;
+
+    *poll_vector_ptr = ret;
 
     return ret;
 }
@@ -63,27 +69,21 @@ std::vector<float> IMU::read_raw(Adafruit_BNO055::adafruit_vector_type_t t)
 
 std::vector<float> IMU::poll()
 {
-    std::vector<float> ret(IMU_DIMENIONS, 0);
-
-    
-
-    return ret;
+    return *poll_vector_ptr;
 }
 
 void IMU::enable()
 {
-    if (verbose) {
+    if (verbose)
         Serial.println("IMU Enabled");
-    }
 
     sensor.enterNormalMode();
 }
 
 void IMU::disable()
 {
-    if (verbose) {
-        Serial.println("IMU Enabled");
-    }
+    if (verbose)
+        Serial.println("IMU Disabled");
 
     sensor.enterSuspendMode();
 }

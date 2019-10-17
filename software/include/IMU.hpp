@@ -15,6 +15,7 @@ class IMU : public Sensor
     private:
         Adafruit_BNO055 sensor;
         bool verbose;
+        std::vector<float> *poll_vector_ptr = nullptr;
 
     public:
 
@@ -24,7 +25,7 @@ class IMU : public Sensor
 
         bool init() override;
         std::vector<float> read() override;
-        std::vector<float> read_raw(Adafruit_BNO055::adafruit_vector_type_t t);
+        std::vector<float> read_raw(Adafruit_BNO055::adafruit_vector_type_t);
         std::vector<float> poll() override;
         void enable() override;
         void disable() override;
