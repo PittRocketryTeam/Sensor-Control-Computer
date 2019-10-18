@@ -3,7 +3,7 @@
 <eagle version="9.5.1">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -2685,9 +2685,8 @@ design rules under a new name.</description>
 <contactref element="TEENSY3.6" pad="16/A2"/>
 <wire x1="34.29" y1="26.67" x2="35.56" y2="26.67" width="0.508" layer="1"/>
 <wire x1="39.37" y1="30.48" x2="35.56" y2="26.67" width="0.508" layer="1"/>
-<wire x1="50.8" y1="45.72" x2="39.37" y2="34.29" width="0.508" layer="1"/>
-<wire x1="50.8" y1="45.72" x2="50.8" y2="46.99" width="0.508" layer="1"/>
-<wire x1="39.37" y1="30.48" x2="39.37" y2="34.29" width="0.508" layer="1"/>
+<wire x1="50.8" y1="46.99" x2="39.37" y2="35.56" width="0.508" layer="1"/>
+<wire x1="39.37" y1="30.48" x2="39.37" y2="35.56" width="0.508" layer="1"/>
 </signal>
 <signal name="PR_3">
 <wire x1="26.924" y1="56.056" x2="26.924" y2="53.34" width="0.508" layer="16"/>
