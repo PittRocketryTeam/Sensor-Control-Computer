@@ -47,7 +47,7 @@ void setup()
         logger.addSensor(s);
     }
 
-    //logger.init();
+    logger.init();
     altimeter.init();
     
 }
@@ -59,8 +59,12 @@ void loop()
     digitalWrite(TLED, LOW);
     delay(1000);
 
-    Serial.println("Printing");
+    //Serial.println("Printing");
     //logger.log();
+
+    altimeter.setBaselinePressure();
+    Data dat;
+    altimeter.poll(dat);
 
     delay(1000);
 }

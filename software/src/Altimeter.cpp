@@ -2,23 +2,23 @@
 #include "Adafruit_BMP3XX.h"
 #include "bmp3.h"
 
+#define SCL 19 
+#define SDA 18
+
 Adafruit_BMP3XX bmp;//inits for i2c - defaults to 0x77 address and "Wire"
 struct bmp3_dev* bmp_dev;
 float initAlt = -1;
 
 Altimeter::Altimeter() :
-    Sensor()
-{
-    
-}
+    Sensor(){}
 
-Altimeter::~Altimeter()
-{
-
-}
+Altimeter::~Altimeter(){}
 
 bool Altimeter::init()
 {
+    //Wire.setSCL(SCL);
+    //Wire.setSDA(SDA);
+    //Wire.beginOnPins(SCL, SDA);
     Serial.println("initing");
     if(!bmp.begin())
     {
@@ -53,7 +53,7 @@ Data Altimeter::poll(Data data)
         Serial.println("Cannot poll altitude --- ground pressure not yet set!");
     else
         data.altimeterData.altitude = bmp.readAltitude(initAlt);
-
+    Serial.printf("temp: %f\npressure: %f\nalt: %f\n", data.altimeterData.temperature, data.altimeterData.pressure, data.altimeterData.altitude);
     return data;
 }
 
