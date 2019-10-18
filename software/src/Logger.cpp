@@ -7,7 +7,7 @@ Logger::~Logger() {}
 bool Logger::init()
 {
     log_filename = generateFilename();  // Generate unique log filename
-    Serial.printf("log_filename = %s", log_filename);
+    Serial.printf("log_filename = %s\n", log_filename);
     return SD.begin(BUILTIN_SDCARD);    // Make sure SD card begins
 }
 
