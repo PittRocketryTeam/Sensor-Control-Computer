@@ -50,7 +50,7 @@ class Logger
          * 
          * Example log filename: Monday_10-07-2019_03:26:41.log
         */
-        virtual char* generateFilename();
+        virtual void generateFilename(char filename[]);
 
         virtual Data readDataFromSensors();
 
@@ -64,7 +64,7 @@ class Logger
         /**
          * Logfile name.
         */
-        const char* log_filename;
+        char filename[128];
 };
 
 #endif

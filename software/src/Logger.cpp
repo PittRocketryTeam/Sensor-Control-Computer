@@ -6,8 +6,8 @@ Logger::~Logger() {}
 
 bool Logger::init()
 {
-    log_filename = generateFilename();  // Generate unique log filename
-    Serial.printf("log_filename = %s", log_filename);
+    generateFilename(filename);  // Generate unique log filename
+    Serial.printf("filename = %s", filename);
     return SD.begin(BUILTIN_SDCARD);    // Make sure SD card begins
 }
 
@@ -28,11 +28,9 @@ bool Logger::log()
     return writeToMemory(data);         // Write data to micro SD
 }
 
-char* Logger::generateFilename()
+void Logger::generateFilename(char filename[])
 {
-    char* filename = NULL;
     sprintf(filename, "%d_%d-%d-%d_%d-%d-%d.log", weekday(), month(), day(), year(), hour(), minute(), second());
-    return filename;
 }
 
 Data Logger::readDataFromSensors()
@@ -48,7 +46,7 @@ Data Logger::readDataFromSensors()
 
 bool Logger::writeToMemory(Data data)
 {
-    File microSD = SD.open(log_filename, FILE_WRITE);  // Open micro SD card 
+    File microSD = SD.open(filename, FILE_WRITE);  // Open micro SD card 
 
     if (!microSD) 
     {
