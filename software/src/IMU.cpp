@@ -7,6 +7,11 @@ IMU::IMU() :
 
 }
 
+IMU::~IMU()
+{
+
+}
+
 bool IMU::init()
 {
     return false;

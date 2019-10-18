@@ -17,6 +17,11 @@ GPS::GPS() :
 
 }
 
+GPS::~GPS() 
+{
+
+}
+
 bool GPS::init()
 {
     // pinMode(VBAT, INPUT); 
