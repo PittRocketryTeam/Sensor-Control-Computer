@@ -8,6 +8,11 @@ Photocell::Photocell() :
 
 }
 
+Photocell::~Photocell()
+{
+    
+}
+
 //While using testing code with the sensor, a button was used to simulate separation of the rocket and code was written based off this
 // In place of gathering launch data from other sensors
 

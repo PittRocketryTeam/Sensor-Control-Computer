@@ -10,14 +10,15 @@
 #include "Health.hpp"
 
 #include <Metro.h>
+#define TLED 13
 
 Logger logger;
 
-GPS* gps;
-IMU* imu;
-Altimeter* altimeter;
-Photocell* photocell;
-Health* health;
+GPS gps;
+IMU imu;
+Altimeter altimeter;
+Photocell photocell;
+Health health;
 
 std::vector<Sensor*> sensors;
 
@@ -25,28 +26,41 @@ void setup()
 {    
     Serial.begin(9600);
 
-    while (!Serial)
+    for(int x = 0; x < 10; x++)
     {
-        ; // wait for serial port to connect. Needed for native USB.
+        if(Serial)
+            break;
+        delay(1000);
     }
-    
-    sensors.push_back(gps);
-    sensors.push_back(imu);
-    sensors.push_back(altimeter);
-    sensors.push_back(photocell);
-    sensors.push_back(health);
 
+    pinMode(TLED, OUTPUT);
+    digitalWrite(TLED, HIGH);
+    
+    sensors.push_back(&gps);
+    sensors.push_back(&imu);
+    sensors.push_back(&altimeter);
+    sensors.push_back(&photocell);
+    sensors.push_back(&health);
+    
     for (Sensor* s : sensors)
     {
         logger.addSensor(s);
     }
 
-    logger.init();
+    //logger.init();
+    altimeter.init();
+    
 }
 
 void loop()
 {
-    logger.log();
+    digitalWrite(TLED, HIGH);
+    delay(1000);
+    digitalWrite(TLED, LOW);
+    delay(1000);
+
+    Serial.println("Printing");
+    //logger.log();
 
     delay(1000);
 }
