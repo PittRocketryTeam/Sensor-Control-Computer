@@ -7,7 +7,7 @@
 
 #include "Sensor.hpp"
 
-typedef enum {SERIAL_INIT = 1} errcode_t;
+typedef enum {SERIAL_INIT = 1, LOG_INIT = 2, IMU_INIT = 3, ALT_INIT = 4, GPS_INIT = 5, TX_INIT = 6, WERE_SCREWED = 7} errcode_t;
 typedef enum {WARN, FATAL} errtype_t;
 
 class Error
