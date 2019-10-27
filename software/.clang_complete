@@ -2,9 +2,9 @@
 -IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/src
 -IC:/Users/Joseph Gao/.platformio/lib/Adafruit BNO055_ID506
 -IC:/Users/Joseph Gao/.platformio/lib/Adafruit BNO055_ID506/utility
--IC:/Users/Joseph Gao/.platformio/lib/Adafruit Unified Sensor_ID31
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Wire
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility
+-IC:/Users/Joseph Gao/.platformio/lib/Adafruit Unified Sensor_ID31
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/cores/teensy3
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/ADC
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src
