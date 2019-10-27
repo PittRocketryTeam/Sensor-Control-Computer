@@ -3,7 +3,7 @@
 
 #include "Sensor.hpp"
 
-#define GPS_DIMENSIONS 5
+#define VIN_PIN 0
 
 class GPS : public Sensor
 {
@@ -13,10 +13,23 @@ class GPS : public Sensor
         ~GPS();
         
         bool init() override;
-        std::vector<float> read() override;
-        std::vector<float> poll() override;
+        Data read(Data data) override;
+        Data poll(Data data) override;
         void enable() override;
         void disable() override;
+
+    private:
+        float time;
+        float latitude;
+        float lat_direction;
+        float longitude;
+        float long_direction; 
+        float fix_quality;
+        float number_of_satellites;
+        float hdop;
+        float altitude;
+        float rssi;
+
 };
 
 #endif

@@ -3,8 +3,6 @@
 
 #include "Sensor.hpp"
 
-#define PHOTOCELL_DIMENSIONS 5
-
 class Photocell : public Sensor
 {
     public:
@@ -13,8 +11,8 @@ class Photocell : public Sensor
         ~Photocell();
         
         bool init() override;
-        std::vector<float> read() override;
-        std::vector<float> poll() override;
+        Data read(Data data) override;
+        Data poll(Data data) override;
         void enable() override;
         void disable() override;
 };

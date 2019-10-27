@@ -3,8 +3,6 @@
 
 #include "Sensor.hpp"
 
-#define ALTIMETER_DIMENSIONS 5
-
 class Altimeter : public Sensor
 {
     public:
@@ -12,11 +10,12 @@ class Altimeter : public Sensor
         Altimeter();
         ~Altimeter();
         
-        bool init() override;
-        std::vector<float> read() override;
-        std::vector<float> poll() override;
+        virtual bool init();
+        Data read(Data data) override;
+        Data poll(Data data) override;
         void enable() override;
         void disable() override;
+        void setBaselinePressure();
 };
 
 #endif

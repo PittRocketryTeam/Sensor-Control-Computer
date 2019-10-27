@@ -5,38 +5,46 @@
 #include "Altimeter.hpp"
 #include "Logger.hpp"
 #include "Photocell.hpp"
-#include "XBee.hpp"
+#include "XBeePro.hpp"
 #include "Rfm95w.hpp"
 #include "Health.hpp"
+#include <Metro.h>
 
-using namespace std;
+Logger logger;
 
-IMU *bno;
+GPS* gps;
+IMU* imu0;
+Altimeter* altimeter;
+Photocell* photocell;
+Health* health;
 
+std::vector<Sensor*> sensors;
 void setup()
-{
-    // put your setup code here, to run once:
-    pinMode(13, OUTPUT);
+{    
     Serial.begin(9600);
 
-    bno = new IMU(true);
+    while (!Serial)
+    {
+        ; // wait for serial port to connect. Needed for native USB.
+    }
+    
+    sensors.push_back(gps);
+    // sensors.push_back(imu0);
+    sensors.push_back(altimeter);
+    sensors.push_back(photocell);
+    sensors.push_back(health);
 
-    bno->init();
+    for (Sensor* s : sensors)
+    {
+        logger.addSensor(s);
+    }
+
+    logger.init();
 }
 
 void loop()
 {
-    // put your main code here, to run repeatedly:
-    digitalWrite(13, HIGH);
-    delay(250);
+    // logger.log();
 
-    vector<float> ret = bno->read_raw(Adafruit_BNO055::VECTOR_GYROSCOPE);
-
-    Serial.print("X: ");
-    Serial.print(ret[0], 4);
-    Serial.print("\tY: ");
-    Serial.print(ret[1], 4);
-    Serial.print("\tZ: ");
-    Serial.print(ret[2], 4);
-    Serial.println("");
+    delay(1000);
 }
