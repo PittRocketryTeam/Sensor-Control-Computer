@@ -2,13 +2,14 @@
 #define __XBEE_HPP__
 
 #include "Transceiver.hpp"
+#include <Xbee.h>
 
-class XBee : Transceiver
+class XBeePro : Transceiver
 {
     public:
 
-        XBee();
-        ~XBee();
+        XBeePro();
+        ~XBeePro();
 
         bool init();
         std::vector<float> receive();
