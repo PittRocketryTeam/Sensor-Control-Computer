@@ -2,7 +2,7 @@
 #define __XBEE_HPP__
 
 #include "Transceiver.hpp"
-#include <Xbee.h>
+#include <XBee.h>
 
 class XBeePro : Transceiver
 {
