@@ -105,9 +105,7 @@ bool Rfm95w::transmit(Data data)
 {
 	Serial.println("Sending to rf95_server");
 	// Send a message to rf95_server
-
-	packetnum++; 
-	//rf95.send((uint8_t*)data, 20); //got to fix this laters
+	rf95.send((uint8_t*)&data, sizeof(data)); 
 
 	Serial.println("Waiting for packet to complete..."); delay(10);
 	rf95.waitPacketSent();
@@ -124,16 +122,7 @@ bool Rfm95w::transmit(Data data)
 			Serial.print("Got reply: ");
 			Serial.println((char*)buf);
 			String str((char*)buf);
-			if (str.startsWith("$GPGGA")) {
-				digitalWrite(TLED, HIGH);
-				delay(200);
-				digitalWrite(TLED, LOW);
-				delay(200);
-				digitalWrite(TLED, HIGH);
-				delay(200);
-				digitalWrite(TLED, LOW);
-				delay(200);
-			}
+	
 			Serial.print("RSSI: ");
 			Serial.println(rf95.lastRssi(), DEC);
 		}

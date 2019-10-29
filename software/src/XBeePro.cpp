@@ -3,8 +3,8 @@
 //Initiate objects  
 XBee xbee_pro = XBee(); 
 XBeeResponse response = XBeeResponse();
-uint8_t payload[] = {0 , 0}; 
-Tx16Request tx16 = Tx16Request(0x1874, payload, sizeof(payload)); 
+uint8_t *payload; 
+Tx16Request tx16 = Tx16Request(0x1874, payload, sizeof(struct Data)); 
 Rx16Response rx16 = Rx16Response();
 Rx64Response rx64 = Rx64Response();
 TxStatusResponse txStatus = TxStatusResponse();
@@ -29,7 +29,7 @@ bool XBeePro::init()
         //Check the status code 
 
     if(response.getErrorCode() == NO_ERROR) {
-        Serial.println("Initialization is succcessful.\n");
+        Serial.println("Xbee_pro init is succcessful.\n");
         return true;
     }  
     else{
@@ -53,8 +53,8 @@ std::vector<float> XBeePro::receive()
                 Serial.println("Data received... Here is data");
                 Serial.println(data); 
                 //I guess you flash the led to signal that you will be writing the message has been received 
-                Serial.println("Recieved packet. Now writing...");
-                //analogWrite(dataLed, data);
+               // Serial.println("Recieved packet. Now writing...");
+               // analogWrite(dataLed, data);
         }
         else{
                 Serial.println("Did not receive packet. ERROR"); 
@@ -69,7 +69,7 @@ std::vector<float> XBeePro::receive()
 bool XBeePro::transmit(Data data)
 {
     //Just send the timestamp data for now 
-    *payload = {(uint8_t)data.timestamp};
+    payload = (uint8_t *)&data;
     xbee_pro.send(tx16);
     return false;
 }
@@ -82,6 +82,7 @@ void XBeePro::enable()
     pinMode(dataLed,  OUTPUT);
     Serial.begin(9600); 
     xbee_pro.setSerial(Serial); 
+    response.reset(); 
 }
 
 void XBeePro::disable()
