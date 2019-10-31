@@ -20,13 +20,19 @@ class Sensor
         virtual bool init() = 0;
 
         /*
-         * Read current sensor data and return it as vector of floats. 
-         * Accepts a data struct and populates the appropriate fields.
+         * Return latest values read (last time poll was called).
+         * 
+         * \param Data the data struct to populate and return
+         * \return populated data struct
          */
         virtual Data read(Data data) = 0;
 
         /*
-         * Accepts a data struct and populates the appropriate fields.
+         * Read fresh data from the sensor, store it in internal data fields, and 
+         * return it.
+         * 
+         * \param Data the data struct to populate and return
+         * \return populated data struct
          */
         virtual Data poll(Data data) = 0;
 
