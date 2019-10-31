@@ -16,6 +16,8 @@ class Sensor
          * Initialize the sensor so it can be used. Return true if the 
          * sensor is initialized and ready to be enabled, disabled, read, or 
          * polled, and false otherwise.
+         * 
+         * \return true if the sensor was successfully initialized
          */
         virtual bool init() = 0;
 
@@ -50,7 +52,7 @@ class Sensor
 
         /*
          * Maintains the state of the sensor. It can only be enabled or disabled.
-         * Only if the sensor is enabled ca the read() and poll() functions be called.
+         * Only if the sensor is enabled can the read() and poll() functions be called.
          */
         enum sensor_state { ENABLED, DISABLED };
         sensor_state state;
