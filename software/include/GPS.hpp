@@ -1,7 +1,13 @@
+// __GPS_HPP__
+
 #ifndef __GPS_HPP__
 #define __GPS_HPP__
 
+#include <Wire.h>
+#include <Adafruit_GPS.h>
 #include "Sensor.hpp"
+#define GPSSerial Serial1
+
 
 #define VIN_PIN 0
 
@@ -18,17 +24,22 @@ class GPS : public Sensor
         void enable() override;
         void disable() override;
 
+
+
     private:
-        float time;
-        float latitude;
-        float lat_direction;
-        float longitude;
-        float long_direction; 
-        float fix_quality;
-        float number_of_satellites;
-        float hdop;
-        float altitude;
-        float rssi;
+        Adafruit_GPS gps;
+        int time;
+        float lat;
+        int lat_direction;
+        float lon;
+        int long_direction; 
+        int fix_quality;
+        int number_of_satellites;
+        int hdop;
+        int alt;
+        int rssi;
+        // bool inStandby; 
+
 
 };
 
