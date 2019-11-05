@@ -5,66 +5,46 @@
 #include "Altimeter.hpp"
 #include "Logger.hpp"
 #include "Photocell.hpp"
-#include "XBee.hpp"
+#include "XBeePro.hpp"
 #include "Rfm95w.hpp"
 #include "Health.hpp"
-
 #include <Metro.h>
-#define TLED 13
 
 Logger logger;
 
-GPS gps;
-IMU imu;
-Altimeter altimeter;
-Photocell photocell;
-Health health;
+GPS* gps;
+IMU* imu0;
+Altimeter* altimeter;
+Photocell* photocell;
+Health* health;
 
 std::vector<Sensor*> sensors;
-
 void setup()
 {    
     Serial.begin(9600);
 
-    for(int x = 0; x < 10; x++)
+    while (!Serial)
     {
-        if(Serial)
-            break;
-        delay(1000);
+        ; // wait for serial port to connect. Needed for native USB.
     }
+    
+    sensors.push_back(gps);
+    // sensors.push_back(imu0);
+    sensors.push_back(altimeter);
+    sensors.push_back(photocell);
+    sensors.push_back(health);
 
-    pinMode(TLED, OUTPUT);
-    digitalWrite(TLED, HIGH);
-    
-    sensors.push_back(&gps);
-    sensors.push_back(&imu);
-    sensors.push_back(&altimeter);
-    sensors.push_back(&photocell);
-    sensors.push_back(&health);
-    
     for (Sensor* s : sensors)
     {
         logger.addSensor(s);
     }
 
     logger.init();
-    altimeter.init();
-    
 }
 
 void loop()
 {
-    digitalWrite(TLED, HIGH);
-    delay(1000);
-    digitalWrite(TLED, LOW);
-    delay(1000);
-
-    //Serial.println("Printing");
-    //logger.log();
-
-    altimeter.setBaselinePressure();
-    Data dat;
-    altimeter.poll(dat);
+    // logger.log();
 
     delay(1000);
 }
