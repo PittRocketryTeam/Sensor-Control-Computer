@@ -27,18 +27,18 @@ class GPS : public Sensor
 
 
     private:
-        Adafruit_GPS gps;
-        int time;
-        float lat;
-        int lat_direction;
-        float lon;
-        int long_direction; 
-        int fix_quality;
-        int number_of_satellites;
-        int hdop;
-        int alt;
-        int rssi;
-        // bool inStandby; 
+        Adafruit_GPS* gps;
+        int my_time;
+        float my_lat;
+        int my_lat_direction;
+        float my_lon;
+        int my_long_direction; 
+        int my_fix_quality;
+        int my_number_of_satellites;
+        int my_hdop;
+        int my_alt;
+        int my_rssi;
+        //bool my_inStandby; 
 
 
 };
