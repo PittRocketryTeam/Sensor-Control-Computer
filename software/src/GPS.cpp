@@ -7,6 +7,7 @@ uint32_t timer = millis();
 
 GPS::GPS() : 
     Sensor(), 
+    gps(nullptr),
     my_time(0), 
     my_lat(0), 
     my_lat_direction(0),
@@ -17,13 +18,15 @@ GPS::GPS() :
     my_hdop(0), 
     my_alt(0),
     my_rssi(0)
-    //gps(&Serial1)
 {
 }
     
 GPS::~GPS()
 {
-  delete gps;
+    if (gps != nullptr)
+    {
+        delete gps;
+    }
 }
 
 bool GPS::init()
@@ -35,34 +38,29 @@ bool GPS::init()
     
     pinMode(VIN_PIN, OUTPUT);
 
-Serial.begin(115200);
-  Serial.println("Adafruit GPS library basic test!");
+    //Serial.begin(115200);
+    Serial.println("Adafruit GPS library basic test!");
 
-  // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
-  gps->begin(9600);
-  // uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
-  gps->sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
-  // uncomment this line to turn on only the "minimum recommended" data
-  //gps->sendCommand(PMTK_SET_NMEA_OUTPUT_RMCONLY);
-  // For parsing data, we don't suggest using anything but either RMC only or RMC+GGA since
-  // the parser doesn't care about other sentences at this time
-  // Set the update rate
-  gps->sendCommand(PMTK_SET_NMEA_UPDATE_1HZ); // 1 Hz update rate
-  // For the parsing code to work nicely and have time to sort thru the data, and
-  // print it out we don't suggest using anything higher than 1 Hz
+    // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
+        gps->begin(9600);
+    // uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
+    gps->sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
+    // uncomment this line to turn on only the "minimum recommended" data
+    //gps->sendCommand(PMTK_SET_NMEA_OUTPUT_RMCONLY);
+    // For parsing data, we don't suggest using anything but either RMC only or RMC+GGA since
+    // the parser doesn't care about other sentences at this time
+    // Set the update rate
+    gps->sendCommand(PMTK_SET_NMEA_UPDATE_1HZ); // 1 Hz update rate
+    // For the parsing code to work nicely and have time to sort thru the data, and
+    // print it out we don't suggest using anything higher than 1 Hz
 
-  // Request updates on antenna status, comment out to keep quiet
-  gps->sendCommand(PGCMD_ANTENNA);
+    // Request updates on antenna status, comment out to keep quiet
+    gps->sendCommand(PGCMD_ANTENNA);
 
-  delay(1000);
+    delay(1000);
 
-  // Ask for firmware version
-  GPSSerial.println(PMTK_Q_RELEASE);
-
-
-
-
-
+    // Ask for firmware version
+    GPSSerial.println(PMTK_Q_RELEASE);
 
     return true;
 }
@@ -163,12 +161,8 @@ Data GPS::poll(Data data)
     //   Serial.print("Angle: "); Serial.println(gps->angle);
     //   Serial.print("Altitude: "); Serial.println(gps->altitude);
     //   Serial.print("Satellites: "); Serial.println((int)gps->satellites);
-    // }
+    // }S
   }
-
-
-
-
 
     return read(data);
 }

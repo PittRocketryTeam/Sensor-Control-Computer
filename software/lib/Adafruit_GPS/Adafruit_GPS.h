@@ -111,6 +111,7 @@ class Adafruit_GPS : public Print{
 #endif
   Adafruit_GPS(HardwareSerial *ser); // Constructor when using HardwareSerial
   Adafruit_GPS(TwoWire *theWire); // Constructor when using I2C
+  virtual ~Adafruit_GPS() {}
 
   char *lastNMEA(void);
   boolean newNMEAreceived();

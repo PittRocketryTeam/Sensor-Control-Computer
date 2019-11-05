@@ -16,7 +16,7 @@ class GPS : public Sensor
     public:
 
         GPS();
-        ~GPS();
+        virtual ~GPS();
         
         bool init() override;
         Data read(Data data) override;
