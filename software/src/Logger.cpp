@@ -30,7 +30,9 @@ bool Logger::log()
 
 void Logger::generateFilename(char filename[])
 {
-    sprintf(filename, "%d_%d-%d-%d_%d-%d-%d.log", weekday(), month(), day(), year(), hour(), minute(), second());
+    // sprintf(filename, "%d_%d-%d-%d_%d-%d-%d.log", weekday(), month(), day(), year(), hour(), minute(), second());
+    sprintf(filename, "loggylog.log");
+
 }
 
 Data Logger::readDataFromSensors()
@@ -40,21 +42,22 @@ Data Logger::readDataFromSensors()
         data = s->read(data);   // Read data from sensors
 
     data.timestamp = now();     // Add timestamp
-
     return data;                        
 }
 
 bool Logger::writeToMemory(Data data)
 {
-    File microSD = SD.open(filename, FILE_WRITE);  // Open micro SD card 
+    File microSD = SD.open(filename, FILE_WRITE); 
 
     if (!microSD) 
-    {
         return false;
-    }
         
-    size_t bytes_written = microSD.write((uint8_t *)&data, sizeof(data));   // Write   
-    microSD.close();                                                        // Close 
+    // TODO: Serialize data for logging
+
+    for (uint64_t i = 0; i < sizeof(data); i++)
+        Serial.printf("writen to board: %c\n", &data);
+    size_t bytes_written = microSD.write(&data, sizeof(data));     
+    microSD.close();                                                        
         
-    return (bytes_written == sizeof(data));           // Check write
+    return (bytes_written == sizeof(data));   
 }

@@ -1,85 +1,89 @@
 #include "IMU.hpp"
 
 
-IMU::IMU() : 
-    Sensor()
-{
 
+IMU::IMU()
+{
+    sensor = Adafruit_BNO055(55, I2C_ADDR);
+    verbose = false;
+    poll_vector_ptr = new std::vector<float>;
 }
 
-IMU::~IMU()
+IMU::IMU(bool v = false)
 {
-
+    sensor = Adafruit_BNO055(55, I2C_ADDR);
+    verbose = v;
+    poll_vector_ptr = new std::vector<float>;
 }
 
 bool IMU::init()
 {
+
+    while(!sensor.begin())
+    {
+        if (verbose)
+        {
+            Serial.println("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
+        }
+        delay(100);
+    }
+
+    sensor.setExtCrystalUse(true);
+
+    if (verbose)
+    {
+        Serial.println("BNO055 Initialized successfully!");
+    }
+
     return false;
 }
 
-Data IMU::read(Data data)
+std::vector<float> IMU::read()
 {
-    // TODO: Set data.imuData.euler_abs_orientation_x
-    // TODO: Set data.imuData.euler_abs_orientation_y
-    // TODO: Set data.imuData.euler_abs_orientation_z
-    // TODO: Set data.imuData.quaternion_abs_orientation_x
-    // TODO: Set data.imuData.quaternion_abs_orientation_y
-    // TODO: Set data.imuData.quaternion_abs_orientation_z
-    // TODO: Set data.imuData.angular_velocity_x
-    // TODO: Set data.imuData.angular_velocity_y
-    // TODO: Set data.imuData.angular_velocity_z
-    // TODO: Set data.imuData.acceleration_x
-    // TODO: Set data.imuData.acceleration_y
-    // TODO: Set data.imuData.acceleration_z
-    // TODO: Set data.imuData.magnetic_field_strength_x
-    // TODO: Set data.imuData.magnetic_field_strength_y
-    // TODO: Set data.imuData.magnetic_field_strength_z
-    // TODO: Set data.imuData.linear_acceleration_x
-    // TODO: Set data.imuData.linear_acceleration_y
-    // TODO: Set data.imuData.linear_acceleration_z
-    // TODO: Set data.imuData.gravity_x
-    // TODO: Set data.imuData.gravity_y
-    // TODO: Set data.imuData.gravity_z
-    // TODO: Set data.imuData.temperature
+    std::vector<float> ret(IMU_DIMENIONS, 0);
 
-    return data;
+    sensors_event_t event;
+    sensor.getEvent(&event);
+
+    ret[0] = event.orientation.x;
+    ret[1] = event.orientation.y;
+    ret[2] = event.orientation.z;
+
+    *poll_vector_ptr = ret;
+
+    return ret;
 }
 
-Data IMU::poll(Data data)
+std::vector<float> IMU::read_raw(Adafruit_BNO055::adafruit_vector_type_t t)
 {
-    // TODO: Set data.imuData.euler_abs_orientation_x
-    // TODO: Set data.imuData.euler_abs_orientation_y
-    // TODO: Set data.imuData.euler_abs_orientation_z
-    // TODO: Set data.imuData.quaternion_abs_orientation_x
-    // TODO: Set data.imuData.quaternion_abs_orientation_y
-    // TODO: Set data.imuData.quaternion_abs_orientation_z
-    // TODO: Set data.imuData.angular_velocity_x
-    // TODO: Set data.imuData.angular_velocity_y
-    // TODO: Set data.imuData.angular_velocity_z
-    // TODO: Set data.imuData.acceleration_x
-    // TODO: Set data.imuData.acceleration_y
-    // TODO: Set data.imuData.acceleration_z
-    // TODO: Set data.imuData.magnetic_field_strength_x
-    // TODO: Set data.imuData.magnetic_field_strength_y
-    // TODO: Set data.imuData.magnetic_field_strength_z
-    // TODO: Set data.imuData.linear_acceleration_x
-    // TODO: Set data.imuData.linear_acceleration_y
-    // TODO: Set data.imuData.linear_acceleration_z
-    // TODO: Set data.imuData.gravity_x
-    // TODO: Set data.imuData.gravity_y
-    // TODO: Set data.imuData.gravity_z
-    // TODO: Set data.imuData.temperature
+    std::vector<float> ret(IMU_DIMENIONS, 0);
 
-    return data;
+    imu::Vector<3> v = sensor.getVector(t);
+
+    ret[0] = v[0];
+    ret[1] = v[1];
+    ret[2] = v[2];
+
+    return ret;
+}
+
+std::vector<float> IMU::poll()
+{
+    return *poll_vector_ptr;
 }
 
 void IMU::enable()
 {
+    if (verbose)
+        Serial.println("IMU Enabled");
 
+    sensor.enterNormalMode();
 }
 
 void IMU::disable()
 {
+    if (verbose)
+        Serial.println("IMU Disabled");
 
+    sensor.enterSuspendMode();
 }
-
