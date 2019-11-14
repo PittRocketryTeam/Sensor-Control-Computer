@@ -4,7 +4,7 @@
 #include "IMU.hpp"
 #include "Logger.hpp"
 #include "Metro.h"
-#include "AnalogDevices.hpp"
+// #include "AnalogDevices.hpp"
 //#include "LaunchDetect.hpp"
 
 //#define NO_CATCHUP
@@ -12,7 +12,7 @@
 IMU gyro(true);
 Altimeter alt;
 Logger logger;
-AnalogDevices ad;
+// AnalogDevices ad;
 //LaunchDetect launchDetect;
 
 Data state;
