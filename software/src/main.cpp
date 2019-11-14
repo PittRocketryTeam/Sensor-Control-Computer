@@ -45,12 +45,12 @@ void setup()
     alt.init();
     alt.setBaselinePressure();
     logger.init();
-    ad.init();
+    // ad.init();
     //launchDetect.init();
 
     logger.addSensor(&gyro);
     logger.addSensor(&alt);
-    logger.addSensor(&ad);
+    // logger.addSensor(&ad);
     //logger.addSensor(&launchDetect);
 
     digitalWrite(13, LOW);
@@ -119,7 +119,7 @@ void armed()
 
     state = gyro.poll(state);
     state = alt.poll(state);
-    state = ad.poll(state);
+    // state = ad.poll(state);
     //state = launchDetect.poll(state);
 
     /*Serial.print(state.imuData.euler_abs_orientation_x);
