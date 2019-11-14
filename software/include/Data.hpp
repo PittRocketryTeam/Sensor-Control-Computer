@@ -25,10 +25,10 @@ typedef struct ImuData
     // float angular_velocity_y;
     // float angular_velocity_z;
 
-    // // Acceleration Vector (100Hz) Three axis of acceleration (gravity + linear motion) in m/s^2
-    // float acceleration_x;
-    // float acceleration_y;
-    // float acceleration_z;
+    // Acceleration Vector (100Hz) Three axis of acceleration (gravity + linear motion) in m/s^2
+    float acceleration_x;
+    float acceleration_y;
+    float acceleration_z;
 
     // // Magnetic Field Strength Vector (20Hz) Three axis of magnetic field sensing in micro Tesla (uT)
     // float magnetic_field_strength_x;
