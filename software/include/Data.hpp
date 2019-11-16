@@ -1,7 +1,7 @@
 #ifndef __DATA_HPP__
 #define __DATA_HPP__
 
-#include "Time.h"
+//#include "Time.h"
 
 // Data struct definitions for each sensor and for overall data struct.
 
@@ -102,7 +102,7 @@ typedef struct PhotocellData
 */
 typedef struct Data
 {
-    time_t timestamp;
+    long timestamp;
     AltimeterData altimeterData;
     GpsData gpsData;
     HealthData healthData;
