@@ -9,7 +9,7 @@
 #include "SdFat.h"
 
 #define BUILTIN_SDCARD 254
-#define MAX_SENSORS 200
+#define MAX_SENSORS 20
 
 class Logger
 {

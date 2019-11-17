@@ -1,21 +1,17 @@
 #include "Error.hpp"
 #include <Arduino.h>
 
-Error::Error() :
-    b0(0),
-    b1(0),
-    b2(0)
-{
-
-}
-
-Error::~Error()
-{
-
-}
+int Error::b0;
+int Error::b1;
+int Error::b2;
+int Error::leds[] = {DEBUG_LED_1, DEBUG_LED_2, DEBUG_LED_3};
+int Error::clean = 1;
+int Error::accumulated[8];
 
 bool Error::init()
 {
+    memset(accumulated, 0, 8 * sizeof(int));
+
     pinMode(DEBUG_LED_1, OUTPUT);
     pinMode(DEBUG_LED_2, OUTPUT);
     pinMode(DEBUG_LED_3, OUTPUT);
@@ -23,8 +19,24 @@ bool Error::init()
     return true;
 }
 
-void Error::display(errcode_t ec, errtype_t type)
+void Error::reset(int ec)
 {
+    int code = (int)ec;
+    b0 = (code >> 0) & 0x1;
+    b1 = (code >> 1) & 0x1;
+    b2 = (code >> 2) & 0x1;
+    off();
+}
+
+void Error::display(int ec, errtype_t type)
+{
+    clean = 0;
+
+    if (type == FATAL)
+    {
+        accumulated[ec] = 1;
+    }
+
     int code = (int)ec;
     b0 = (code >> 0) & 0x1;
     b1 = (code >> 1) & 0x1;
@@ -33,19 +45,19 @@ void Error::display(errcode_t ec, errtype_t type)
     if (type == WARN)
     {
         on();
-        delay(250);
-        off();
+        //delay(ERROR_DELAY);
+        //off();
+        //delay(ERROR_DELAY);
     }
     else if (type == FATAL)
     {
-        on();
-        delay(500);
-        off();
-        delay(500);
-        on();
-        delay(500);
-        off();
-        delay(500);
+        for (int i=0; i < 2; i++)
+        {
+            on();
+            delay(ERROR_DELAY * 2);
+            off();
+            delay(ERROR_DELAY * 2);
+        }
     }
     
 }
@@ -62,4 +74,36 @@ void Error::off()
     digitalWrite(DEBUG_LED_1, LOW);
     digitalWrite(DEBUG_LED_2, LOW);
     digitalWrite(DEBUG_LED_3, LOW);
+}
+
+void Error::summary()
+{
+    for (int i = 0; i < 8; i++)
+    {
+        if (!accumulated[i])
+        {
+            continue;
+        }
+        display(i, FATAL);
+        delay(ERROR_DELAY * 4);
+    }
+}
+
+void Error::success()
+{
+    if (!clean) return;
+    int last = 2;
+    int cur = 0;
+    for (int i = 0; i < 10 * 3; i++)
+    {
+        cur = i % 3;
+
+        digitalWrite(leds[last], LOW);
+        digitalWrite(leds[cur], HIGH);
+        delay(ERROR_DELAY / 2);
+
+        last = cur;
+    }
+
+    digitalWrite(leds[cur], LOW);
 }

@@ -1,4 +1,6 @@
+#include "board.hpp"
 #include "Logger.hpp"
+#include "Error.hpp"
 
 Logger::Logger() :
     num_sensors(0)
@@ -10,19 +12,25 @@ Logger::~Logger() {}
 
 bool Logger::init()
 {
-    generateFilename();  // Generate unique log filename
-    Serial.printf("filename = %s", filename);
+    generateFilename();
+    
     int i;
-    for (i = 0; i < 1000; ++i)
+    for (i = 0; i < CONN_ATTEMPTS; ++i)
     {
+        Error::reset(LOG_INIT);
         int status = SD.begin(BUILTIN_SDCARD);
         if (status)
         {
             break;
         }
-        Serial.println("cannot init sd");
+        Error::display(LOG_INIT, WARN);
+        delay(CONN_DELAY);
     }
-    delay(1000); // replace with loop
+    if (i == 10)
+    {
+        Error::display(LOG_INIT, FATAL);
+    }
+
     handle = SD.open(filename, FILE_WRITE);
 
     return true;

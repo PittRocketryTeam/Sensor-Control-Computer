@@ -8,6 +8,9 @@
 #define ALTIMETER_SDA 18
 #define IMU_ADDR 0X28
 
+#define CONN_ATTEMPTS 10
+#define CONN_DELAY 100
+
 /* LAUNCH DETECT */
 
 #define PEOPLE 2
