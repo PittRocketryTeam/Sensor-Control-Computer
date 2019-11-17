@@ -1,17 +1,5 @@
 #include "XBeePro.hpp"
-
-//Initiate objects  
-XBee xbee_pro = XBee(); 
-XBeeResponse response = XBeeResponse();
-uint8_t *payload; 
-Tx16Request tx16 = Tx16Request(0x1874, payload, sizeof(struct Data)); 
-Rx16Response rx16 = Rx16Response();
-Rx64Response rx64 = Rx64Response();
-TxStatusResponse txStatus = TxStatusResponse();
-//Testing idk
-int statusLed = 11;
-int errorLed = 12; 
-int dataLed = 10; 
+#include <HardwareSerial.h>
 
 //data and option 
 uint8_t data = 0; 
@@ -20,6 +8,20 @@ uint8_t option = 0;
 XBeePro::XBeePro() : 
     Transceiver()
 {
+        //Initiate objects  
+    xbee_pro = XBee(); 
+    response = XBeeResponse();
+    payload = {0}; 
+    tx16 = Tx16Request(0x1874, payload, sizeof(struct Data)); 
+    rx16 = Rx16Response();
+    rx64 = Rx64Response();
+    txStatus = TxStatusResponse();
+
+}
+
+
+XBeePro::~XBeePro()
+{
 
 }
 
@@ -27,7 +29,7 @@ bool XBeePro::init()
 {
     response.init(); //This should init things
         //Check the status code 
-
+    Serial1.begin(9600);
     if(response.getErrorCode() == NO_ERROR) {
         Serial.println("Xbee_pro init is succcessful.\n");
         return true;
@@ -43,7 +45,9 @@ std::vector<float> XBeePro::receive()
 {
     std::vector<float> ret(1, 0);
     xbee_pro.readPacket(); //Read the packet 
+   // Serial.println("XBP read Packet");
     if(xbee_pro.getResponse().isAvailable()){ 
+        Serial.println("XBP is avaliable");
         if(xbee_pro.getResponse().getApiId() == RX_16_RESPONSE){
                 //Recieved a 16 bit message 
                 xbee_pro.getResponse().getRx16Response(rx16); 
@@ -66,22 +70,17 @@ std::vector<float> XBeePro::receive()
     return ret;
 }
 
-bool XBeePro::transmit(Data data)
+bool XBeePro::transmit(int data)
 {
-    //Just send the timestamp data for now 
+    //Just send the timestamp data for now
     payload = (uint8_t *)&data;
     xbee_pro.send(tx16);
     return false;
 }
 
 void XBeePro::enable()
-{
-    //Setup
-    pinMode(statusLed, OUTPUT);
-    pinMode(errorLed, OUTPUT); 
-    pinMode(dataLed,  OUTPUT);
-    Serial.begin(9600); 
-    xbee_pro.setSerial(Serial); 
+{ 
+    xbee_pro.setSerial(Serial1); 
     response.reset(); 
 }
 

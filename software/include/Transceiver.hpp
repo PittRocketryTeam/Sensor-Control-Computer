@@ -28,7 +28,7 @@ class Transceiver
         /*
          * TODO: Add description
          */
-        virtual bool transmit(Data data) = 0;
+        virtual bool transmit(int data) = 0;
 
         /*
          * TODO: Add description

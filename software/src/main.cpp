@@ -11,7 +11,7 @@
 #include <Metro.h>
 
 Logger logger;
-
+XBeePro XBP; 
 GPS* gps;
 IMU* imu0;
 Altimeter* altimeter;
@@ -28,6 +28,11 @@ void setup()
         ; // wait for serial port to connect. Needed for native USB.
     }
     
+    //if(XBP.init())
+     //   Serial.println("Xbee Pro successfully initiated.");  
+
+   // XBP.enable(); 
+   Serial1.begin(9600);
     sensors.push_back(gps);
     // sensors.push_back(imu0);
     sensors.push_back(altimeter);
@@ -45,6 +50,8 @@ void setup()
 void loop()
 {
     // logger.log();
-
-    delay(1000);
+    //XBP.receive();  
+    Serial1.println("hi"); 
+    Serial1.flush();
+    delay(500);
 }
