@@ -102,7 +102,7 @@ typedef struct PhotocellData
 */
 typedef struct Data
 {
-    long timestamp;
+    long int timestamp;
     AltimeterData altimeterData;
     GpsData gpsData;
     HealthData healthData;

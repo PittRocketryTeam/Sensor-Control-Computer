@@ -113,29 +113,37 @@ Data GPS::poll(Data data)
     // int altitude = 0; 
     // int rssi = 0;  
 
-    // read data from the GPS in the 'main loop'
-    char c = gps->read();
-    // if you want to debug, this is a good time to do it!
-    if (GPSECHO)
-    {
-        if (c) 
-        {
-            Serial.print(c);
-        }
-        
-        // if a sentence is received, we can check the checksum, parse it...
-        if (gps->newNMEAreceived())
-        {
-            // a tricky thing here is if we print the NMEA sentence, or data
-            // we end up not listening and catching other sentences!
-            // so be very wary if using OUTPUT_ALLDATA and trying to print out data
-            Serial.println(gps->lastNMEA()); // this also sets the newNMEAreceived() flag to false
-        }
-        
-        if (!gps->parse(gps->lastNMEA())) // this also sets the newNMEAreceived() flag to false
-        {
-            return data; // we can fail to parse a sentence in which case we should just wait for another
-        }
+      // read data from the GPS in the 'main loop'
+  char c = gps->read();
+  // if you want to debug, this is a good time to do it!
+  if (GPSECHO)
+    if (c) Serial.print(c);
+  // if a sentence is received, we can check the checksum, parse it...
+  if (gps->newNMEAreceived()) {
+    // a tricky thing here is if we print the NMEA sentence, or data
+    // we end up not listening and catching other sentences!
+    // so be very wary if using OUTPUT_ALLDATA and trying to print out data
+    Serial.println(gps->lastNMEA()); // this also sets the newNMEAreceived() flag to false
+    if (!gps->parse(gps->lastNMEA())) // this also sets the newNMEAreceived() flag to false
+      return data; // we can fail to parse a sentence in which case we should just wait for another
+  }
+  // if millis() or timer wraps around, we'll just reset it
+  if (timer > millis()) timer = millis();
+
+  // approximately every 2 seconds or so, print out the current stats
+  if (millis() - timer > 2000) {
+    timer = millis(); // reset the timer
+    Serial.printf("\nTime: ");
+    if (gps->hour < 10) { Serial.print('0'); }
+    Serial.print(gps->hour, DEC); Serial.print(':');
+    if (gps->minute < 10) { Serial.print('0'); }
+    Serial.print(gps->minute, DEC); Serial.print(':');
+    if (gps->seconds < 10) { Serial.print('0'); }
+    Serial.print(gps->seconds, DEC); Serial.print('.');
+    if (gps->milliseconds < 10) {
+      Serial.print("00");
+    } else if (gps->milliseconds > 9 && gps->milliseconds < 100) {
+      Serial.print("0");
     }
     // if millis() or timer wraps around, we'll just reset it
     if (timer > millis()) timer = millis();

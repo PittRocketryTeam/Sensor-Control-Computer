@@ -7,6 +7,7 @@
 #include <SPI.h> 
 #include "Time.h"
 #include "SdFat.h"
+#include "TimeLib.h"
 
 #define BUILTIN_SDCARD 254
 #define MAX_SENSORS 20
@@ -57,11 +58,17 @@ class Logger
 
         virtual bool writeToMemory(Data);
 
+        static time_t getTeensy3Time();
+
         /**
          * Sensors to log data from.
          */
         Sensor* sensors[MAX_SENSORS];
         int num_sensors;
+
+        // Timer variables
+        time_t current_time;
+        bool RTC_set_successfully;
 
         /**
          * Logfile name.

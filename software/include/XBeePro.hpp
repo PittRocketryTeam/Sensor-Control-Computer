@@ -13,9 +13,19 @@ class XBeePro : Transceiver
 
         bool init();
         std::vector<float> receive();
-        bool transmit(Data data);
+        bool transmit(int data);
         void enable();
         void disable();
+    private:
+        //Initiate objects  
+        XBee xbee_pro; 
+        XBeeResponse response;
+        uint8_t *payload; 
+        Tx16Request tx16; 
+        Rx16Response rx16;
+        Rx64Response rx64;
+        TxStatusResponse txStatus;
+
 };
 
 #endif
