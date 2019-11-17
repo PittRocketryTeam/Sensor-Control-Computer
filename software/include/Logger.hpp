@@ -1,3 +1,4 @@
+  
 #ifndef __LOGGER_HPP__
 #define __LOGGER_HPP__
 
@@ -6,8 +7,10 @@
 #include <SPI.h> 
 #include "Time.h"
 #include "SdFat.h"
+#include "TimeLib.h"
 
 #define BUILTIN_SDCARD 254
+#define MAX_SENSORS 200
 
 class Logger
 {
@@ -28,17 +31,16 @@ class Logger
         virtual void addSensor(Sensor* sensor);
 
         /**
-         * Add a vector of sensors to the logger's list of sensors.
-        */
-        virtual void addSensors(std::vector<Sensor*> sens);
-
-        /**
          * Reads from each sensor and writes the timestamped data to the disk. 
          * Returns true if data was successfully written, false if not (either because
          * the number of bytes that should have been written to the disk was not written
          * or because the micro SD couldn't be opened).
          */
         virtual bool log();
+
+        void reopen();
+        void close();
+        void flush();
 
         SdFat SD;
 
@@ -50,21 +52,30 @@ class Logger
          * 
          * Example log filename: Monday_10-07-2019_03:26:41.log
         */
-        virtual void generateFilename(char filename[]);
+        virtual void generateFilename();
 
         virtual Data readDataFromSensors();
 
-        virtual bool writeToMemory(Data data);
+        virtual bool writeToMemory(Data);
+
+        static time_t getTeensy3Time();
 
         /**
          * Sensors to log data from.
          */
-        std::vector<Sensor*> sensors;
+        Sensor* sensors[MAX_SENSORS];
+        int num_sensors;
+
+        // Timer variables
+        time_t current_time;
+        bool RTC_set_successfully;
 
         /**
          * Logfile name.
         */
         char filename[128];
+        char buffer[1000];
+        File32 handle;
 };
 
 #endif

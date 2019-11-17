@@ -2,8 +2,8 @@
 #include "Adafruit_BMP3XX.h"
 #include "bmp3.h"
 
-#define SCL 19 
-#define SDA 18
+//#define SCL 19
+//#define SDA 18
 
 Adafruit_BMP3XX bmp;//inits for i2c - defaults to 0x77 address and "Wire"
 struct bmp3_dev* bmp_dev;

@@ -1,57 +1,110 @@
 #include <Arduino.h>
-
+#include "Data.hpp"
+#include "Altimeter.hpp"
 #include "GPS.hpp"
 #include "IMU.hpp"
-#include "Altimeter.hpp"
 #include "Logger.hpp"
-#include "Photocell.hpp"
-#include "XBeePro.hpp"
-#include "Rfm95w.hpp"
-#include "Health.hpp"
-#include <Metro.h>
+#include "Metro.h"
 
+// IMU gyro(true);
+// Altimeter alt;
+GPS gps;
 Logger logger;
-XBeePro XBP; 
-GPS* gps;
-IMU* imu0;
-Altimeter* altimeter;
-Photocell* photocell;
-Health* health;
+// AnalogDevices ad;
+//LaunchDetect launchDetect;
 
-std::vector<Sensor*> sensors;
+Data state;
+
+Metro log_flush;
+
+int mode;
+int lastmode;
+int swtch = 0;
+
+void ready();
+void armed();
+
 void setup()
-{    
-    Serial.begin(9600);
+{
+    Serial1.begin(9600); 
+    delay(1000);
 
-    while (!Serial)
-    {
-        ; // wait for serial port to connect. Needed for native USB.
-    }
-    
-    //if(XBP.init())
-     //   Serial.println("Xbee Pro successfully initiated.");  
+    log_flush.setInterval(5000);
 
-   // XBP.enable(); 
-   Serial1.begin(9600);
-    sensors.push_back(gps);
-    // sensors.push_back(imu0);
-    sensors.push_back(altimeter);
-    sensors.push_back(photocell);
-    sensors.push_back(health);
-
-    for (Sensor* s : sensors)
-    {
-        logger.addSensor(s);
-    }
-
+    // Initialize sensors and logger
+    gps.init();
     logger.init();
+
+    logger.addSensor(&gps);
 }
 
 void loop()
 {
-    // logger.log();
-    //XBP.receive();  
     Serial1.println("hi"); 
-    Serial1.flush();
-    delay(500);
+    Serial1.flush(); 
+    
+    mode = 0;
+    lastmode = mode;
+
+    if (lastmode != mode)
+    {
+        digitalWrite(13, 1);
+        delay(100);
+        digitalWrite(13, 0);
+        delay(100);
+        swtch = 1;
+    }
+
+    if (mode == 1)
+    {
+        ready();
+    }
+    else if (mode == 0)
+    {
+        armed();
+    }
+
+    if (log_flush.check())
+    {
+        digitalWrite(13, 1);
+        logger.flush();
+        digitalWrite(13, 0);
+    }
+}
+
+void ready()
+{
+    if (swtch)
+    {
+        //logger.close();
+        swtch = 0;
+    }
+}
+
+void armed()
+{
+    if (swtch)
+    {
+        // digitalWrite(13, 1);
+        // delay(100);
+        // digitalWrite(13, 0);
+        // delay(100);
+        // digitalWrite(13, 1);
+        // delay(100);
+        // digitalWrite(13, 0);
+        // delay(100);
+        // digitalWrite(13, 1);
+        // delay(100);
+        // digitalWrite(13, 0);
+        // delay(100);
+        logger.reopen();
+        swtch = 0;
+    }
+
+    state = gps.poll(state);
+
+    Serial.printf("Logging\n");
+    logger.log();
+
+    delay(1000);
 }
