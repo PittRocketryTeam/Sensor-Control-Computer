@@ -133,7 +133,7 @@ Data GPS::poll(Data data)
   // approximately every 2 seconds or so, print out the current stats
   if (millis() - timer > 2000) {
     timer = millis(); // reset the timer
-    Serial.print("\nTime: ");
+    Serial.printf("\nTime: ");
     if (gps->hour < 10) { Serial.print('0'); }
     Serial.print(gps->hour, DEC); Serial.print(':');
     if (gps->minute < 10) { Serial.print('0'); }

@@ -1,16 +1,14 @@
 #include <Arduino.h>
 #include "Data.hpp"
 #include "Altimeter.hpp"
+#include "GPS.hpp"
 #include "IMU.hpp"
 #include "Logger.hpp"
 #include "Metro.h"
-// #include "AnalogDevices.hpp"
-//#include "LaunchDetect.hpp"
 
-//#define NO_CATCHUP
-
-IMU gyro(true);
-Altimeter alt;
+// IMU gyro(true);
+// Altimeter alt;
+GPS gps;
 Logger logger;
 // AnalogDevices ad;
 //LaunchDetect launchDetect;
@@ -28,38 +26,22 @@ void armed();
 
 void setup()
 {
-    pinMode(13, OUTPUT);
-    pinMode(33, INPUT_PULLUP);
-
-    digitalWrite(13, HIGH);
-
-    //delay(1000);
-
     Serial.begin(9600);
     delay(1000);
 
     log_flush.setInterval(5000);
 
     // Initialize sensors and logger
-    gyro.init();
-    alt.init();
-    alt.setBaselinePressure();
+    gps.init();
     logger.init();
-    // ad.init();
-    //launchDetect.init();
 
-    logger.addSensor(&gyro);
-    logger.addSensor(&alt);
-    // logger.addSensor(&ad);
-    //logger.addSensor(&launchDetect);
-
-    digitalWrite(13, LOW);
+    logger.addSensor(&gps);
 }
 
 void loop()
 {
+    mode = 0;
     lastmode = mode;
-    mode = digitalRead(33);
 
     if (lastmode != mode)
     {
@@ -76,7 +58,6 @@ void loop()
     }
     else if (mode == 0)
     {
-        //Serial.println("armed");
         armed();
     }
 
@@ -101,33 +82,26 @@ void armed()
 {
     if (swtch)
     {
-        digitalWrite(13, 1);
-        delay(100);
-        digitalWrite(13, 0);
-        delay(100);
-        digitalWrite(13, 1);
-        delay(100);
-        digitalWrite(13, 0);
-        delay(100);
-        digitalWrite(13, 1);
-        delay(100);
-        digitalWrite(13, 0);
-        delay(100);
-        //logger.reopen();
+        // digitalWrite(13, 1);
+        // delay(100);
+        // digitalWrite(13, 0);
+        // delay(100);
+        // digitalWrite(13, 1);
+        // delay(100);
+        // digitalWrite(13, 0);
+        // delay(100);
+        // digitalWrite(13, 1);
+        // delay(100);
+        // digitalWrite(13, 0);
+        // delay(100);
+        logger.reopen();
         swtch = 0;
     }
 
-    state = gyro.poll(state);
-    state = alt.poll(state);
-    // state = ad.poll(state);
-    //state = launchDetect.poll(state);
+    state = gps.poll(state);
 
-    /*Serial.print(state.imuData.euler_abs_orientation_x);
-    Serial.print(", ");
-    Serial.print(state.imuData.euler_abs_orientation_y);
-    Serial.print(", ");
-    Serial.print(state.imuData.euler_abs_orientation_z);
-    Serial.println();*/
-
+    Serial.printf("Logging\n");
     logger.log();
+
+    delay(1000);
 }
