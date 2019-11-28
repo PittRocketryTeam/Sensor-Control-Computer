@@ -1,7 +1,7 @@
 #ifndef __DATA_HPP__
 #define __DATA_HPP__
 
-#include "Time.h"
+//#include "Time.h"
 
 // Data struct definitions for each sensor and for overall data struct.
 
@@ -25,10 +25,10 @@ typedef struct ImuData
     // float angular_velocity_y;
     // float angular_velocity_z;
 
-    // // Acceleration Vector (100Hz) Three axis of acceleration (gravity + linear motion) in m/s^2
-    // float acceleration_x;
-    // float acceleration_y;
-    // float acceleration_z;
+    // Acceleration Vector (100Hz) Three axis of acceleration (gravity + linear motion) in m/s^2
+    float acceleration_x;
+    float acceleration_y;
+    float acceleration_z;
 
     // // Magnetic Field Strength Vector (20Hz) Three axis of magnetic field sensing in micro Tesla (uT)
     // float magnetic_field_strength_x;
@@ -102,7 +102,7 @@ typedef struct PhotocellData
 */
 typedef struct Data
 {
-    time_t timestamp;
+    long int timestamp;
     AltimeterData altimeterData;
     GpsData gpsData;
     HealthData healthData;

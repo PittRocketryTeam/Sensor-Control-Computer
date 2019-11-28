@@ -1,9 +1,11 @@
 #ifndef ERROR_HPP
 #define ERROR_HPP
 
-#define DEBUG_LED_1 0
-#define DEBUG_LED_2 0
-#define DEBUG_LED_3 0
+#define DEBUG_LED_1 22
+#define DEBUG_LED_2 13
+#define DEBUG_LED_3 39
+
+#define ERROR_DELAY 200
 
 #include "Sensor.hpp"
 
@@ -13,18 +15,24 @@ typedef enum {WARN, FATAL} errtype_t;
 class Error
 {
 public:
-    Error();
-    ~Error();
 
-    bool init();
-    void display(errcode_t, errtype_t);
+    static bool init();
+    static void display(int, errtype_t);
+    static void reset(int);
+    static void summary();
+    static void success();
 
 private:
-    void on();
-    void off();
-    int b0;
-    int b1;
-    int b2;
+    static void on();
+    static void off();
+    static int b0;
+    static int b1;
+    static int b2;
+
+    static int leds[];
+
+    static int accumulated[8];
+    static int clean;
 };
 
 #endif /* ERROR_HPP */

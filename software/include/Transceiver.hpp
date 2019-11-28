@@ -35,7 +35,7 @@ class Transceiver
          * \param data the data struct to transmit
          * \return true if data was successfully transmitted, false otherwise
          */
-        virtual bool transmit(Data data) = 0;
+        virtual bool transmit(int data) = 0;
 
         /*
          * Enable the transceiver to transmit and receive.

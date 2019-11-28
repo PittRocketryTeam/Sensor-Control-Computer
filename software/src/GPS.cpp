@@ -2,7 +2,7 @@
 // #include "Adafruit_GPS.h"
 
 #define GPSECHO false
-uint32_t timer = millis();
+uint32_t timer = millis(); // USE METRO INSTEAD OF THIS
 
 
 GPS::GPS() : 
@@ -133,7 +133,7 @@ Data GPS::poll(Data data)
   // approximately every 2 seconds or so, print out the current stats
   if (millis() - timer > 2000) {
     timer = millis(); // reset the timer
-    Serial.print("\nTime: ");
+    Serial.printf("\nTime: ");
     if (gps->hour < 10) { Serial.print('0'); }
     Serial.print(gps->hour, DEC); Serial.print(':');
     if (gps->minute < 10) { Serial.print('0'); }
@@ -145,6 +145,39 @@ Data GPS::poll(Data data)
     } else if (gps->milliseconds > 9 && gps->milliseconds < 100) {
       Serial.print("0");
     }
+    // if millis() or timer wraps around, we'll just reset it
+    if (timer > millis()) timer = millis();
+
+    // approximately every 2 seconds or so, print out the current stats
+    if (millis() - timer > 2000)
+    {
+        timer = millis(); // reset the timer
+        Serial.print("\nTime: ");
+        if (gps->hour < 10)
+        {
+            Serial.print('0');
+        }
+        Serial.print(gps->hour, DEC); Serial.print(':');
+        if (gps->minute < 10)
+        {
+            Serial.print('0');
+        }
+        Serial.print(gps->minute, DEC); Serial.print(':');
+        if (gps->seconds < 10)
+        {
+            Serial.print('0');
+        }
+        Serial.print(gps->seconds, DEC); Serial.print('.');
+        if (gps->milliseconds < 10)
+        {
+            Serial.print("00");
+        } 
+        else if (gps->milliseconds > 9 && gps->milliseconds < 100)
+        {
+            Serial.print("0");
+        }
+    }
+
     // Serial.println(gps->milliseconds);
     // Serial.print("Date: ");
     // Serial.print(gps->day, DEC); Serial.print('/');
@@ -161,8 +194,7 @@ Data GPS::poll(Data data)
     //   Serial.print("Angle: "); Serial.println(gps->angle);
     //   Serial.print("Altitude: "); Serial.println(gps->altitude);
     //   Serial.print("Satellites: "); Serial.println((int)gps->satellites);
-    // }S
-  }
+    // }
 
     return read(data);
 }
