@@ -11559,9 +11559,9 @@ DIN A4, landscape with location and doc. field</description>
 <part name="P+8" library="supply1" deviceset="+5V" device=""/>
 <part name="R3" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k"/>
 <part name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k"/>
-<part name="LED1" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
-<part name="LED2" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
-<part name="LED3" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
+<part name="L1" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
+<part name="L2" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
+<part name="L3" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
 <part name="R5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k"/>
 <part name="U$2" library="microbuilder" deviceset="GND" device=""/>
 <part name="R1" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1M"/>
@@ -12308,15 +12308,15 @@ NASA Student Launch
 <attribute name="NAME" x="170.18" y="131.0386" size="1.778" layer="95"/>
 <attribute name="VALUE" x="170.18" y="126.238" size="1.778" layer="96"/>
 </instance>
-<instance part="LED1" gate="G$1" x="184.15" y="121.92" smashed="yes" rot="R90" grouprefs="LED_BANK1">
+<instance part="L1" gate="G$1" x="184.15" y="121.92" smashed="yes" rot="R90" grouprefs="LED_BANK1">
 <attribute name="NAME" x="188.722" y="125.476" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="188.722" y="127.635" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="LED2" gate="G$1" x="184.15" y="129.54" smashed="yes" rot="R90" grouprefs="LED_BANK1">
+<instance part="L2" gate="G$1" x="184.15" y="129.54" smashed="yes" rot="R90" grouprefs="LED_BANK1">
 <attribute name="NAME" x="188.722" y="133.096" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="188.722" y="135.255" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="LED3" gate="G$1" x="184.15" y="137.16" smashed="yes" rot="R90" grouprefs="LED_BANK1">
+<instance part="L3" gate="G$1" x="184.15" y="137.16" smashed="yes" rot="R90" grouprefs="LED_BANK1">
 <attribute name="NAME" x="188.722" y="140.716" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="188.722" y="142.875" size="1.778" layer="96" rot="R180"/>
 </instance>
@@ -12379,18 +12379,18 @@ NASA Student Launch
 <attribute name="NAME" x="106.68" y="121.92" size="1.778" layer="95"/>
 <attribute name="VALUE" x="106.68" y="124.46" size="1.778" layer="96"/>
 </instance>
-<instance part="R20" gate="G$1" x="78.74" y="88.9" smashed="yes" grouprefs="BATT_TEMP">
-<attribute name="VALUE" x="66.04" y="92.71" size="1.778" layer="96"/>
+<instance part="R20" gate="G$1" x="76.2" y="88.9" smashed="yes" grouprefs="BATT_TEMP">
+<attribute name="VALUE" x="63.5" y="92.71" size="1.778" layer="96"/>
 </instance>
-<instance part="U$59" gate="G$1" x="54.61" y="80.01" smashed="yes" grouprefs="BATT_TEMP">
-<attribute name="VALUE" x="53.086" y="77.47" size="1.27" layer="96"/>
+<instance part="U$59" gate="G$1" x="52.07" y="80.01" smashed="yes" grouprefs="BATT_TEMP">
+<attribute name="VALUE" x="50.546" y="77.47" size="1.27" layer="96"/>
 </instance>
-<instance part="+3V10" gate="G$1" x="90.17" y="93.98" smashed="yes" grouprefs="BATT_TEMP">
-<attribute name="VALUE" x="92.71" y="96.52" size="1.778" layer="96" rot="R180"/>
+<instance part="+3V10" gate="G$1" x="87.63" y="93.98" smashed="yes" grouprefs="BATT_TEMP">
+<attribute name="VALUE" x="90.17" y="96.52" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="R10" gate="G$1" x="62.23" y="88.9" smashed="yes" grouprefs="BATT_TEMP">
-<attribute name="NAME" x="58.42" y="90.3986" size="1.778" layer="95"/>
-<attribute name="VALUE" x="58.42" y="85.598" size="1.778" layer="96"/>
+<instance part="R10" gate="G$1" x="59.69" y="88.9" smashed="yes" grouprefs="BATT_TEMP">
+<attribute name="NAME" x="55.88" y="90.3986" size="1.778" layer="95"/>
+<attribute name="VALUE" x="55.88" y="85.598" size="1.778" layer="96"/>
 </instance>
 <instance part="R1" gate="G$1" x="148.59" y="88.9" smashed="yes" rot="R180" grouprefs="VOLTAGE">
 <attribute name="NAME" x="152.4" y="87.4014" size="1.778" layer="95" rot="R180"/>
@@ -12446,9 +12446,9 @@ NASA Student Launch
 <wire x1="189.23" y1="129.54" x2="193.04" y2="129.54" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <junction x="193.04" y="129.54" grouprefs="LED_BANK1"/>
 <wire x1="189.23" y1="121.92" x2="193.04" y2="121.92" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
-<pinref part="LED1" gate="G$1" pin="C"/>
-<pinref part="LED2" gate="G$1" pin="C"/>
-<pinref part="LED3" gate="G$1" pin="C"/>
+<pinref part="L1" gate="G$1" pin="C"/>
+<pinref part="L2" gate="G$1" pin="C"/>
+<pinref part="L3" gate="G$1" pin="C"/>
 <pinref part="U$2" gate="G$1" pin="GND"/>
 <junction x="193.04" y="121.92"/>
 </segment>
@@ -12475,8 +12475,8 @@ NASA Student Launch
 <segment>
 <pinref part="U$59" gate="G$1" pin="GND"/>
 <pinref part="R10" gate="G$1" pin="1"/>
-<wire x1="57.15" y1="88.9" x2="54.61" y2="88.9" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
-<wire x1="54.61" y1="88.9" x2="54.61" y2="82.55" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
+<wire x1="54.61" y1="88.9" x2="52.07" y2="88.9" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
+<wire x1="52.07" y1="88.9" x2="52.07" y2="82.55" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
 </segment>
 <segment>
 <pinref part="U$4" gate="G$1" pin="GND"/>
@@ -12498,20 +12498,20 @@ NASA Student Launch
 <segment>
 <wire x1="179.07" y1="121.92" x2="181.61" y2="121.92" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <pinref part="R3" gate="G$1" pin="2"/>
-<pinref part="LED1" gate="G$1" pin="A"/>
+<pinref part="L1" gate="G$1" pin="A"/>
 </segment>
 </net>
 <net name="N$8" class="0">
 <segment>
 <wire x1="179.07" y1="129.54" x2="181.61" y2="129.54" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <pinref part="R4" gate="G$1" pin="2"/>
-<pinref part="LED2" gate="G$1" pin="A"/>
+<pinref part="L2" gate="G$1" pin="A"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <wire x1="179.07" y1="137.16" x2="181.61" y2="137.16" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
-<pinref part="LED3" gate="G$1" pin="A"/>
+<pinref part="L3" gate="G$1" pin="A"/>
 <pinref part="R5" gate="G$1" pin="2"/>
 </segment>
 </net>
@@ -12555,9 +12555,9 @@ NASA Student Launch
 </segment>
 <segment>
 <pinref part="R20" gate="G$1" pin="1"/>
-<wire x1="83.82" y1="88.9" x2="90.17" y2="88.9" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
+<wire x1="81.28" y1="88.9" x2="87.63" y2="88.9" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
 <pinref part="+3V10" gate="G$1" pin="+3V3"/>
-<wire x1="90.17" y1="88.9" x2="90.17" y2="91.44" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
+<wire x1="87.63" y1="88.9" x2="87.63" y2="91.44" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
 </segment>
 <segment>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
@@ -12609,12 +12609,12 @@ NASA Student Launch
 <net name="BATT_T" class="0">
 <segment>
 <pinref part="R20" gate="G$1" pin="2"/>
-<wire x1="67.31" y1="88.9" x2="71.12" y2="88.9" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
+<wire x1="64.77" y1="88.9" x2="68.58" y2="88.9" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
 <pinref part="R10" gate="G$1" pin="2"/>
-<wire x1="71.12" y1="88.9" x2="73.66" y2="88.9" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
-<wire x1="71.12" y1="88.9" x2="71.12" y2="83.82" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
-<junction x="71.12" y="88.9" grouprefs="BATT_TEMP"/>
-<label x="71.12" y="81.28" size="1.778" layer="95" grouprefs="BATT_TEMP"/>
+<wire x1="68.58" y1="88.9" x2="71.12" y2="88.9" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
+<wire x1="68.58" y1="88.9" x2="68.58" y2="83.82" width="0.1524" layer="91" grouprefs="BATT_TEMP"/>
+<junction x="68.58" y="88.9" grouprefs="BATT_TEMP"/>
+<label x="68.58" y="81.28" size="1.778" layer="95" grouprefs="BATT_TEMP"/>
 </segment>
 </net>
 <net name="V_BATT" class="0">
