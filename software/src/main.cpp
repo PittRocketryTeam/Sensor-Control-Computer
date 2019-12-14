@@ -1,4 +1,6 @@
 #include <Arduino.h>
+#include "board.hpp"
+#include "Error.hpp"
 #include "Data.hpp"
 #include "Altimeter.hpp"
 #include "GPS.hpp"
@@ -24,43 +26,43 @@ void armed();
 
 void setup()
 {
-    Serial1.begin(9600); 
-    delay(1000);
+    Serial.begin(9600);
+    int i;
+    for (i = 0; i < CONN_ATTEMPTS; i++)
+    {
+        Error::display(SERIAL_INIT, WARN);
+        delay(CONN_DELAY);
+    }
+    if (i == CONN_ATTEMPTS)
+    {
+        Error::display(SERIAL_INIT, FATAL);
+    }
+
+    Serial1.begin(9600);
+    for (i = 0; i < CONN_ATTEMPTS; i++)
+    {
+        Error::display(SERIAL_INIT, WARN);
+        delay(CONN_DELAY);
+    }
+    if (i == CONN_ATTEMPTS)
+    {
+        Error::display(SERIAL_INIT, FATAL);
+    }
 
     log_flush.setInterval(5000);
 
-    // Initialize sensors and logger
+    // Initialize sensors
     gps.init();
-    logger.init();
 
+    // Initialize logger and add sensors
+    logger.init();
     logger.addSensor(&gps);
 }
 
 void loop()
 {
-    Serial1.println("hi"); 
-    Serial1.flush(); 
-    
-    mode = 0;
-    lastmode = mode;
-
-    if (lastmode != mode)
-    {
-        digitalWrite(13, 1);
-        delay(100);
-        digitalWrite(13, 0);
-        delay(100);
-        swtch = 1;
-    }
-
-    if (mode == 1)
-    {
-        ready();
-    }
-    else if (mode == 0)
-    {
-        armed();
-    }
+    Serial1.println("hi");
+    Serial1.flush();
 
     if (log_flush.check())
     {
@@ -68,41 +70,4 @@ void loop()
         logger.flush();
         digitalWrite(13, 0);
     }
-}
-
-void ready()
-{
-    if (swtch)
-    {
-        //logger.close();
-        swtch = 0;
-    }
-}
-
-void armed()
-{
-    if (swtch)
-    {
-        // digitalWrite(13, 1);
-        // delay(100);
-        // digitalWrite(13, 0);
-        // delay(100);
-        // digitalWrite(13, 1);
-        // delay(100);
-        // digitalWrite(13, 0);
-        // delay(100);
-        // digitalWrite(13, 1);
-        // delay(100);
-        // digitalWrite(13, 0);
-        // delay(100);
-        logger.reopen();
-        swtch = 0;
-    }
-
-    state = gps.poll(state);
-
-    Serial.printf("Logging\n");
-    logger.log();
-
-    delay(1000);
 }
