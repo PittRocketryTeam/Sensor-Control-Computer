@@ -109,6 +109,7 @@ class Adafruit_GPS : public Print{
 #if (defined(__AVR__) || defined(ESP8266)) && defined(USE_SW_SERIAL)
   Adafruit_GPS(SoftwareSerial *ser); // Constructor when using SoftwareSerial
 #endif
+  Adafruit_GPS();
   Adafruit_GPS(HardwareSerial *ser); // Constructor when using HardwareSerial
   Adafruit_GPS(TwoWire *theWire); // Constructor when using I2C
   virtual ~Adafruit_GPS() {}

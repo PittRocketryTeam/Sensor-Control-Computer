@@ -8,8 +8,6 @@
 #include "Logger.hpp"
 #include "Metro.h"
 
-// IMU gyro(true);
-// Altimeter alt;
 GPS gps;
 Logger logger;
 
@@ -26,19 +24,14 @@ void armed();
 
 void setup()
 {
+    digitalWrite(13, HIGH);
     Serial.begin(9600);
+    while (!Serial)
+    {
+        
+    }
+    digitalWrite(13, LOW);
     int i;
-    for (i = 0; i < CONN_ATTEMPTS; i++)
-    {
-        Error::display(SERIAL_INIT, WARN);
-        delay(CONN_DELAY);
-    }
-    if (i == CONN_ATTEMPTS)
-    {
-        Error::display(SERIAL_INIT, FATAL);
-    }
-
-    Serial1.begin(9600);
     for (i = 0; i < CONN_ATTEMPTS; i++)
     {
         Error::display(SERIAL_INIT, WARN);
@@ -61,13 +54,5 @@ void setup()
 
 void loop()
 {
-    Serial1.println("hi");
-    Serial1.flush();
-
-    if (log_flush.check())
-    {
-        digitalWrite(13, 1);
-        logger.flush();
-        digitalWrite(13, 0);
-    }
+    gps.poll(state);
 }

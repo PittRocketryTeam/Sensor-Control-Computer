@@ -27,7 +27,7 @@ class GPS : public Sensor
 
 
     private:
-        Adafruit_GPS* gps;
+        Adafruit_GPS gps;
         int my_time;
         float my_lat;
         int my_lat_direction;
