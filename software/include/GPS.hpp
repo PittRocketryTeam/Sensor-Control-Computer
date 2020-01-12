@@ -6,10 +6,6 @@
 #include <Wire.h>
 #include <Adafruit_GPS.h>
 #include "Sensor.hpp"
-#define GPSSerial Serial1
-
-
-#define VIN_PIN 0
 
 class GPS : public Sensor
 {

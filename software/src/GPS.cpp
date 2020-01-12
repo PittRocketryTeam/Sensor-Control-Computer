@@ -1,4 +1,6 @@
 #include "GPS.hpp"
+#include "board.hpp"
+#include "Error.hpp"
 
 #define GPSECHO false
 
@@ -24,27 +26,36 @@ GPS::~GPS()
 
 bool GPS::init()
 {
-    Serial.println("Initializing GPS");
+    pinMode(GPS_ENABLE, OUTPUT);
 
-    gps = Adafruit_GPS(&Serial2);
+    gps = Adafruit_GPS(&GPS_SERIAL);
 
     // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
-    gps.begin(9600);
+    int err = 0;
+    while (!gps.begin(9600))
+    {
+        Error::display(GPS_INIT, WARN);
+        err++;
+        delay(100);
+
+        if (err > 10)
+        {
+            Error::display(GPS_INIT, FATAL);
+            break;
+        }
+    }
+    
     // uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
     gps.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
+    
     // uncomment this line to turn on only the "minimum recommended" data
     //gps.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCONLY);
-    // For parsing data, we don't suggest using anything but either RMC only or RMC+GGA since
-    // the parser doesn't care about other sentences at this time
+
     // Set the update rate
     gps.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ); // 1 Hz update rate
-    // For the parsing code to work nicely and have time to sort thru the data, and
-    // print it out we don't suggest using anything higher than 1 Hz
 
     // Request updates on antenna status, comment out to keep quiet
     gps.sendCommand(PGCMD_ANTENNA);
-
-    delay(1000);
 
     return true;
 }
@@ -89,21 +100,10 @@ Data GPS::poll(Data data)
 
 void GPS::enable()
 {
-
-    Serial.println("GPS enabled.");
-
-    // gps.wakeup();
-
-    digitalWrite(VIN_PIN, HIGH);
+    digitalWrite(GPS_ENABLE, HIGH);
 }
 
 void GPS::disable()
 {
-    // pin is pulled to ground, it will turn off the GPS module
-    // if you disable it, you will lose your fix and it will
-    // take a long time to get fix back if you dont have backup battery
-
-    // gps.standby();
-
-    digitalWrite(VIN_PIN, LOW);
+    digitalWrite(GPS_ENABLE, LOW);
 }
