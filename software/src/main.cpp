@@ -8,32 +8,38 @@
 #include "Logger.hpp"
 #include "Metro.h"
 
+#define MODE_IDLE 0
+#define MODE_STARTUP 1
+#define MODE_FLIGHT 2
+
 GPS gps;
 Logger logger;
-
 Data state;
-
 Metro log_flush;
+Metro txrx;
 
-int mode;
-int lastmode;
-int swtch = 0;
+static uint8_t mode = 0;
+static uint8_t transition = 1;
 
-void ready();
-void armed();
+void idle();
+void idle_transition();
+
+void startup();
+void startup_transition();
+
+void flight();
+void flight_transition();
 
 void setup()
 {
-    digitalWrite(13, HIGH);
     Serial.begin(9600);
-    while (!Serial)
-    {
-        
-    }
-    digitalWrite(13, LOW);
     int i;
     for (i = 0; i < CONN_ATTEMPTS; i++)
     {
+        if (Serial)
+        {
+            break;
+        }
         Error::display(SERIAL_INIT, WARN);
         delay(CONN_DELAY);
     }
@@ -41,8 +47,6 @@ void setup()
     {
         Error::display(SERIAL_INIT, FATAL);
     }
-
-    log_flush.setInterval(5000);
 
     // Initialize sensors
     gps.init();
@@ -54,5 +58,86 @@ void setup()
 
 void loop()
 {
-    gps.poll(state);
+    if (transition)
+    {
+        transition = 0;
+        switch(mode)
+        {
+            case MODE_IDLE:
+            idle_transition();
+            break;
+
+            case MODE_STARTUP:
+            startup_transition();
+            break;
+
+            case MODE_FLIGHT:
+            flight_transition();
+            break;
+        }
+        return;
+    }
+
+    switch(mode)
+    {
+        case MODE_IDLE:
+            idle();
+            break;
+
+            case MODE_STARTUP:
+            startup();
+            break;
+
+            case MODE_FLIGHT:
+            flight();
+            break;
+    }
+
+    if (log_flush.check())
+    {
+        logger.flush();
+    }
+
+    if (txrx.check())
+    {
+        // transmit and recv
+    }
+}
+
+void idle()
+{
+    // do nothing
+}
+
+void idle_transition()
+{
+    // disable everything except GPS
+
+    // set timers
+    log_flush.setInterval(60000);
+    txrx.setInterval(2000);
+}
+
+void startup()
+{
+    // run launch detect
+}
+
+void startup_transition()
+{
+    // enable all sensors
+
+    // set timers
+    log_flush.setInterval(5000);
+    txrx.setInterval(500);
+}
+
+void flight_transition()
+{
+    
+}
+
+void flight()
+{
+    // run apogee detect, land detect, approx landing coords
 }
