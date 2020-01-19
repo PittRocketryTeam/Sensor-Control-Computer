@@ -6,10 +6,6 @@
 #include <Wire.h>
 #include <Adafruit_GPS.h>
 #include "Sensor.hpp"
-#define GPSSerial Serial1
-
-
-#define VIN_PIN 0
 
 class GPS : public Sensor
 {
@@ -27,7 +23,7 @@ class GPS : public Sensor
 
 
     private:
-        Adafruit_GPS* gps;
+        Adafruit_GPS gps;
         int my_time;
         float my_lat;
         int my_lat_direction;

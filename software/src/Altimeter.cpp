@@ -10,9 +10,15 @@ struct bmp3_dev* bmp_dev;
 float initAlt = -1;
 
 Altimeter::Altimeter() :
-    Sensor(){}
+    Sensor()
+{
 
-Altimeter::~Altimeter(){}
+}
+
+Altimeter::~Altimeter()
+{
+
+}
 
 bool Altimeter::init()
 {
@@ -24,7 +30,9 @@ bool Altimeter::init()
     {
         Serial.println("Couldn't init altimeter!");
         return false;
-    } else {
+    } 
+    else
+    {
         Serial.println("Altimeter init successful");
         return true;
     }

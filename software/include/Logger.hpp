@@ -42,8 +42,6 @@ class Logger
         void close();
         void flush();
 
-        SdFat SD;
-
     private:
 
         /**
@@ -59,6 +57,8 @@ class Logger
         virtual bool writeToMemory(Data);
 
         static time_t getTeensy3Time();
+
+        SdFat SD;
 
         /**
          * Sensors to log data from.

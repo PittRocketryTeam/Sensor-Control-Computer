@@ -539,6 +539,16 @@ Adafruit_GPS::Adafruit_GPS(SoftwareSerial *ser)
     @param ser Pointer to a HardwareSerial object
 */
 /**************************************************************************/
+Adafruit_GPS::Adafruit_GPS()
+{
+  //common_init();
+}
+/**************************************************************************/
+/*!
+    @brief Constructor when using HardwareSerial
+    @param ser Pointer to a HardwareSerial object
+*/
+/**************************************************************************/
 Adafruit_GPS::Adafruit_GPS(HardwareSerial *ser) {
   common_init();  // Set everything to common state, then...
   gpsHwSerial = ser; // ...override gpsHwSerial with value passed.
