@@ -1,11 +1,23 @@
 -IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/include
 -IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/src
--IC:/Users/Joseph Gao/.platformio/lib/Adafruit BNO055_ID506
--IC:/Users/Joseph Gao/.platformio/lib/Adafruit BNO055_ID506/utility
+-IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/lib/Adafruit_GPS
+-IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/SoftwareSerial
+-IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/lib/RadioHead-master
+-IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/lib/Metro
+-IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Time
+-IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/lib/xbee-arduino-master
+-IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/lib/SdFat-beta-master/src
+-IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/lib/Adafruit_BMP3XX-master
+-IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/lib/Adafruit_BNO055-master
+-IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/lib/Adafruit_BNO055-master/utility
+-IC:/Users/Joseph Gao/Documents/rocketry/Sensor-Control-Computer/software/lib/Adafruit_Sensor-master
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Wire
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility
--IC:/Users/Joseph Gao/.platformio/lib/Adafruit Unified Sensor_ID31
+-IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/SPI
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/cores/teensy3
+-IC:/Users/Joseph Gao/.platformio/lib/Adafruit BNO055_ID506
+-IC:/Users/Joseph Gao/.platformio/lib/Adafruit BNO055_ID506/utility
+-IC:/Users/Joseph Gao/.platformio/lib/Adafruit Unified Sensor_ID31
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/ADC
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_CC3000
@@ -70,7 +82,6 @@
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/ResponsiveAnalogRead/src
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/SD
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/SD/utility
--IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/SPI
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/SPIFlash
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/ST7565
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3
@@ -80,11 +91,9 @@
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Snooze
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Snooze/utility
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/SoftPWM
--IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/SoftwareSerial
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/TFT_ILI9163C
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Talkie
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/TeensyThreads
--IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/Time
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/TimeAlarms
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/TimerOne
 -IC:/Users/Joseph Gao/.platformio/packages/framework-arduinoteensy/libraries/TimerThree
@@ -109,7 +118,7 @@
 -IC:/Users/Joseph Gao/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/5.4.1/include
 -IC:/Users/Joseph Gao/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/5.4.1/include-fixed
 -IC:/Users/Joseph Gao/.platformio/packages/tool-unity
--DPLATFORMIO=40003
+-DPLATFORMIO=40100
 -D__MK66FX1M0__
 -DTEENSY36
 -DUSB_SERIAL
