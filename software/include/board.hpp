@@ -8,9 +8,6 @@
 #define ALTIMETER_SDA 18
 #define IMU_ADDR 0X28
 
-#define CONN_ATTEMPTS 10
-#define CONN_DELAY 100
-
 #define GPS_SERIAL Serial2
 #define GPS_ENABLE 0
 

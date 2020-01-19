@@ -1,10 +1,12 @@
 #include "IMU.hpp"
 #include "board.hpp"
+#include "Error.hpp"
 
-IMU::IMU(bool v = false)
+
+IMU::IMU()
 {
-    sensor = Adafruit_BNO055(55, IMU_ADDR);
-    verbose = v;
+    sensor = Adafruit_BNO055(55, IMU_ADDR, &Wire1);
+    verbose = false;
     ax = 0.0f;
     ay = 0.0f;
     az = 0.0f;
@@ -23,25 +25,28 @@ bool IMU::init()
 {
 
     int i;
-    for (i = 0; i < 10; ++i)
+    for (i = 0; i < CONN_ATTEMPTS; ++i)
     {
+        Error::on(IMU_INIT);
         if (sensor.begin())
         {
             break;
         }
+        
         if (VERBOSE)
         {
             Serial.println("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
         }
-        delay(100);
+        delay(CONN_DELAY);
+    }
+    Error::off();
+    if (i >= CONN_ATTEMPTS)
+    {
+        Serial.println("BAD");
+        Error::display(IMU_INIT, FATAL);
     }
 
     sensor.setExtCrystalUse(true);
-
-    if (VERBOSE)
-    {
-        Serial.println("BNO055 Initialized successfully!");
-    }
 
     enable();
 

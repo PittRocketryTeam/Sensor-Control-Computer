@@ -1,6 +1,7 @@
 #include "Altimeter.hpp"
 #include "Adafruit_BMP3XX.h"
 #include "bmp3.h"
+#include "Error.hpp"
 
 //#define SCL 19
 //#define SDA 18
@@ -22,20 +23,24 @@ Altimeter::~Altimeter()
 
 bool Altimeter::init()
 {
-    //Wire.setSCL(SCL);
-    //Wire.setSDA(SDA);
-    //Wire.beginOnPins(SCL, SDA);
-    Serial.println("initing");
-    if(!bmp.begin())
+    int i;
+    for (i=0; i < CONN_ATTEMPTS; i++)
     {
-        Serial.println("Couldn't init altimeter!");
-        return false;
-    } 
-    else
-    {
-        Serial.println("Altimeter init successful");
-        return true;
+        Error::on(ALT_INIT);
+        if (bmp.begin())
+        {
+            break;
+        }
+
+        delay(CONN_DELAY);
     }
+    Error::off();
+    if (i > CONN_ATTEMPTS)
+    {
+        Error::display(ALT_INIT, FATAL);
+    }
+
+    return true;
 }
 
 Data Altimeter::read(Data data)

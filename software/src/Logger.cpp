@@ -28,10 +28,12 @@ bool Logger::init()
         {
             break;
         }
-        Error::display(LOG_INIT, WARN);
+        Error::on(LOG_INIT);
         delay(CONN_DELAY);
     }
-    if (i == 10)
+
+    Error::off();
+    if (i == CONN_ATTEMPTS)
     {
         Error::display(LOG_INIT, FATAL);
     }

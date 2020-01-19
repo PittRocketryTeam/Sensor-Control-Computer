@@ -10,6 +10,8 @@
 
 GPS gps;
 Logger logger;
+IMU accl;
+Altimeter alt;
 
 Data state;
 
@@ -24,20 +26,23 @@ void armed();
 
 void setup()
 {
-    digitalWrite(13, HIGH);
+    Error::init();
+
     Serial.begin(9600);
-    while (!Serial)
-    {
-        
-    }
-    digitalWrite(13, LOW);
     int i;
     for (i = 0; i < CONN_ATTEMPTS; i++)
     {
-        Error::display(SERIAL_INIT, WARN);
+        if (Serial)
+        {
+            break;
+        }
+        Serial.println("SER BAD");
+        
+        Error::on(SERIAL_INIT);
         delay(CONN_DELAY);
     }
-    if (i == CONN_ATTEMPTS)
+    Error::off();
+    if (i >= CONN_ATTEMPTS)
     {
         Error::display(SERIAL_INIT, FATAL);
     }
@@ -47,9 +52,15 @@ void setup()
     // Initialize sensors
     gps.init();
 
+    accl.init();
+
+    alt.init();
+
     // Initialize logger and add sensors
     logger.init();
     logger.addSensor(&gps);
+
+    Error::summary();
 }
 
 void loop()
