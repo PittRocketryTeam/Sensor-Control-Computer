@@ -2,6 +2,7 @@
 #define __ALTIMETER_HPP__
 
 #include "Sensor.hpp"
+#include <Wire.h>
 
 class Altimeter : public Sensor
 {
@@ -16,6 +17,9 @@ class Altimeter : public Sensor
         void enable() override;
         void disable() override;
         void setBaselinePressure();
+
+    private:
+        
 };
 
 #endif

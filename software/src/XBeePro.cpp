@@ -12,11 +12,12 @@ XBeePro::XBeePro() :
     xbee_pro = XBee(); 
     response = XBeeResponse();
     payload = {0}; 
-    tx16 = Tx16Request(0x1874, payload, sizeof(struct Data)); 
-    rx16 = Rx16Response();
+    // 64-bit addressing: This is the SH + SL address of remote XBee
+    XBeeAddress64 addr64 = XBeeAddress64(0x0013a200, 0x4008b490);
+    // unless you have MY on the receiving radio set to FFFF, this will be received as a RX16 packet
+    tx64 = Tx64Request(addr64, payload, sizeof(payload));
     rx64 = Rx64Response();
     txStatus = TxStatusResponse();
-
 }
 
 
@@ -48,20 +49,17 @@ std::vector<float> XBeePro::receive()
    // Serial.println("XBP read Packet");
     if(xbee_pro.getResponse().isAvailable()){ 
         Serial.println("XBP is avaliable");
-        if(xbee_pro.getResponse().getApiId() == RX_16_RESPONSE){
-                //Recieved a 16 bit message 
-                xbee_pro.getResponse().getRx16Response(rx16); 
-                option = rx16.getOption(); 
-                data = rx16.getData(0); //Get the data from the beginning
+        if(xbee_pro.getResponse().getApiId() == RX_64_RESPONSE){
+                //Recieved a 64 bit message 
+                xbee_pro.getResponse().getRx64Response(rx64); 
+                option = rx64.getOption(); 
+                data = rx64.getData(0); //Get the data from the beginning
 
                 Serial.println("Data received... Here is data");
                 Serial.println(data); 
-                //I guess you flash the led to signal that you will be writing the message has been received 
-               // Serial.println("Recieved packet. Now writing...");
-               // analogWrite(dataLed, data);
         }
         else{
-                Serial.println("Did not receive packet. ERROR"); 
+                Serial.println("ERROR: Did not receive packet."); 
         }
     }
     else if(xbee_pro.getResponse().isError()){
@@ -70,11 +68,10 @@ std::vector<float> XBeePro::receive()
     return ret;
 }
 
-bool XBeePro::transmit(int data)
+bool XBeePro::transmit(Data data)
 {
-    //Just send the timestamp data for now
     payload = (uint8_t *)&data;
-    xbee_pro.send(tx16);
+    xbee_pro.send(tx64);
     return false;
 }
 

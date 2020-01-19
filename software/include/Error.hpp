@@ -1,11 +1,13 @@
 #ifndef ERROR_HPP
 #define ERROR_HPP
 
-#define DEBUG_LED_1 22
+#define DEBUG_LED_1 A22
 #define DEBUG_LED_2 13
 #define DEBUG_LED_3 39
 
 #define ERROR_DELAY 200
+#define CONN_ATTEMPTS 20
+#define CONN_DELAY 500
 
 #include "Sensor.hpp"
 
@@ -21,10 +23,12 @@ public:
     static void reset(int);
     static void summary();
     static void success();
+    static void on(int);
+    static void off();
 
 private:
     static void on();
-    static void off();
+    
     static int b0;
     static int b1;
     static int b2;

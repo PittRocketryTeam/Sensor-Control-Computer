@@ -14,6 +14,12 @@
 
 GPS gps;
 Logger logger;
+<<<<<<< HEAD
+IMU accl;
+Altimeter alt;
+
+=======
+>>>>>>> 2f6a9acaa0955287baf55afa4cd7b5e708fb8adf
 Data state;
 Metro log_flush;
 Metro txrx;
@@ -32,6 +38,8 @@ void flight_transition();
 
 void setup()
 {
+    Error::init();
+
     Serial.begin(9600);
     int i;
     for (i = 0; i < CONN_ATTEMPTS; i++)
@@ -40,10 +48,13 @@ void setup()
         {
             break;
         }
-        Error::display(SERIAL_INIT, WARN);
+        Serial.println("SER BAD");
+        
+        Error::on(SERIAL_INIT);
         delay(CONN_DELAY);
     }
-    if (i == CONN_ATTEMPTS)
+    Error::off();
+    if (i >= CONN_ATTEMPTS)
     {
         Error::display(SERIAL_INIT, FATAL);
     }
@@ -51,9 +62,15 @@ void setup()
     // Initialize sensors
     gps.init();
 
+    accl.init();
+
+    alt.init();
+
     // Initialize logger and add sensors
     logger.init();
     logger.addSensor(&gps);
+
+    Error::summary();
 }
 
 void loop()
