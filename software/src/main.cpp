@@ -13,18 +13,16 @@
 #define MODE_FLIGHT 2
 
 GPS gps;
-Logger logger;
-<<<<<<< HEAD
-IMU accl;
+IMU acc;
 Altimeter alt;
 
-=======
->>>>>>> 2f6a9acaa0955287baf55afa4cd7b5e708fb8adf
+Logger logger;
+
 Data state;
 Metro log_flush;
 Metro txrx;
 
-static uint8_t mode = 0;
+static uint8_t mode = 1;
 static uint8_t transition = 1;
 
 void idle();
@@ -62,13 +60,16 @@ void setup()
     // Initialize sensors
     gps.init();
 
-    accl.init();
+    acc.init();
 
     alt.init();
 
     // Initialize logger and add sensors
     logger.init();
     logger.addSensor(&gps);
+    logger.addSensor(&acc);
+    logger.addSensor(&gps);
+    logger.addSensor(&alt);
 
     Error::summary();
 }
@@ -137,7 +138,11 @@ void idle_transition()
 
 void startup()
 {
-    // run launch detect
+    state = alt.poll(state);
+    state = acc.poll(state);
+    state = gps.poll(state);
+
+    logger.writeToMemory(state);
 }
 
 void startup_transition()

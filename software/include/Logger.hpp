@@ -42,6 +42,8 @@ class Logger
         void close();
         void flush();
 
+        virtual bool writeToMemory(Data);
+
     private:
 
         /**
@@ -53,8 +55,6 @@ class Logger
         virtual void generateFilename();
 
         virtual Data readDataFromSensors();
-
-        virtual bool writeToMemory(Data);
 
         static time_t getTeensy3Time();
 
