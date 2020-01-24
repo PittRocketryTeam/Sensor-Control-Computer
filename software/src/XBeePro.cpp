@@ -13,7 +13,7 @@ XBeePro::XBeePro() :
     response = XBeeResponse();
     payload = {0}; 
     // 64-bit addressing: This is the SH + SL address of remote XBee
-    XBeeAddress64 addr64 = XBeeAddress64(0x0013a200, 0x41A59F7B); //Try 0x41895B16 (module 1) for SL or 0x41A59F7B for SL (module 2)
+    XBeeAddress64 addr64 = XBeeAddress64(0x0013a200, 0x41895B16); //Try 0x41895B16 (module 1) for SL or 0x41A59F7B for SL (module 2)
     // unless you have MY on the receiving radio set to FFFF, this will be received as a RX16 packet
     tx64 = Tx64Request(addr64, payload, sizeof(payload));
     rx64 = Rx64Response();
@@ -68,9 +68,11 @@ std::vector<float> XBeePro::receive()
     return ret;
 }
 
-bool XBeePro::transmit(Data data)
+bool XBeePro::transmit(int a)
 {
-    payload = (uint8_t *)&data;
+   // payload = (uint8_t *)&data;
+    int y = 4; 
+    payload = (uint8_t *)y;
     xbee_pro.send(tx64);
     return false;
 }

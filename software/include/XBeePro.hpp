@@ -13,7 +13,7 @@ class XBeePro : Transceiver
 
         bool init();
         std::vector<float> receive();
-        bool transmit(Data data);
+        bool transmit(int data);
         void enable();
         void disable();
     private:
