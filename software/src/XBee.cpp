@@ -1,19 +1,19 @@
-#include "XBeeP.hpp"
+#include "XBee.hpp"
 #include "string.h"
 
-XBeeP::XBeeP() {
-    Serial1.begin(9600);
+XBee::XBee() {
+    Serial4.begin(9600); //Serial4 is used for the PCB
 }
 
-XBeeP::~XBeeP() {}
+XBee::~XBee() {}
 
-void XBeeP::transmit()
+void XBee::transmit()
 {
-    Serial1.println(formattedData);
-    Serial1.flush();
+    Serial4.println(formattedData);
+    Serial4.flush();
 }
 
-void XBeeP::setCachedData(Data newData)
+void XBee::setCachedData(Data newData)
 {
     formattedData = "";
 
@@ -54,8 +54,8 @@ void XBeeP::setCachedData(Data newData)
     formattedData += String(newData.photocellData.brightness) + "\n";
 }
 
-Data XBeeP::receive() {
+Data XBee::receive() {
     Data newData;
-
+    //Ground control code will receive data i think 
     return newData;
 }

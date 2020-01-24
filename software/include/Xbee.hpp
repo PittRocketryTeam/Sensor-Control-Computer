@@ -4,15 +4,15 @@
 #include "Data.hpp"
 #include <Arduino.h>
 
-class XBeeP
+class XBee
 {
     private:
         String formattedData;
         Data cachedData;
 
     public:
-        XBeeP();
-        ~XBeeP();
+        XBee();
+        ~XBee();
         void transmit();
         void setCachedData(Data);
         Data receive();
