@@ -1,19 +1,19 @@
-#include "XBee.hpp"
+#include "XBeeP.hpp"
 #include "string.h"
 
-XBee::XBee() {
+XBeeP::XBeeP() {
     Serial1.begin(9600);
 }
 
-XBee::~XBee() {}
+XBeeP::~XBeeP() {}
 
-void XBee::transmit()
+void XBeeP::transmit()
 {
     Serial1.println(formattedData);
     Serial1.flush();
 }
 
-void XBee::setCachedData(Data newData)
+void XBeeP::setCachedData(Data newData)
 {
     formattedData = "";
 
@@ -54,7 +54,7 @@ void XBee::setCachedData(Data newData)
     formattedData += String(newData.photocellData.brightness) + "\n";
 }
 
-Data XBee::receive() {
+Data XBeeP::receive() {
     Data newData;
 
     return newData;
