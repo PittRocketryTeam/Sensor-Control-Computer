@@ -6,7 +6,7 @@
 #include "GPS.hpp"
 #include "IMU.hpp"
 #include "Logger.hpp"
-#include "Metro.h"
+#include "Timer.hpp"
 
 #define MODE_IDLE 0
 #define MODE_STARTUP 1
@@ -19,8 +19,8 @@ Altimeter alt;
 Logger logger;
 
 Data state;
-Metro log_flush;
-Metro txrx;
+Timer log_flush;
+Timer txrx;
 
 static uint8_t mode = 1;
 static uint8_t transition = 1;
@@ -72,6 +72,9 @@ void setup()
     logger.addSensor(&alt);
 
     Error::summary();
+
+    txrx.setInterval(1000);
+    log_flush.setInterval(1000);
 }
 
 void loop()
@@ -118,7 +121,7 @@ void loop()
 
     if (txrx.check())
     {
-        // transmit and recv
+        
     }
 }
 
@@ -132,7 +135,7 @@ void idle_transition()
     // disable everything except GPS
 
     // set timers
-    log_flush.setInterval(60000);
+    log_flush.setInterval(6000);
     txrx.setInterval(2000);
 }
 
@@ -151,7 +154,7 @@ void startup_transition()
 
     // set timers
     log_flush.setInterval(5000);
-    txrx.setInterval(500);
+    txrx.setInterval(1000);
 }
 
 void flight_transition()
