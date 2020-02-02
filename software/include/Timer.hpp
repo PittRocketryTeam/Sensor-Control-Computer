@@ -21,6 +21,6 @@ private:
     uint32_t delta;
     int32_t left;
     bool catchup;
-}
+};
 
 #endif /* TIMER_HPP */

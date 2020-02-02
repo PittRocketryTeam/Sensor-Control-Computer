@@ -1,16 +1,16 @@
-#include "XBee.hpp"
-#include "string.h"
+#include "Xbee.hpp"
+#include <cstring>
 
 XBee::XBee() {
-    Serial1.begin(9600);
+    Serial4.begin(9600); //Serial4 is used for the PCB
 }
 
 XBee::~XBee() {}
 
 void XBee::transmit()
 {
-    Serial1.println(formattedData);
-    Serial1.flush();
+    Serial4.println(formattedData);
+    Serial4.flush();
 }
 
 void XBee::setCachedData(Data newData)
@@ -56,6 +56,6 @@ void XBee::setCachedData(Data newData)
 
 Data XBee::receive() {
     Data newData;
-
+    //Ground control code will receive data i think 
     return newData;
 }

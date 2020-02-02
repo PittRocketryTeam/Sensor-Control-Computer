@@ -10,4 +10,4 @@ Current sensors:
 - Altimeter: [Adafruit BMP388](https://www.adafruit.com/product/3966) <br>
 - IMU: [Adafruit 9-DOF Absolute Orientation IMU Fusion Breakout - BNO055](https://www.adafruit.com/product/2472) <br>
 - Photocell: [CdS Photoresistor](https://www.adafruit.com/product/161) <br>
-- Transceiver: [Adafruit RFM95W LoRa Radio](https://www.adafruit.com/product/3072) <br>
+- Transceiver: [XBee Pro 900 HP](https://www.digikey.com/catalog/en/partgroup/xbee-pro-900hp/33082) <br>

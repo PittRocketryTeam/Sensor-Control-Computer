@@ -7,6 +7,7 @@
 #include "IMU.hpp"
 #include "Logger.hpp"
 #include "Timer.hpp"
+#include "Xbee.hpp"
 
 #define MODE_IDLE 0
 #define MODE_STARTUP 1
@@ -15,7 +16,7 @@
 GPS gps;
 IMU acc;
 Altimeter alt;
-
+XBee xbee;
 Logger logger;
 
 Data state;
@@ -121,7 +122,7 @@ void loop()
 
     if (txrx.check())
     {
-        
+        xbee.transmit();
     }
 }
 
@@ -145,6 +146,7 @@ void startup()
     state = acc.poll(state);
     state = gps.poll(state);
 
+    xbee.setCachedData(state);
     logger.writeToMemory(state);
 }
 
@@ -165,4 +167,10 @@ void flight_transition()
 void flight()
 {
     // run apogee detect, land detect, approx landing coords
+    state = alt.poll(state);
+    state = acc.poll(state);
+    state = gps.poll(state);
+
+    xbee.setCachedData(state);
+    logger.writeToMemory(state);
 }
