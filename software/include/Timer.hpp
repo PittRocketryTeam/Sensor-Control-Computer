@@ -13,6 +13,7 @@ public:
     void setCatchup(bool);
     bool check();
     void reset();
+    void start();
 
 private:
     uint32_t interval;

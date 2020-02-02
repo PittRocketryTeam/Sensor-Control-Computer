@@ -50,7 +50,7 @@ Data Altimeter::read(Data data)
 
     if(initAlt == -1) //case where initAlt isn't set -- haven't hit button on ground control yet to indicate we're ready to launch
     {
-        Serial.println("Cannot poll altitude --- ground pressure not yet set!");
+        //Serial.println("Cannot poll altitude --- ground pressure not yet set!");
     }
     else
     {
@@ -64,21 +64,21 @@ Data Altimeter::poll(Data data)
 {
     if(!bmp.performReading()) //assigns values to pressure and temperature
     {
-        Serial.println("Failed to perform reading :(");
+        //Serial.println("Failed to perform reading :(");
     }
 
     data.altimeterData.temperature = bmp.readTemperature();
     data.altimeterData.pressure = bmp.readPressure();
     if(initAlt == -1) //case where initAlt isn't set -- haven't hit button on ground control yet to indicate we're ready to launch
     {
-        Serial.println("Cannot poll altitude --- ground pressure not yet set!");
+        //Serial.println("Cannot poll altitude --- ground pressure not yet set!");
     }
     else
     {
         data.altimeterData.altitude = bmp.readAltitude(initAlt);
     }
     
-    Serial.printf("temp: %f\npressure: %f\nalt: %f\n", data.altimeterData.temperature, data.altimeterData.pressure, data.altimeterData.altitude);
+    //Serial.printf("temp: %f\npressure: %f\nalt: %f\n", data.altimeterData.temperature, data.altimeterData.pressure, data.altimeterData.altitude);
     
     return data;
 }
@@ -88,15 +88,15 @@ void Altimeter::enable()
     bmp_dev->settings.op_mode = BMP3_NORMAL_MODE;
     if(bmp3_set_op_mode(bmp_dev) != 0)
     {
-        Serial.println("Altimeter failed to enable");
+        //Serial.println("Altimeter failed to enable");
     }
 }
 
 void Altimeter::disable()
 {
     bmp_dev->settings.op_mode = BMP3_SLEEP_MODE;
-    if(bmp3_set_op_mode(bmp_dev) != 0)
-        Serial.println("Altimeter failed to disable");
+    if(bmp3_set_op_mode(bmp_dev) != 0);
+        //Serial.println("Altimeter failed to disable");
 }
 
 void Altimeter::setBaselinePressure()

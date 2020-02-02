@@ -23,7 +23,7 @@ Data state;
 Timer log_flush;
 Timer txrx;
 
-static uint8_t mode = 1;
+static uint8_t mode = MODE_STARTUP;
 static uint8_t transition = 1;
 
 void idle();
@@ -47,7 +47,6 @@ void setup()
         {
             break;
         }
-        Serial.println("SER BAD");
         
         Error::on(SERIAL_INIT);
         delay(CONN_DELAY);
@@ -56,6 +55,10 @@ void setup()
     if (i >= CONN_ATTEMPTS)
     {
         Error::display(SERIAL_INIT, FATAL);
+    }
+    else
+    {
+        Serial.println("SERIAL OK");
     }
 
     // Initialize sensors

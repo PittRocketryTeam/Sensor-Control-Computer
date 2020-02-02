@@ -17,6 +17,7 @@ Timer::~Timer()
 void Timer::setInterval(uint32_t iv)
 {
     interval = iv;
+    start();
     reset();
 }
 
@@ -28,7 +29,7 @@ void Timer::setCatchup(bool val)
 bool Timer::check()
 {
     now = millis();
-    delta = then - now;
+    delta = now - then;
     then = now;
 
     left -= delta;
@@ -52,4 +53,9 @@ void Timer::reset()
     {
         left = interval;
     }
+}
+
+void Timer::start()
+{
+    then = millis();
 }
