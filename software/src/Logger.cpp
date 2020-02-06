@@ -28,10 +28,12 @@ bool Logger::init()
         {
             break;
         }
-        Error::display(LOG_INIT, WARN);
+        Error::on(LOG_INIT);
         delay(CONN_DELAY);
     }
-    if (i == 10)
+
+    Error::off();
+    if (i == CONN_ATTEMPTS)
     {
         Error::display(LOG_INIT, FATAL);
     }
@@ -85,7 +87,7 @@ Data Logger::readDataFromSensors()
     }
 
     // Add timestamp
-    current_time = now();
+    current_time = millis();
     data.timestamp = (long int)current_time;  
     return data;                        
 }
@@ -97,7 +99,7 @@ bool Logger::writeToMemory(Data data)
         return false;
     }
 
-    handle.printf("%ld, ,%f,%f,%f, ,%f,%f,%f, , %f,%f,%f, ,%f,%f\n",
+    handle.printf("%ld, ,%f,%f,%f, ,%f,%f,%f,%f, ,%f,%f,%f, ,%f,%f,%f, ,%f,%f\n",
             data.timestamp,
 
             data.altimeterData.temperature, 
@@ -105,14 +107,14 @@ bool Logger::writeToMemory(Data data)
             data.altimeterData.altitude,
             
             // data.gpsData.time, 
-            // data.gpsData.latitude, 
+            data.gpsData.latitude, 
             // data.gpsData.lat_direction, 
-            // data.gpsData.longitude, 
+            data.gpsData.longitude, 
             // data.gpsData.long_direction, 
             // data.gpsData.fix_quality, 
-            // data.gpsData.number_of_satellites, 
+            data.gpsData.number_of_satellites, 
             // data.gpsData.hdop, 
-            // data.gpsData.altitude, 
+            data.gpsData.altitude, 
             // data.gpsData.rssi,
             
             // data.healthData.main_battery_temperature, 

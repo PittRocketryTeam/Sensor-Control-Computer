@@ -32,11 +32,12 @@ bool GPS::init()
 
     // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
     int err = 0;
-    while (!gps.begin(9600))
+    gps.begin(9600);
+    while (!gps.available())
     {
-        Error::display(GPS_INIT, WARN);
+        Error::on(GPS_INIT);
         err++;
-        delay(100);
+        delay(CONN_DELAY);
 
         if (err > 10)
         {
@@ -44,6 +45,7 @@ bool GPS::init()
             break;
         }
     }
+    Error::off();
     
     // uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
     gps.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);

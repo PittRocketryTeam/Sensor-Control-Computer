@@ -26,7 +26,7 @@ class IMU : public Sensor
 
     public:
 
-        IMU(bool);
+        IMU();
         ~IMU();
 
         bool init();

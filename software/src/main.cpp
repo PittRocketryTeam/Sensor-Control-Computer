@@ -6,19 +6,24 @@
 #include "GPS.hpp"
 #include "IMU.hpp"
 #include "Logger.hpp"
-#include "Metro.h"
+#include "Timer.hpp"
+#include "Xbee.hpp"
 
 #define MODE_IDLE 0
 #define MODE_STARTUP 1
 #define MODE_FLIGHT 2
 
 GPS gps;
+IMU acc;
+Altimeter alt;
+XBee xbee;
 Logger logger;
-Data state;
-Metro log_flush;
-Metro txrx;
 
-static uint8_t mode = 0;
+Data state;
+Timer log_flush;
+Timer txrx;
+
+static uint8_t mode = MODE_STARTUP;
 static uint8_t transition = 1;
 
 void idle();
@@ -32,6 +37,8 @@ void flight_transition();
 
 void setup()
 {
+    Error::init();
+
     Serial.begin(9600);
     int i;
     for (i = 0; i < CONN_ATTEMPTS; i++)
@@ -40,20 +47,38 @@ void setup()
         {
             break;
         }
-        Error::display(SERIAL_INIT, WARN);
+        
+        Error::on(SERIAL_INIT);
         delay(CONN_DELAY);
     }
-    if (i == CONN_ATTEMPTS)
+    Error::off();
+    if (i >= CONN_ATTEMPTS)
     {
         Error::display(SERIAL_INIT, FATAL);
+    }
+    else
+    {
+        Serial.println("SERIAL OK");
     }
 
     // Initialize sensors
     gps.init();
 
+    acc.init();
+
+    alt.init();
+
     // Initialize logger and add sensors
     logger.init();
     logger.addSensor(&gps);
+    logger.addSensor(&acc);
+    logger.addSensor(&gps);
+    logger.addSensor(&alt);
+
+    Error::summary();
+
+    txrx.setInterval(1000);
+    log_flush.setInterval(1000);
 }
 
 void loop()
@@ -100,7 +125,7 @@ void loop()
 
     if (txrx.check())
     {
-        // transmit and recv
+        xbee.transmit();
     }
 }
 
@@ -114,13 +139,18 @@ void idle_transition()
     // disable everything except GPS
 
     // set timers
-    log_flush.setInterval(60000);
+    log_flush.setInterval(6000);
     txrx.setInterval(2000);
 }
 
 void startup()
 {
-    // run launch detect
+    state = alt.poll(state);
+    state = acc.poll(state);
+    state = gps.poll(state);
+
+    xbee.setCachedData(state);
+    logger.writeToMemory(state);
 }
 
 void startup_transition()
@@ -129,7 +159,7 @@ void startup_transition()
 
     // set timers
     log_flush.setInterval(5000);
-    txrx.setInterval(500);
+    txrx.setInterval(1000);
 }
 
 void flight_transition()
@@ -140,4 +170,10 @@ void flight_transition()
 void flight()
 {
     // run apogee detect, land detect, approx landing coords
+    state = alt.poll(state);
+    state = acc.poll(state);
+    state = gps.poll(state);
+
+    xbee.setCachedData(state);
+    logger.writeToMemory(state);
 }
