@@ -3,17 +3,13 @@
 
 #include "Sensor.hpp"
 
-#define THERMISTOR_PIN 0
-#define VBAT_PIN 1
-#define V5_PIN 2
-#define V3_PIN 3
+#define BATT_T A3
+#define BATT_V A1
+#define REG5_V A8
+#define REG3_V A7
 
-#define VBR1 1e6
-#define VBR2 1e6
-#define V5R1 1e6
-#define V5R2 1e6
-#define V3R1 1e6
-#define V3R2 1e6
+#define MOHM 1e6
+#define KOHM 1e3
 
 #define THERMISTOR_T0 298.15
 #define THERMISTOR_BETA 3380.0

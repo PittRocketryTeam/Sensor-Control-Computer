@@ -5,7 +5,8 @@ Health::Health() :
     battery_temperature(-1),
     battery_voltage(-1),
     reg5_voltage(-1),
-    reg3_voltage(-1)
+    reg3_voltage(-1),
+    enabled(true)
 {
 
 }
@@ -17,10 +18,11 @@ Health::~Health()
 
 bool Health::init()
 {
-    pinMode(THERMISTOR_PIN, INPUT);
-    pinMode(VBAT_PIN, INPUT);
-    pinMode(V5_PIN, INPUT);
-    pinMode(V3_PIN, INPUT);
+    analogReadResolution(10);
+    pinMode(BATT_T, INPUT);
+    pinMode(BATT_V, INPUT);
+    pinMode(REG5_V, INPUT);
+    pinMode(REG3_V, INPUT);
     return true;
 }
 
@@ -47,15 +49,17 @@ Data Health::poll(Data data)
         return data;
     }
 
-    int battery_t_raw = analogRead(THERMISTOR_PIN);
-    int battery_v_raw = analogRead(VBAT_PIN);
-    int reg5_v_raw = analogRead(V5_PIN);
-    int reg3_v_raw = analogRead(V3_PIN);
+    int battery_t_raw = analogRead(BATT_T);
+    int battery_v_raw = analogRead(BATT_V);
+    int reg5_v_raw = analogRead(REG5_V);
+    int reg3_v_raw = analogRead(REG3_V);
 
-    battery_temperature = calculate_temperature(battery_t_raw, THERMISTOR_BETA);
-    battery_voltage = calculate_voltage(battery_v_raw, VBR1, VBR2);
-    reg5_voltage = calculate_voltage(reg5_v_raw, V5R1, V5R2);
-    reg3_voltage = calculate_voltage(reg3_v_raw, V3R1, V3R2);
+    (void)battery_t_raw; // squash pesky warnings
+
+    //battery_temperature = calculate_temperature(battery_t_raw, THERMISTOR_BETA);
+    battery_voltage = calculate_voltage(battery_v_raw, 0.548 * MOHM, .341 * MOHM);
+    reg5_voltage = calculate_voltage(reg5_v_raw, MOHM, MOHM);
+    reg3_voltage = calculate_voltage(reg3_v_raw, MOHM, MOHM);
 
     return read(data);
 }
@@ -72,8 +76,8 @@ void Health::disable()
 
 float Health::calculate_voltage(int raw, int r1, int r2)
 {
-    float cr = ((float)r2 / (float)(r1 + r2));
-    return raw * (3.3 / (float)ANALOG_MAX) * (1.0 / cr);
+    float vout = 3.3 * ((float)raw / (float)ANALOG_MAX);
+    return (vout * (float)(r1 + r2)) / (float)r2;
 }
 
 float Health::calculate_temperature(int raw, float beta)

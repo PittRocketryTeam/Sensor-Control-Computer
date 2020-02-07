@@ -17,45 +17,44 @@ void XBee::setCachedData(Data newData)
 {
     formattedData = "";
 
+    formattedData += String(newData.timestamp) + ",";
+
     //IMU data
-    formattedData += String(newData.imuData.euler_abs_orientation_x) + "\n";
-    formattedData += String(newData.imuData.euler_abs_orientation_y) + "\n";
-    formattedData += String(newData.imuData.euler_abs_orientation_z) + "\n";
-    formattedData += String(newData.imuData.acceleration_x) + "\n";
-    formattedData += String(newData.imuData.acceleration_y) + "\n";
-    formattedData += String(newData.imuData.acceleration_z) + "\n";
+    formattedData += String(newData.imuData.euler_abs_orientation_x) + ",";
+    formattedData += String(newData.imuData.euler_abs_orientation_y) + ",";
+    formattedData += String(newData.imuData.euler_abs_orientation_z) + ",";
+    formattedData += String(newData.imuData.acceleration_x) + ",";
+    formattedData += String(newData.imuData.acceleration_y) + ",";
+    formattedData += String(newData.imuData.acceleration_z) + ",";
 
     //GPS data
-    formattedData += String(newData.gpsData.time) + "\n";
-    formattedData += String(newData.gpsData.latitude) + "\n";
-    formattedData += String(newData.gpsData.lat_direction) + "\n";
-    formattedData += String(newData.gpsData.longitude) + "\n";
-    formattedData += String(newData.gpsData.long_direction) + "\n";
-    formattedData += String(newData.gpsData.fix_quality) + "\n";
-    formattedData += String(newData.gpsData.number_of_satellites) + "\n";
-    formattedData += String(newData.gpsData.hdop) + "\n";
-    formattedData += String(newData.gpsData.altitude) + "\n";
-    formattedData += String(newData.gpsData.rssi) + "\n";
-
+    formattedData += String(newData.gpsData.latitude) + ",";
+    formattedData += String(newData.gpsData.longitude) + ",";
     //Altimeter data
-    formattedData += String(newData.altimeterData.temperature) + "\n";
-    formattedData += String(newData.altimeterData.pressure) + "\n";
-    formattedData += String(newData.altimeterData.altitude) + "\n";
+    formattedData += String(newData.altimeterData.temperature) + ",";
+    formattedData += String(newData.altimeterData.pressure) + ",";
+    formattedData += String(newData.altimeterData.altitude) + ",";
 
-    //Health data
-    formattedData += String(newData.healthData.main_battery_temperature) + "\n";
-    formattedData += String(newData.healthData.main_battery_voltage) + "\n";
-    formattedData += String(newData.healthData.reg_5V_battery_temperature) + "\n";
-    formattedData += String(newData.healthData.reg_5V_battery_voltage) + "\n";
-    formattedData += String(newData.healthData.reg_3V3_battery_temperature) + "\n";
-    formattedData += String(newData.healthData.reg_3V3_battery_voltage) + "\n";
+    // Health data
+    formattedData += String(newData.healthData.main_battery_voltage) + ",";
+    formattedData += String(newData.healthData.reg_3V3_battery_voltage) + ",";
+    formattedData += String(newData.healthData.reg_5V_battery_voltage) + ",";
 
-    //Photocell data
-    formattedData += String(newData.photocellData.brightness) + "\n";
+    formattedData += "\0";
 }
 
-Data XBee::receive() {
-    Data newData;
-    //Ground control code will receive data i think 
-    return newData;
+Data XBee::receive()
+{
+    if (Serial4.available())
+    {
+        mode = Serial4.read() == 'a';
+        Serial.println(mode);
+        digitalWrite(13, mode);
+        delay(500);
+    }
+
+    digitalWrite(13, 0);
+
+    Data d;
+    return d;
 }

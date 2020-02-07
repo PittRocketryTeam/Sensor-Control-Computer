@@ -9,6 +9,7 @@ class XBee
     private:
         String formattedData;
         Data cachedData;
+        int mode;
 
     public:
         XBee();

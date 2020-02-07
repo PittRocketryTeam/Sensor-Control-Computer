@@ -8,6 +8,7 @@
 #include "Logger.hpp"
 #include "Timer.hpp"
 #include "Xbee.hpp"
+#include "Health.hpp"
 
 #define MODE_IDLE 0
 #define MODE_STARTUP 1
@@ -18,6 +19,7 @@ IMU acc;
 Altimeter alt;
 XBee xbee;
 Logger logger;
+Health health;
 
 Data state;
 Timer log_flush;
@@ -63,10 +65,9 @@ void setup()
 
     // Initialize sensors
     gps.init();
-
     acc.init();
-
     alt.init();
+    health.init();
 
     // Initialize logger and add sensors
     logger.init();
@@ -74,6 +75,7 @@ void setup()
     logger.addSensor(&acc);
     logger.addSensor(&gps);
     logger.addSensor(&alt);
+    logger.addSensor(&health);
 
     Error::summary();
 
@@ -126,7 +128,24 @@ void loop()
     if (txrx.check())
     {
         xbee.transmit();
+        delay(100);
+        xbee.receive();
     }
+}
+
+void poll()
+{
+    state.timestamp = millis();
+    state = alt.poll(state);
+    state = acc.poll(state);
+    state = gps.poll(state);
+    state = health.poll(state);
+
+    Serial.println(state.healthData.main_battery_voltage);
+    //Serial.println(state.healthData.reg_5V_battery_voltage);
+
+    xbee.setCachedData(state);
+    logger.writeToMemory(state);
 }
 
 void idle()
@@ -145,12 +164,7 @@ void idle_transition()
 
 void startup()
 {
-    state = alt.poll(state);
-    state = acc.poll(state);
-    state = gps.poll(state);
-
-    xbee.setCachedData(state);
-    logger.writeToMemory(state);
+    poll();
 }
 
 void startup_transition()
@@ -170,10 +184,5 @@ void flight_transition()
 void flight()
 {
     // run apogee detect, land detect, approx landing coords
-    state = alt.poll(state);
-    state = acc.poll(state);
-    state = gps.poll(state);
-
-    xbee.setCachedData(state);
-    logger.writeToMemory(state);
+    poll();
 }
