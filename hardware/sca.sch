@@ -11819,7 +11819,7 @@ NASA Student Launch
 </text>
 <text x="45.72" y="121.92" size="2.54" layer="97">Lipo Connector</text>
 <text x="109.22" y="129.54" size="2.54" layer="97">5V Reg</text>
-<text x="180.34" y="124.46" size="2.54" layer="97">3V3 Reg</text>
+<text x="182.88" y="127" size="2.54" layer="97">3V3 Reg</text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0" smashed="yes">
@@ -11830,7 +11830,7 @@ NASA Student Launch
 <instance part="3V3_REG" gate="A1" x="199.39" y="107.95" smashed="yes" grouprefs="3V3_REGULATOR">
 <attribute name="VALUE" x="191.77" y="111.125" size="1.778" layer="96"/>
 </instance>
-<instance part="U$10" gate="G$1" x="186.69" y="82.55" smashed="yes" grouprefs="3V3_REGULATOR"/>
+<instance part="U$10" gate="G$1" x="186.69" y="97.79" smashed="yes" grouprefs="3V3_REGULATOR"/>
 <instance part="C12" gate="G$1" x="210.82" y="96.52" smashed="yes" grouprefs="3V3_REGULATOR">
 <attribute name="NAME" x="211.836" y="97.155" size="1.778" layer="95"/>
 <attribute name="VALUE" x="211.836" y="92.329" size="1.778" layer="96"/>
@@ -11839,8 +11839,8 @@ NASA Student Launch
 <attribute name="NAME" x="225.806" y="97.155" size="1.778" layer="95"/>
 <attribute name="VALUE" x="225.806" y="92.329" size="1.778" layer="96"/>
 </instance>
-<instance part="+3V2" gate="G$1" x="220.98" y="114.3" smashed="yes" grouprefs="3V3_REGULATOR">
-<attribute name="VALUE" x="226.06" y="116.84" size="1.778" layer="96" rot="R180"/>
+<instance part="+3V2" gate="G$1" x="218.44" y="116.84" smashed="yes" grouprefs="3V3_REGULATOR">
+<attribute name="VALUE" x="223.52" y="119.38" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="P+3" gate="1" x="210.82" y="118.11" smashed="yes" grouprefs="3V3_REGULATOR">
 <attribute name="VALUE" x="215.9" y="120.65" size="1.778" layer="96" rot="R180"/>
@@ -11896,7 +11896,7 @@ NASA Student Launch
 <segment>
 <pinref part="U$10" gate="G$1" pin="GND"/>
 <pinref part="3V3_REG" gate="A1" pin="VI"/>
-<wire x1="186.69" y1="85.09" x2="186.69" y2="107.95" width="0.1524" layer="91"/>
+<wire x1="186.69" y1="100.33" x2="186.69" y2="107.95" width="0.1524" layer="91"/>
 <wire x1="186.69" y1="107.95" x2="189.23" y2="107.95" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -11949,13 +11949,13 @@ NASA Student Launch
 <net name="+3V3" class="0">
 <segment>
 <pinref part="3V3_REG" gate="A1" pin="GND"/>
-<wire x1="199.39" y1="100.33" x2="220.98" y2="100.33" width="0.1524" layer="91"/>
+<wire x1="199.39" y1="100.33" x2="218.44" y2="100.33" width="0.1524" layer="91"/>
 <pinref part="+3V2" gate="G$1" pin="+3V3"/>
-<wire x1="220.98" y1="111.76" x2="220.98" y2="100.33" width="0.1524" layer="91"/>
+<wire x1="218.44" y1="114.3" x2="218.44" y2="100.33" width="0.1524" layer="91"/>
 <pinref part="C13" gate="G$1" pin="1"/>
-<wire x1="224.79" y1="99.06" x2="224.79" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="224.79" y1="111.76" x2="220.98" y2="111.76" width="0.1524" layer="91"/>
-<junction x="220.98" y="111.76"/>
+<wire x1="224.79" y1="99.06" x2="224.79" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="224.79" y1="114.3" x2="218.44" y2="114.3" width="0.1524" layer="91"/>
+<junction x="218.44" y="114.3"/>
 </segment>
 </net>
 </nets>
