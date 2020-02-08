@@ -99,7 +99,7 @@ bool Logger::writeToMemory(Data data)
         return false;
     }
 
-    handle.printf("%ld, ,%f,%f,%f, ,%f,%f,%f,%f, ,%f,%f,%f, ,%f,%f,%f, ,%f,%f\n",
+    handle.printf("%ld, ,%f,%f,%f, ,%f,%f,%f,%f, ,%f,%f,%f, ,%f,%f,%f, ,%f,\n",
             data.timestamp,
 
             data.altimeterData.temperature, 
@@ -132,8 +132,7 @@ bool Logger::writeToMemory(Data data)
             data.imuData.acceleration_y,
             data.imuData.acceleration_z,
 
-            data.healthData.main_battery_temperature,
-            data.photocellData.brightness
+            data.healthData.main_battery_voltage
             
            // data.photocellData.brightness
     );

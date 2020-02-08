@@ -142,6 +142,7 @@ void poll()
     state = health.poll(state);
 
     Serial.println(state.healthData.main_battery_voltage);
+    //Serial.print("5vr ");
     //Serial.println(state.healthData.reg_5V_battery_voltage);
 
     xbee.setCachedData(state);
