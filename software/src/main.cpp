@@ -49,7 +49,7 @@ void setup()
         {
             break;
         }
-        
+
         Error::on(SERIAL_INIT);
         delay(CONN_DELAY);
     }
@@ -141,7 +141,7 @@ void poll()
     state = gps.poll(state);
     state = health.poll(state);
 
-    Serial.println(state.healthData.main_battery_voltage);
+    // Serial.println(state.healthData.main_battery_voltage);
     //Serial.print("5vr ");
     //Serial.println(state.healthData.reg_5V_battery_voltage);
 
@@ -179,7 +179,7 @@ void startup_transition()
 
 void flight_transition()
 {
-    
+
 }
 
 void flight()

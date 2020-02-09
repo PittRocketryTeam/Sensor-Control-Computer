@@ -6,7 +6,7 @@
 #define DEBUG_LED_3 39
 
 #define ERROR_DELAY 200
-#define CONN_ATTEMPTS 20
+#define CONN_ATTEMPTS 5
 #define CONN_DELAY 500
 
 #include "Sensor.hpp"
@@ -28,7 +28,7 @@ public:
 
 private:
     static void on();
-    
+
     static int b0;
     static int b1;
     static int b2;
