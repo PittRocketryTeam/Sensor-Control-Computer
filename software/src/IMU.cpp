@@ -32,7 +32,7 @@ bool IMU::init()
         {
             break;
         }
-        
+
         if (VERBOSE)
         {
             Serial.println("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
@@ -84,11 +84,17 @@ Data IMU::poll(Data data)
     ay = (float)a.y();
     az = (float)a.z();
 
+    // Serial.print(ox);
+    // Serial.print(", ");
+    // Serial.print(oy);
+    // Serial.print(", ");
+    // Serial.print(oz);
+    // Serial.println("");
 
     //ax = event.acceleration.x;
     //ay = event.acceleration.y;
     //az = event.acceleration.z;
-    
+
     //last_data = data;
 
     return read(data);

@@ -19,6 +19,7 @@ Health::~Health()
 bool Health::init()
 {
     analogReadResolution(10);
+    analogReference(0);
     pinMode(BATT_T, INPUT);
     pinMode(BATT_V, INPUT);
     pinMode(REG5_V, INPUT);
@@ -57,7 +58,8 @@ Data Health::poll(Data data)
     (void)battery_t_raw; // squash pesky warnings
 
     //battery_temperature = calculate_temperature(battery_t_raw, THERMISTOR_BETA);
-    battery_voltage = calculate_voltage(battery_v_raw, 0.548 * MOHM, .341 * MOHM);
+
+    battery_voltage = calculate_voltage(battery_v_raw, MOHM, .470 * MOHM);
     reg5_voltage = calculate_voltage(reg5_v_raw, MOHM, MOHM);
     reg3_voltage = calculate_voltage(reg3_v_raw, MOHM, MOHM);
 
@@ -74,9 +76,9 @@ void Health::disable()
     enabled = false;
 }
 
-float Health::calculate_voltage(int raw, int r1, int r2)
+float Health::calculate_voltage(int raw, float r1, float r2)
 {
-    float vout = 3.3 * ((float)raw / (float)ANALOG_MAX);
+    float vout = 5 * ((float)raw / (float)ANALOG_MAX);
     return (vout * (float)(r1 + r2)) / (float)r2;
 }
 

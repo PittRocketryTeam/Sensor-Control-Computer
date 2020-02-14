@@ -31,7 +31,7 @@ class Health : public Sensor
         void disable() override;
 
     private:
-        float calculate_voltage(int, int, int);
+        float calculate_voltage(int, float, float);
         float calculate_temperature(int, float);
 
         float battery_temperature;
