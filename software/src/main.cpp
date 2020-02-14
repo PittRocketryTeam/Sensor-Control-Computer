@@ -24,6 +24,7 @@ Health health;
 Data state;
 Timer log_flush;
 Timer txrx;
+Timer gps_poll;
 
 static uint8_t mode = MODE_STARTUP;
 static uint8_t transition = 1;
@@ -79,8 +80,9 @@ void setup()
 
     Error::summary();
 
-    txrx.setInterval(1000);
-    log_flush.setInterval(1000);
+    txrx.setInterval(200);
+    log_flush.setInterval(5000);
+    gps_poll.setInterval(1000);
 }
 
 void loop()
@@ -138,11 +140,11 @@ void poll()
     state.timestamp = millis();
     state = alt.poll(state);
     state = acc.poll(state);
-    state = gps.poll(state);
+    if (gps_poll.check())
+    {
+        state = gps.poll(state);
+    }
     state = health.poll(state);
-
-    Serial.println(state.healthData.main_battery_voltage);
-    //Serial.println(state.healthData.reg_5V_battery_voltage);
 
     xbee.setCachedData(state);
     logger.writeToMemory(state);
@@ -150,7 +152,11 @@ void poll()
 
 void idle()
 {
-    // do nothing
+    if (xbee.getModeFromGC() == 1)
+    {
+        mode = MODE_STARTUP;
+        transition = 1;
+    }
 }
 
 void idle_transition()
@@ -158,12 +164,19 @@ void idle_transition()
     // disable everything except GPS
 
     // set timers
-    log_flush.setInterval(6000);
-    txrx.setInterval(2000);
+    gps_poll.setInterval(1000);
+    log_flush.setInterval(5000);
+    txrx.setInterval(200);
 }
 
 void startup()
 {
+    if (xbee.getModeFromGC() == 0)
+    {
+        //mode = MODE_IDLE;
+        //transition = 1;
+    }
+
     poll();
 }
 
@@ -172,13 +185,15 @@ void startup_transition()
     // enable all sensors
 
     // set timers
-    log_flush.setInterval(5000);
-    txrx.setInterval(1000);
+    gps_poll.setInterval(500);
+    log_flush.setInterval(2000);
+    txrx.setInterval(200);
 }
 
 void flight_transition()
 {
-    
+    gps_poll.setInterval(500);
+    txrx.setInterval(200);   
 }
 
 void flight()

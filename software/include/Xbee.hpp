@@ -16,6 +16,7 @@ class XBee
         ~XBee();
         void transmit();
         void setCachedData(Data);
+        int getModeFromGC();
         Data receive();
 };
 

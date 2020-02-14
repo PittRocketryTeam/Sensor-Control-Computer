@@ -1,7 +1,10 @@
 #include "Xbee.hpp"
 #include <cstring>
 
-XBee::XBee() {
+XBee::XBee() :
+    mode(-1)
+{
+
     Serial4.begin(9600); //Serial4 is used for the PCB
 }
 
@@ -10,7 +13,7 @@ XBee::~XBee() {}
 void XBee::transmit()
 {
     Serial4.println(formattedData);
-    Serial4.flush();
+    //Serial4.flush();
 }
 
 void XBee::setCachedData(Data newData)
@@ -40,14 +43,14 @@ void XBee::setCachedData(Data newData)
     formattedData += String(newData.healthData.reg_3V3_battery_voltage) + ",";
     formattedData += String(newData.healthData.reg_5V_battery_voltage) + ",";
 
-    formattedData += "\0";
+    //formattedData += "";
 }
 
 Data XBee::receive()
 {
     if (Serial4.available())
     {
-        mode = Serial4.read() == 'a';
+        mode = Serial4.read() == 'b';
         Serial.println(mode);
         digitalWrite(13, mode);
         delay(500);
@@ -57,4 +60,9 @@ Data XBee::receive()
 
     Data d;
     return d;
+}
+
+int XBee::getModeFromGC()
+{
+    return mode;    
 }
