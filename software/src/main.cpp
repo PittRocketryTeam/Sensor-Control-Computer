@@ -22,9 +22,11 @@ Logger logger;
 Health health;
 
 Data state;
+
 Timer log_flush;
 Timer txrx;
 Timer gps_poll;
+IntervalTimer gps_interrupt;
 
 static uint8_t mode = MODE_STARTUP;
 static uint8_t transition = 1;
@@ -38,8 +40,16 @@ void startup_transition();
 void flight();
 void flight_transition();
 
+void gps_read_callback()
+{
+    gps.internal_read();
+}
+
 void setup()
 {
+    // clean data
+    memset(&state, 0, sizeof(Data));
+
     Error::init();
 
     Serial.begin(9600);
@@ -52,7 +62,7 @@ void setup()
         }
 
         Error::on(SERIAL_INIT);
-        delay(CONN_DELAY);
+        delay(CONN_DELAY * 3);
     }
     Error::off();
     if (i >= CONN_ATTEMPTS)
@@ -64,23 +74,20 @@ void setup()
         Serial.println("SERIAL OK");
     }
 
-    // Initialize sensors
-    gps.init();
     acc.init();
     alt.init();
     health.init();
 
+    // Initialize sensors
+    gps.init();
+    gps_interrupt.begin(gps_read_callback, 1000);
+
     // Initialize logger and add sensors
     logger.init();
-    logger.addSensor(&gps);
-    logger.addSensor(&acc);
-    logger.addSensor(&gps);
-    logger.addSensor(&alt);
-    logger.addSensor(&health);
 
     Error::summary();
 
-    txrx.setInterval(200);
+    txrx.setInterval(1000);
     log_flush.setInterval(5000);
     gps_poll.setInterval(1000);
 }
@@ -146,10 +153,6 @@ void poll()
     }
     state = health.poll(state);
 
-    // Serial.println(state.healthData.main_battery_voltage);
-    //Serial.print("5vr ");
-    //Serial.println(state.healthData.reg_5V_battery_voltage);
-
     xbee.setCachedData(state);
     logger.writeToMemory(state);
 }
@@ -170,7 +173,7 @@ void idle_transition()
     // set timers
     gps_poll.setInterval(1000);
     log_flush.setInterval(5000);
-    txrx.setInterval(200);
+    txrx.setInterval(1000);
 }
 
 void startup()
@@ -189,15 +192,15 @@ void startup_transition()
     // enable all sensors
 
     // set timers
-    gps_poll.setInterval(500);
-    log_flush.setInterval(2000);
-    txrx.setInterval(200);
+    gps_poll.setInterval(1000);
+    log_flush.setInterval(5000);
+    txrx.setInterval(1000);
 }
 
 void flight_transition()
 {
-    gps_poll.setInterval(500);
-    txrx.setInterval(200);   
+    gps_poll.setInterval(1000);
+    txrx.setInterval(1000);   
 }
 
 void flight()

@@ -15,6 +15,7 @@ class GPS : public Sensor
         virtual ~GPS();
         
         bool init() override;
+        void internal_read();
         Data read(Data data) override;
         Data poll(Data data) override;
         void enable() override;
@@ -35,8 +36,6 @@ class GPS : public Sensor
         int my_alt;
         int my_rssi;
         //bool my_inStandby; 
-
-
 };
 
 #endif

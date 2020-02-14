@@ -62,6 +62,11 @@ bool GPS::init()
     return true;
 }
 
+void GPS::internal_read()
+{
+    gps.read();
+}
+
 Data GPS::read(Data data)
 {
     data.gpsData.time = my_time;
@@ -80,9 +85,6 @@ Data GPS::read(Data data)
 
 Data GPS::poll(Data data)
 {
-    char c = gps.read();
-    (void)c;
-
     if (gps.newNMEAreceived())
     {
         gps.parse(gps.lastNMEA());
@@ -94,7 +96,7 @@ Data GPS::poll(Data data)
     my_lat = gps.latitude;
     my_lon = gps.longitude;
     my_alt = gps.altitude;
-    my_rssi = atoi(gps.lastNMEA());
+    //my_rssi = atoi(gps.lastNMEA());
     my_hdop = gps.HDOP;
 
     return read(data);
@@ -102,10 +104,10 @@ Data GPS::poll(Data data)
 
 void GPS::enable()
 {
-    digitalWrite(GPS_ENABLE, HIGH);
+    //digitalWrite(GPS_ENABLE, HIGH);
 }
 
 void GPS::disable()
 {
-    digitalWrite(GPS_ENABLE, LOW);
+    //digitalWrite(GPS_ENABLE, LOW);
 }

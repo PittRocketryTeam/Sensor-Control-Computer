@@ -2,8 +2,7 @@
 #include "Logger.hpp"
 #include "Error.hpp"
 
-Logger::Logger() :
-    num_sensors(0)
+Logger::Logger()
 {
 
 }
@@ -20,10 +19,15 @@ bool Logger::init()
     generateFilename();  // Generate unique log filename
 
     int i;
-    for (i = 0; i < CONN_ATTEMPTS; ++i)
+    for (i = 0; i < CONN_ATTEMPTS * 5; ++i)
     {
+        Serial.println("try");
         Error::reset(LOG_INIT);
-        int status = SD.begin(BUILTIN_SDCARD);
+        
+        SPI.setMOSI(7);
+        SPI.setMISO(8);
+        int status = SD.begin(62);
+        
         if (status)
         {
             break;
@@ -33,25 +37,15 @@ bool Logger::init()
     }
 
     Error::off();
-    if (i == CONN_ATTEMPTS)
+    if (i == CONN_ATTEMPTS * 5)
     {
+        Serial.println("fail");
         Error::display(LOG_INIT, FATAL);
     }
 
     handle = SD.open(filename, FILE_WRITE);
 
     return true;
-}
-
-void Logger::addSensor(Sensor* sensor)
-{
-    sensors[num_sensors++] = sensor;
-}
-
-bool Logger::log()
-{
-    Data data = readDataFromSensors();  // Read data from sensors              
-    return writeToMemory(data);         // Write data to micro SD
 }
 
 void Logger::generateFilename()
@@ -75,21 +69,6 @@ void Logger::generateFilename()
         sprintf(filename, "loggylog.csv");
     }
 
-}
-
-Data Logger::readDataFromSensors()
-{
-    Data data;
-    int i;
-    for (i = 0; i < num_sensors; ++i)
-    {
-        data = sensors[i]->read(data);
-    }
-
-    // Add timestamp
-    current_time = millis();
-    data.timestamp = (long int)current_time;  
-    return data;                        
 }
 
 bool Logger::writeToMemory(Data data)

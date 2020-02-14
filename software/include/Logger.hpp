@@ -10,7 +10,6 @@
 #include "TimeLib.h"
 
 #define BUILTIN_SDCARD 254
-#define MAX_SENSORS 20
 
 class Logger
 {
@@ -25,18 +24,12 @@ class Logger
         */
         virtual bool init();
 
-        /*
-         * Add a sensor to the logger's list of sensors.
-         */
-        virtual void addSensor(Sensor* sensor);
-
         /**
          * Reads from each sensor and writes the timestamped data to the disk. 
          * Returns true if data was successfully written, false if not (either because
          * the number of bytes that should have been written to the disk was not written
          * or because the micro SD couldn't be opened).
          */
-        virtual bool log();
 
         void reopen();
         void close();
@@ -54,17 +47,9 @@ class Logger
         */
         virtual void generateFilename();
 
-        virtual Data readDataFromSensors();
-
         static time_t getTeensy3Time();
 
         SdFat SD;
-
-        /**
-         * Sensors to log data from.
-         */
-        Sensor* sensors[MAX_SENSORS];
-        int num_sensors;
 
         // Timer variables
         time_t current_time;
