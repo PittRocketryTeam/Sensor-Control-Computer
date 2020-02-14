@@ -1,17 +1,9 @@
 #include "Altimeter.hpp"
-#include "Adafruit_BMP3XX.h"
-#include "bmp3.h"
-#include "Error.hpp"
 
-//#define SCL 19
-//#define SDA 18
 
-Adafruit_BMP3XX bmp;//inits for i2c - defaults to 0x77 address and "Wire"
-struct bmp3_dev* bmp_dev;
-float initAlt = -1;
-
-Altimeter::Altimeter() :
-    Sensor()
+Altimeter::Altimeter() :    
+    Sensor(),
+    baselinePressure(SEALEVELPRESSURE_HPA)
 {
 
 }
@@ -48,14 +40,9 @@ Data Altimeter::read(Data data)
     data.altimeterData.temperature = bmp.temperature;
     data.altimeterData.pressure = bmp.pressure;
 
-    if(initAlt == -1) //case where initAlt isn't set -- haven't hit button on ground control yet to indicate we're ready to launch
-    {
-        //Serial.println("Cannot poll altitude --- ground pressure not yet set!");
-    }
-    else
-    {
-        data.altimeterData.altitude = bmp.readAltitude(initAlt);//does not performReading again, altitude is just calculated from the pressure and the ground level pressure set earlier
-    }
+    // doesn't performReading again, altitude is just calculated 
+    // from the pressure and the ground level pressure set earlier
+    data.altimeterData.altitude = bmp.readAltitude(baselinePressure);
 
     return data;
 }
@@ -64,21 +51,14 @@ Data Altimeter::poll(Data data)
 {
     if(!bmp.performReading()) //assigns values to pressure and temperature
     {
-        //Serial.println("Failed to perform reading :(");
+        Serial.println("Failed to perform reading :(");
     }
 
     data.altimeterData.temperature = bmp.readTemperature();
     data.altimeterData.pressure = bmp.readPressure();
-    if(initAlt == -1) //case where initAlt isn't set -- haven't hit button on ground control yet to indicate we're ready to launch
-    {
-        //Serial.println("Cannot poll altitude --- ground pressure not yet set!");
-    }
-    else
-    {
-        data.altimeterData.altitude = bmp.readAltitude(initAlt);
-    }
+    data.altimeterData.altitude = bmp.readAltitude(baselinePressure);
     
-    //Serial.printf("temp: %f\npressure: %f\nalt: %f\n", data.altimeterData.temperature, data.altimeterData.pressure, data.altimeterData.altitude);
+    // Serial.printf("temp: %f\npressure: %f\nalt: %f\n", data.altimeterData.temperature, data.altimeterData.pressure, data.altimeterData.altitude);
     
     return data;
 }
@@ -97,9 +77,4 @@ void Altimeter::disable()
     bmp_dev->settings.op_mode = BMP3_SLEEP_MODE;
     if(bmp3_set_op_mode(bmp_dev) != 0);
         //Serial.println("Altimeter failed to disable");
-}
-
-void Altimeter::setBaselinePressure()
-{
-    initAlt = bmp.readPressure();
 }
