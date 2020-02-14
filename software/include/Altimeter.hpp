@@ -6,8 +6,8 @@
 #include "Adafruit_BMP3XX.h"
 #include "bmp3.h"
 #include "Error.hpp"
+#include "constants.hpp"
 
-#define SEALEVELPRESSURE_HPA (1013.25)
 
 class Altimeter : public Sensor
 {

@@ -1,8 +1,6 @@
 #ifndef __DATA_HPP__
 #define __DATA_HPP__
 
-//#include "Time.h"
-
 // Data struct definitions for each sensor and for overall data struct.
 
 /**

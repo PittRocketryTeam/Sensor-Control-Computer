@@ -1,18 +1,11 @@
-#ifndef ERROR_HPP
-#define ERROR_HPP
-
-#define DEBUG_LED_1 A22
-#define DEBUG_LED_2 13
-#define DEBUG_LED_3 39
-
-#define ERROR_DELAY 200
-#define CONN_ATTEMPTS 5
-#define CONN_DELAY 500
+#ifndef __ERROR_HPP__
+#define __ERROR_HPP__
 
 #include "Sensor.hpp"
+#include "board.hpp"
+#include "constants.hpp"
+#include <Arduino.h>
 
-typedef enum {SERIAL_INIT = 1, LOG_INIT = 2, IMU_INIT = 3, ALT_INIT = 4, GPS_INIT = 5, TX_INIT = 6, WERE_SCREWED = 7} errcode_t;
-typedef enum {WARN, FATAL} errtype_t;
 
 class Error
 {
@@ -39,4 +32,4 @@ private:
     static int clean;
 };
 
-#endif /* ERROR_HPP */
+#endif // __ERROR_HPP__

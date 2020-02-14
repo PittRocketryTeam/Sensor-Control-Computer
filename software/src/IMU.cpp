@@ -1,29 +1,23 @@
 #include "IMU.hpp"
-#include "board.hpp"
-#include "Error.hpp"
-
 
 IMU::IMU()
 {
     sensor = Adafruit_BNO055(55, IMU_ADDR, &Wire1);
-    verbose = false;
     ax = 0.0f;
     ay = 0.0f;
     az = 0.0f;
     ox = 0.0f;
     oy = 0.0f;
     oz = 0.0f;
-    //last_data = new Data;
 }
 
 IMU::~IMU()
 {
-    //delete last_data;
+
 }
 
 bool IMU::init()
 {
-
     int i;
     for (i = 0; i < CONN_ATTEMPTS; ++i)
     {
@@ -33,16 +27,16 @@ bool IMU::init()
             break;
         }
 
-        if (VERBOSE)
-        {
-            Serial.println("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
-        }
+        if (VERBOSE) { Serial.println("No BNO055 detected ... Check your wiring or I2C ADDR!"); }
         delay(CONN_DELAY);
     }
     Error::off();
     if (i >= CONN_ATTEMPTS)
     {
-        Serial.println("BAD");
+        if (VERBOSE) 
+        { 
+            Serial.printf("IMU::init() - After %d attempts failed to initialize\n", CONN_ATTEMPTS); 
+        }
         Error::display(IMU_INIT, FATAL);
     }
 
@@ -63,6 +57,23 @@ Data IMU::read(Data data)
     data.imuData.acceleration_y = ay;
     data.imuData.acceleration_z = az;
 
+    if (VERBOSE)
+    {
+        Serial.printf("IMU::read() - euler_abs_orientation_x: %lf\n",
+            data.imuData.euler_abs_orientation_x);
+        Serial.printf("IMU::read() - euler_abs_orientation_y: %lf\n", 
+            data.imuData.euler_abs_orientation_y);
+        Serial.printf("IMU::read() - euler_abs_orientation_z: %lf\n",
+            data.imuData.euler_abs_orientation_z);
+
+        Serial.printf("IMU::read() - acceleration_x: %lf\n", 
+            data.imuData.acceleration_x);
+        Serial.printf("IMU::read() - acceleration_y: %lf\n", 
+            data.imuData.acceleration_y);
+        Serial.printf("IMU::read() - acceleration_z: %lf\n", 
+            data.imuData.acceleration_z);
+    }
+
     return data;
 }
 
@@ -70,10 +81,6 @@ Data IMU::poll(Data data)
 {
     sensor.getEvent(&event);
 
-    //ox = event.orientation.x;
-    //oy = event.orientation.y;
-    //oz = event.orientation.z;
-    //ox = oy = oz = 69.0f;
     o = sensor.getVector(Adafruit_BNO055::VECTOR_EULER);
     ox = (float)o.x();
     oy = (float)o.y();
@@ -84,38 +91,36 @@ Data IMU::poll(Data data)
     ay = (float)a.y();
     az = (float)a.z();
 
-    // Serial.print(ox);
-    // Serial.print(", ");
-    // Serial.print(oy);
-    // Serial.print(", ");
-    // Serial.print(oz);
-    // Serial.println("");
+    if (VERBOSE)
+    {
+        Serial.printf("IMU::poll() - euler_abs_orientation_x: %lf\n",
+            data.imuData.euler_abs_orientation_x);
+        Serial.printf("IMU::poll() - euler_abs_orientation_y: %lf\n", 
+            data.imuData.euler_abs_orientation_y);
+        Serial.printf("IMU::poll() - euler_abs_orientation_z: %lf\n",
+            data.imuData.euler_abs_orientation_z);
 
-    //ax = event.acceleration.x;
-    //ay = event.acceleration.y;
-    //az = event.acceleration.z;
-
-    //last_data = data;
+        Serial.printf("IMU::poll() - acceleration_x: %lf\n", 
+            data.imuData.acceleration_x);
+        Serial.printf("IMU::poll() - acceleration_y: %lf\n", 
+            data.imuData.acceleration_y);
+        Serial.printf("IMU::poll() - acceleration_z: %lf\n", 
+            data.imuData.acceleration_z);
+    }
 
     return read(data);
 }
 
 void IMU::enable()
 {
-    if (VERBOSE)
-    {
-        Serial.println("IMU Enabled");
-    }
+    if (VERBOSE) { Serial.println("IMU::enable() - imu enabled"); }
 
     sensor.enterNormalMode();
 }
 
 void IMU::disable()
 {
-    if (VERBOSE)
-    {
-        Serial.println("IMU Disabled");
-    }
+    if (VERBOSE) { Serial.println("IMU::disable() - imu disabled"); }
 
     sensor.enterSuspendMode();
 }

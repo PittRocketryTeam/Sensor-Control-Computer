@@ -1,8 +1,8 @@
-#include "Xbee.hpp"
-#include <cstring>
+#include "XBee.hpp"
 
-XBee::XBee() {
-    Serial4.begin(9600); //Serial4 is used for the PCB
+XBee::XBee() 
+{
+    Serial4.begin(9600); // Serial4 is used for the PCB
 }
 
 XBee::~XBee() {}
@@ -11,6 +11,8 @@ void XBee::transmit()
 {
     Serial4.println(formattedData);
     Serial4.flush();
+
+    if (VERBOSE) { Serial.printf("XBee::transmit() - transmitted %s\n", formattedData); }
 }
 
 void XBee::setCachedData(Data newData)
@@ -43,7 +45,7 @@ void XBee::setCachedData(Data newData)
     formattedData += "\0";
 }
 
-Data XBee::receive()
+void XBee::receive()
 {
     if (Serial4.available())
     {
@@ -54,7 +56,4 @@ Data XBee::receive()
     }
 
     digitalWrite(13, 0);
-
-    Data d;
-    return d;
 }

@@ -3,6 +3,9 @@
 
 #include "Data.hpp"
 #include <Arduino.h>
+#include <cstring>
+#include "constants.hpp"
+
 
 class XBee
 {
@@ -16,7 +19,7 @@ class XBee
         ~XBee();
         void transmit();
         void setCachedData(Data);
-        Data receive();
+        void receive();
 };
 
-#endif
+#endif // __XBEE_HPP__

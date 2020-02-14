@@ -7,16 +7,17 @@
 #include <utility/imumaths.h>
 #include "Data.hpp"
 #include "Sensor.hpp"
+#include "constants.hpp"
+#include "board.hpp"
+#include "Error.hpp"
 
-#define IMU_DIMENIONS 3
 
 class IMU : public Sensor
 {
     private:
         Adafruit_BNO055 sensor;
         sensors_event_t event;
-        bool verbose;
-        //Data *last_data;
+
         Data last_data;
 
         float ax, ay, az;

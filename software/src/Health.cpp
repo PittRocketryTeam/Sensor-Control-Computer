@@ -27,7 +27,6 @@ bool Health::init()
     return true;
 }
 
-
 Data Health::read(Data data)
 {
     if (!enabled)
@@ -39,6 +38,18 @@ Data Health::read(Data data)
     data.healthData.main_battery_voltage = battery_voltage;
     data.healthData.reg_5V_battery_voltage = reg5_voltage;
     data.healthData.reg_3V3_battery_voltage = reg3_voltage;
+
+    if (VERBOSE)
+    {
+        Serial.printf("Health::read() - main_battery_temperature: %lf\n",
+            data.healthData.main_battery_temperature);
+        Serial.printf("Health::read() - main_battery_voltage: %lf\n", 
+            data.healthData.main_battery_voltage);
+        Serial.printf("Health::read() - reg_5V_battery_voltage: %lf\n",
+            data.healthData.reg_5V_battery_voltage);
+        Serial.printf("Health::read() - reg_3V3_battery_voltage: %lf\n", 
+            data.healthData.reg_3V3_battery_voltage);
+    }
 
     return data;
 }
@@ -57,22 +68,35 @@ Data Health::poll(Data data)
 
     (void)battery_t_raw; // squash pesky warnings
 
-    //battery_temperature = calculate_temperature(battery_t_raw, THERMISTOR_BETA);
-
+    battery_temperature = calculate_temperature(battery_t_raw, THERMISTOR_BETA);
     battery_voltage = calculate_voltage(battery_v_raw, MOHM, .470 * MOHM);
     reg5_voltage = calculate_voltage(reg5_v_raw, MOHM, MOHM);
     reg3_voltage = calculate_voltage(reg3_v_raw, MOHM, MOHM);
+
+    if (VERBOSE)
+    {
+        Serial.printf("Health::poll() - main_battery_temperature: %lf\n",
+            data.healthData.main_battery_temperature);
+        Serial.printf("Health::poll() - main_battery_voltage: %lf\n", 
+            data.healthData.main_battery_voltage);
+        Serial.printf("Health::poll() - reg_5V_battery_voltage: %lf\n",
+            data.healthData.reg_5V_battery_voltage);
+        Serial.printf("Health::poll() - reg_3V3_battery_voltage: %lf\n", 
+            data.healthData.reg_3V3_battery_voltage);
+    }
 
     return read(data);
 }
 
 void Health::enable()
 {
+    if (VERBOSE) { Serial.println("Health::enable() - health enabled\n"); }
     enabled = true;
 }
 
 void Health::disable()
 {
+    if (VERBOSE) { Serial.println("Health::disable() - health disabled\n"); }
     enabled = false;
 }
 

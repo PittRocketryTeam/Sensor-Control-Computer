@@ -1,11 +1,12 @@
-// __GPS_HPP__
-
 #ifndef __GPS_HPP__
 #define __GPS_HPP__
 
 #include <Wire.h>
 #include <Adafruit_GPS.h>
 #include "Sensor.hpp"
+#include "board.hpp"
+#include "Error.hpp"
+
 
 class GPS : public Sensor
 {
@@ -20,10 +21,9 @@ class GPS : public Sensor
         void enable() override;
         void disable() override;
 
-
-
     private:
         Adafruit_GPS gps;
+
         int my_time;
         float my_lat;
         int my_lat_direction;
@@ -34,10 +34,6 @@ class GPS : public Sensor
         int my_hdop;
         int my_alt;
         int my_rssi;
-        //bool my_inStandby; 
-
-
 };
 
-#endif
-// __GPS_HPP__
+#endif // __GPS_HPP__

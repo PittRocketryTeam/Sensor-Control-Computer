@@ -15,6 +15,8 @@ Altimeter::~Altimeter()
 
 bool Altimeter::init()
 {
+    bool success = false;
+
     int i;
     for (i=0; i < CONN_ATTEMPTS; i++)
     {
@@ -22,6 +24,7 @@ bool Altimeter::init()
         if (bmp.begin())
         {
             break;
+            success = true;
         }
 
         delay(CONN_DELAY);
@@ -32,7 +35,9 @@ bool Altimeter::init()
         Error::display(ALT_INIT, FATAL);
     }
 
-    return true;
+    if (success && VERBOSE) { Serial.println("Altimeter::init() - successful init\n"); }
+
+    return success;
 }
 
 Data Altimeter::read(Data data)
@@ -49,16 +54,22 @@ Data Altimeter::read(Data data)
 
 Data Altimeter::poll(Data data)
 {
-    if(!bmp.performReading()) //assigns values to pressure and temperature
+    if(!bmp.performReading()) // assign values to pressure and temperature
     {
-        Serial.println("Failed to perform reading :(");
+        if (VERBOSE) { Serial.println("Failed to perform reading :("); } 
     }
 
     data.altimeterData.temperature = bmp.readTemperature();
     data.altimeterData.pressure = bmp.readPressure();
     data.altimeterData.altitude = bmp.readAltitude(baselinePressure);
     
-    // Serial.printf("temp: %f\npressure: %f\nalt: %f\n", data.altimeterData.temperature, data.altimeterData.pressure, data.altimeterData.altitude);
+    if (VERBOSE) 
+    { 
+        Serial.printf("temp: %f\npressure: %f\nalt: %f\n", 
+            data.altimeterData.temperature, 
+            data.altimeterData.pressure, 
+            data.altimeterData.altitude); 
+    }
     
     return data;
 }
@@ -68,13 +79,16 @@ void Altimeter::enable()
     bmp_dev->settings.op_mode = BMP3_NORMAL_MODE;
     if(bmp3_set_op_mode(bmp_dev) != 0)
     {
-        //Serial.println("Altimeter failed to enable");
+        if (VERBOSE) { Serial.println("Altimeter failed to enable"); }
     }
 }
 
 void Altimeter::disable()
 {
     bmp_dev->settings.op_mode = BMP3_SLEEP_MODE;
-    if(bmp3_set_op_mode(bmp_dev) != 0);
-        //Serial.println("Altimeter failed to disable");
+    if(bmp3_set_op_mode(bmp_dev) != 0)
+    {
+        if (VERBOSE) { Serial.println("Altimeter failed to disable"); }
+    }
+        
 }

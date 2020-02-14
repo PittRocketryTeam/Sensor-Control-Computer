@@ -1,6 +1,5 @@
-#include "board.hpp"
 #include "Logger.hpp"
-#include "Error.hpp"
+
 
 Logger::Logger() :
     num_sensors(0)
@@ -50,7 +49,10 @@ void Logger::addSensor(Sensor* sensor)
 
 bool Logger::log()
 {
-    Data data = readDataFromSensors();  // Read data from sensors              
+    Data data = readDataFromSensors();  // Read data from sensors   
+
+    if (VERBOSE) { Serial.println("Logger::log() - logged sensor data\n"); }
+
     return writeToMemory(data);         // Write data to micro SD
 }
 
@@ -75,6 +77,7 @@ void Logger::generateFilename()
         sprintf(filename, "loggylog.csv");
     }
 
+    if (VERBOSE) { Serial.printf("Logger::generateFilename() - filename: %s\n", filename); }
 }
 
 Data Logger::readDataFromSensors()

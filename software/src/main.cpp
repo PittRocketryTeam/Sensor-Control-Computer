@@ -7,12 +7,9 @@
 #include "IMU.hpp"
 #include "Logger.hpp"
 #include "Timer.hpp"
-#include "Xbee.hpp"
+#include "XBee.hpp"
 #include "Health.hpp"
-
-#define MODE_IDLE 0
-#define MODE_STARTUP 1
-#define MODE_FLIGHT 2
+#include "constants.hpp"
 
 GPS gps;
 IMU acc;
@@ -91,31 +88,34 @@ void loop()
         switch(mode)
         {
             case MODE_IDLE:
-            idle_transition();
-            break;
+                if (VERBOSE) { Serial.println("main::loop() - mode: MODE_IDLE\n"); }
+                idle_transition();
+                break;
 
             case MODE_STARTUP:
-            startup_transition();
-            break;
+                if (VERBOSE) { Serial.println("main::loop() - mode: MODE_STARTUP\n"); }
+                startup_transition();
+                break;
 
             case MODE_FLIGHT:
-            flight_transition();
-            break;
+                if (VERBOSE) { Serial.println("main::loop() - mode: MODE_FLIGHT\n"); }
+                flight_transition();
+                break;
         }
         return;
     }
 
-    switch(mode)
+    switch (mode)
     {
         case MODE_IDLE:
             idle();
             break;
 
-            case MODE_STARTUP:
+        case MODE_STARTUP:
             startup();
             break;
 
-            case MODE_FLIGHT:
+        case MODE_FLIGHT:
             flight();
             break;
     }
@@ -141,9 +141,12 @@ void poll()
     state = gps.poll(state);
     state = health.poll(state);
 
-    // Serial.println(state.healthData.main_battery_voltage);
-    //Serial.print("5vr ");
-    //Serial.println(state.healthData.reg_5V_battery_voltage);
+    if (VERBOSE) 
+    {
+        Serial.println(state.healthData.main_battery_voltage);
+        Serial.print("5vr ");
+        Serial.println(state.healthData.reg_5V_battery_voltage);
+    }
 
     xbee.setCachedData(state);
     logger.writeToMemory(state);

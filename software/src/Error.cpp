@@ -1,5 +1,4 @@
 #include "Error.hpp"
-#include <Arduino.h>
 
 int Error::b0;
 int Error::b1;
@@ -10,12 +9,13 @@ int Error::accumulated[8];
 
 bool Error::init()
 {
-
     memset(accumulated, 0, 8 * sizeof(int));
 
     pinMode(DEBUG_LED_1, OUTPUT);
     pinMode(DEBUG_LED_2, OUTPUT);
     pinMode(DEBUG_LED_3, OUTPUT);
+
+    if (VERBOSE) { Serial.println("Error::init() - init complete"); }
 
     return true;
 }

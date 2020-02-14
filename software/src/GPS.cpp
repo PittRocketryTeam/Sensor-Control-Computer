@@ -1,8 +1,4 @@
 #include "GPS.hpp"
-#include "board.hpp"
-#include "Error.hpp"
-
-#define GPSECHO false
 
 GPS::GPS() :
     Sensor(),
@@ -32,7 +28,9 @@ bool GPS::init()
 
     // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
     int err = 0;
+
     gps.begin(9600);
+    
     while (!gps.available())
     {
         Error::on(GPS_INIT);
@@ -47,10 +45,10 @@ bool GPS::init()
     }
     Error::off();
     
-    // uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
+    // Uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
     gps.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
     
-    // uncomment this line to turn on only the "minimum recommended" data
+    // Uncomment this line to turn on only the "minimum recommended" data
     //gps.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCONLY);
 
     // Set the update rate
@@ -75,6 +73,20 @@ Data GPS::read(Data data)
     data.gpsData.altitude = my_alt;
     data.gpsData.rssi = my_rssi; 
 
+    if (VERBOSE) 
+    {
+        Serial.printf("GPS::read() - time: %ld\n", data.gpsData.time);
+        Serial.printf("GPS::read() - latitude: %f\n", data.gpsData.latitude);
+        Serial.printf("GPS::read() - lat_direction: %f\n", data.gpsData.lat_direction);
+        Serial.printf("GPS::read() - longitude: %f\n", data.gpsData.longitude);
+        Serial.printf("GPS::read() - long_direction: %f\n", data.gpsData.long_direction);
+        Serial.printf("GPS::read() - fix_quality: %f\n", data.gpsData.fix_quality);
+        Serial.printf("GPS::read() - number_of_satellites: %f\n", data.gpsData.number_of_satellites);
+        Serial.printf("GPS::read() - hdop: %f\n", data.gpsData.hdop);
+        Serial.printf("GPS::read() - altitude: %f\n", data.gpsData.altitude);
+        Serial.printf("GPS::read() - rssi: %f\n", data.gpsData.rssi);
+    }
+
     return data;
 }
 
@@ -97,15 +109,31 @@ Data GPS::poll(Data data)
     my_rssi = atoi(gps.lastNMEA());
     my_hdop = gps.HDOP;
 
+    if (VERBOSE) 
+    {
+        Serial.printf("GPS::poll() - time: %ld\n", data.gpsData.time);
+        Serial.printf("GPS::poll() - latitude: %f\n", data.gpsData.latitude);
+        Serial.printf("GPS::poll() - lat_direction: %f\n", data.gpsData.lat_direction);
+        Serial.printf("GPS::poll() - longitude: %f\n", data.gpsData.longitude);
+        Serial.printf("GPS::poll() - long_direction: %f\n", data.gpsData.long_direction);
+        Serial.printf("GPS::poll() - fix_quality: %f\n", data.gpsData.fix_quality);
+        Serial.printf("GPS::poll() - number_of_satellites: %f\n", data.gpsData.number_of_satellites);
+        Serial.printf("GPS::poll() - hdop: %f\n", data.gpsData.hdop);
+        Serial.printf("GPS::poll() - altitude: %f\n", data.gpsData.altitude);
+        Serial.printf("GPS::poll() - rssi: %f\n", data.gpsData.rssi);
+    }
+
     return read(data);
 }
 
 void GPS::enable()
 {
+    if (VERBOSE) { Serial.println("GPS::enable() - GPS enabled\n"); }
     digitalWrite(GPS_ENABLE, HIGH);
 }
 
 void GPS::disable()
 {
+    if (VERBOSE) { Serial.println("GPS::disable() - GPS disabled\n"); }
     digitalWrite(GPS_ENABLE, LOW);
 }
