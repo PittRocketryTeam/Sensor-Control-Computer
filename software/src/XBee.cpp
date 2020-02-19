@@ -1,4 +1,5 @@
 #include "Xbee.hpp"
+#include "Error.hpp"
 #include <cstring>
 
 XBee::XBee() :
@@ -6,6 +7,21 @@ XBee::XBee() :
 {
 
     Serial4.begin(9600); //Serial4 is used for the PCB
+    int i;
+    for (i = 0; i < CONN_ATTEMPTS; i++)
+    {
+        Error::on(TX_INIT);
+        if (Serial4.available())
+        {
+            break;
+        }
+
+        delay(CONN_DELAY);
+    }
+    if (i == CONN_ATTEMPTS)
+    {
+        Error::display(TX_INIT, FATAL);
+    }
 }
 
 XBee::~XBee() {}

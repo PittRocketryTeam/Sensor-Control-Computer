@@ -7,7 +7,10 @@ Logger::Logger()
 
 }
 
-Logger::~Logger() {}
+Logger::~Logger()
+{
+    
+}
 
 bool Logger::init()
 {
@@ -19,11 +22,11 @@ bool Logger::init()
     generateFilename();  // Generate unique log filename
 
     int i;
-    for (i = 0; i < CONN_ATTEMPTS * 5; ++i)
+    for (i = 0; i < CONN_ATTEMPTS; ++i)
     {
-        Serial.println("try");
-        Error::reset(LOG_INIT);
+        Error::on(LOG_INIT);
         
+        // pin mapping magic
         SPI.setMOSI(7);
         SPI.setMISO(8);
         int status = SD.begin(62);
@@ -32,15 +35,18 @@ bool Logger::init()
         {
             break;
         }
-        Error::on(LOG_INIT);
+
+        // fail
+
         delay(CONN_DELAY);
     }
 
     Error::off();
-    if (i == CONN_ATTEMPTS * 5)
+    if (i == CONN_ATTEMPTS)
     {
         Serial.println("fail");
         Error::display(LOG_INIT, FATAL);
+        Error::display(WERE_SCREWED, FATAL);
     }
 
     handle = SD.open(filename, FILE_WRITE);

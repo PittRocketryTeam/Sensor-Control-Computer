@@ -80,7 +80,7 @@ void setup()
 
     // Initialize sensors
     gps.init();
-    gps_interrupt.begin(gps_read_callback, 1000);
+    gps_interrupt.begin(gps_read_callback, 1000); // 1 ms interval interrupt
 
     // Initialize logger and add sensors
     logger.init();

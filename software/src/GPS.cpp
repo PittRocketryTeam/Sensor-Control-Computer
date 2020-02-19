@@ -2,8 +2,6 @@
 #include "board.hpp"
 #include "Error.hpp"
 
-#define GPSECHO false
-
 GPS::GPS() :
     Sensor(),
     my_time(0),
@@ -33,6 +31,26 @@ bool GPS::init()
     // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
     int err = 0;
     gps.begin(9600);
+    int i;
+    for (i = 0; i < CONN_ATTEMPTS; i++)
+    {
+        Error::on(GPS_INIT);
+
+        if (gps.available())
+        {
+            break;
+        }
+
+        delay(CONN_DELAY);
+    }
+    
+    Error::off();
+    if (i == CONN_ATTEMPTS)
+    {
+        Error::display(GPS_INIT, FATAL);
+        Error::display(WERE_SCREWED, FATAL);
+    }
+
     while (!gps.available())
     {
         Error::on(GPS_INIT);
