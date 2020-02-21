@@ -28,7 +28,7 @@ Timer txrx;
 Timer gps_poll;
 IntervalTimer gps_interrupt;
 
-static uint8_t mode = MODE_STARTUP;
+static uint8_t mode = MODE_IDLE;
 static uint8_t transition = 1;
 
 void idle();
@@ -36,9 +36,6 @@ void idle_transition();
 
 void startup();
 void startup_transition();
-
-void flight();
-void flight_transition();
 
 void gps_read_callback()
 {
@@ -69,10 +66,6 @@ void setup()
     {
         Error::display(SERIAL_INIT, FATAL);
     }
-    else
-    {
-        Serial.println("SERIAL OK");
-    }
 
     acc.init();
     alt.init();
@@ -87,8 +80,8 @@ void setup()
 
     Error::summary();
 
-    txrx.setInterval(1000);
-    log_flush.setInterval(5000);
+    txrx.setInterval(10000);
+    log_flush.setInterval(10000);
     gps_poll.setInterval(1000);
 }
 
@@ -106,10 +99,6 @@ void loop()
             case MODE_STARTUP:
             startup_transition();
             break;
-
-            case MODE_FLIGHT:
-            flight_transition();
-            break;
         }
         return;
     }
@@ -123,10 +112,6 @@ void loop()
             case MODE_STARTUP:
             startup();
             break;
-
-            case MODE_FLIGHT:
-            flight();
-            break;
     }
 
     if (log_flush.check())
@@ -136,6 +121,7 @@ void loop()
 
     if (txrx.check())
     {
+        //Serial.println(state.timestamp);
         xbee.transmit();
         delay(100);
         xbee.receive();
@@ -155,6 +141,8 @@ void poll()
 
     xbee.setCachedData(state);
     logger.writeToMemory(state);
+
+    //xbee.receive();
 }
 
 void idle()
@@ -164,24 +152,27 @@ void idle()
         mode = MODE_STARTUP;
         transition = 1;
     }
+
+    poll();
 }
 
 void idle_transition()
 {
+    digitalWrite(13, LOW);
     // disable everything except GPS
 
     // set timers
     gps_poll.setInterval(1000);
     log_flush.setInterval(5000);
-    txrx.setInterval(1000);
+    txrx.setInterval(10000);
 }
 
 void startup()
 {
     if (xbee.getModeFromGC() == 0)
     {
-        //mode = MODE_IDLE;
-        //transition = 1;
+        mode = MODE_IDLE;
+        transition = 1;
     }
 
     poll();
@@ -189,22 +180,11 @@ void startup()
 
 void startup_transition()
 {
+    digitalWrite(13, HIGH);
     // enable all sensors
 
     // set timers
     gps_poll.setInterval(1000);
     log_flush.setInterval(5000);
     txrx.setInterval(1000);
-}
-
-void flight_transition()
-{
-    gps_poll.setInterval(1000);
-    txrx.setInterval(1000);   
-}
-
-void flight()
-{
-    // run apogee detect, land detect, approx landing coords
-    poll();
 }

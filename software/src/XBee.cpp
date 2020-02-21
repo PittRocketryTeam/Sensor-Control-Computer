@@ -68,11 +68,14 @@ Data XBee::receive()
     {
         mode = Serial4.read() == 'b';
         Serial.println(mode);
-        digitalWrite(13, mode);
         delay(500);
+        //Serial.println("\t\tyep");
     }
-
-    digitalWrite(13, 0);
+    else
+    {
+        ///Serial.println("nope");
+    }
+    
 
     Data d;
     return d;
