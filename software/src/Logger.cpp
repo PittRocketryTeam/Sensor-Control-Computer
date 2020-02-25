@@ -58,7 +58,7 @@ void Logger::generateFilename()
 {
     memset(filename, 0, sizeof(filename));
 
-    current_time = now();
+    /*current_time = now();
     if (RTC_set_successfully)
     {
         sprintf(filename, "%d-%d-%d_%d-%d-%d.csv", 
@@ -73,8 +73,8 @@ void Logger::generateFilename()
     else
     {
         sprintf(filename, "loggylog.csv");
-    }
-
+    }*/
+    sprintf(filename, "loggylog.csv");
 }
 
 bool Logger::writeToMemory(Data data)
