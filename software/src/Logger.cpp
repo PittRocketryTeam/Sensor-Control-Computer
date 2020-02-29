@@ -15,11 +15,11 @@ Logger::~Logger()
 bool Logger::init()
 {
     // Initialize RTC
-    setSyncProvider(getTeensy3Time);
+    /*setSyncProvider(getTeensy3Time);
     delay(100);
-    RTC_set_successfully = (timeStatus() == timeSet);
+    RTC_set_successfully = (timeStatus() == timeSet);*/
 
-    generateFilename();  // Generate unique log filename
+    //generateFilename();  // Generate unique log filename
 
     int i;
     for (i = 0; i < CONN_ATTEMPTS; ++i)
@@ -49,6 +49,8 @@ bool Logger::init()
         Error::display(WERE_SCREWED, FATAL);
     }
 
+    genUniqueFn();
+
     handle = SD.open(filename, FILE_WRITE);
 
     return true;
@@ -75,6 +77,39 @@ void Logger::generateFilename()
         sprintf(filename, "loggylog.csv");
     }*/
     sprintf(filename, "loggylog.csv");
+}
+
+void Logger::genUniqueFn()
+{
+    int log_num = 1;
+
+    if (SD.exists("log_journal"))
+    {
+        handle = SD.open("log_journal", FILE_READ);
+        delay(100);
+        char bf[100];
+        size_t r = handle.readBytes(bf, 100);
+        delay(100);
+        bf[r] = '\0';
+        log_num = atoi(bf);
+        
+        handle.close();
+        delay(100);
+    }
+
+    handle = SD.open("log_journal", FILE_WRITE);
+    delay(100);
+    handle.printf("%d", log_num);
+    delay(100);
+    handle.flush();
+    delay(100);
+    handle.close();
+    delay(100);
+
+    memset(filename, 0, sizeof(filename));
+    sprintf(filename, "loggylog_%d.csv", log_num);
+
+    delay(100);
 }
 
 bool Logger::writeToMemory(Data data)

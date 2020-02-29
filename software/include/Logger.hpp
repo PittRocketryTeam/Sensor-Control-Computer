@@ -46,6 +46,7 @@ class Logger
          * Example log filename: Monday_10-07-2019_03:26:41.log
         */
         virtual void generateFilename();
+        void genUniqueFn();
 
         static time_t getTeensy3Time();
 
