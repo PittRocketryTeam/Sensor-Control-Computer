@@ -92,6 +92,7 @@ void Logger::genUniqueFn()
         delay(100);
         bf[r] = '\0';
         log_num = atoi(bf);
+        log_num += 1;
         
         handle.close();
         delay(100);
